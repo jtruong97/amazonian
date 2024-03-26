@@ -75,6 +75,10 @@
 ## Cart
 - Logged in users can create, view, edit, and delete items in their cart.
 
+## Products
+- Logged in users can create, view, edit, and delete products to sell on amazonian.
+- Logged out users can view all products.
+
 ## Order History (bonus feature)
 - Logged in user can view their order history if a cart has been checked out.
 
