@@ -14,7 +14,7 @@ class Product(db.Model):
     name = Column(String(50), nullable=False)
     price = Column(Float(precision=2), nullable=False)
     description = Column(String(2000), nullable=False)
-    category = Column (db.Enum('Fern', 'Flower', 'Shrub', 'Succulent', 'Tree', 'Vine'), nullable=False)
+    category = Column (db.Enum('Fern', 'Flower', 'Shrub', 'Succulent', 'Tree', 'Vine', name='category'), nullable=False)
     # category = Column(String(50), nullable=False)
     image_url = Column(String(500), nullable=False)
     createdAt = db.Column(db.DateTime, default=datetime.utcnow)
