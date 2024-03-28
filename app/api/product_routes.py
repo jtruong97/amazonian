@@ -78,4 +78,3 @@ def new_review(id):
         return new_review.to_dict()
     return form.errors, 400
 
-# UPDATE REVIEW BY REVIEW ID
