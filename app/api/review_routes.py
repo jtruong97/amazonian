@@ -1,5 +1,5 @@
 from flask import Blueprint, jsonify, request
-from app.models import db, Product, Review
+from app.models import db, Review
 from flask_login import current_user, login_required
 from app.forms.review_form import CreateReviewForm
 from app.api.aws import (upload_file_to_s3, get_unique_filename)
