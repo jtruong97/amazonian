@@ -50,42 +50,42 @@ def seed_reviews():
     )
     tradescantia2= Review(
         user_id= 6,
-        product_id = 5,
+        product_id = 3,
         rating = 5,
         review = "I'm thoroughly impressed with the Pink Tradescantia! Its vibrant colors and unique foliage patterns make it a standout in any room. Despite being a beginner plant parent, I've found it easy to care for, and it has quickly become the focal point of my plant corner.",
         image_url = 'https://amazonian-jt.s3.us-west-1.amazonaws.com/review-images/tradescantia2.png'
     )
     tradescantia3= Review(
         user_id= 7,
-        product_id = 6,
+        product_id = 3,
         rating = 4,
         review = "The Pink Tradescantia is a delightful addition to my plant collection! Its variegated leaves and trailing vines bring a touch of whimsy to my home decor. With proper care, it has thrived, and I love watching it grow and flourish.",
         image_url = 'https://amazonian-jt.s3.us-west-1.amazonaws.com/review-images/tradescantia3.png'
     )
     albo1 = Review(
         user_id= 8,
-        product_id = 7,
+        product_id = 4,
         rating = 5,
         review = "The Variegated Monstera Albo is a showstopper! Its eye-catching leaves and unique coloration make it a conversation piece in my home. While its price may seem steep, the plant's rarity and beauty make it a worthwhile addition to any plant enthusiast's collection.",
         image_url = 'https://amazonian-jt.s3.us-west-1.amazonaws.com/review-images/albo1.png'
     )
     albo2 = Review(
         user_id= 9,
-        product_id = 8,
+        product_id = 4,
         rating = 4,
         review = "I'm beyond ecstatic with my Variegated Monstera Albo! Its rare and exquisite foliage adds an unparalleled elegance to my home. Despite its initial cost, the plant's beauty is truly priceless, and I couldn't be happier with my investment.",
         image_url = 'https://amazonian-jt.s3.us-west-1.amazonaws.com/review-images/albo2.png'
     )
     albo3 = Review(
         user_id= 10,
-        product_id = 9,
+        product_id = 4,
         rating = 1,
         review = 'My Monstera Albo died quickly. For the price point, it was not worth it.',
         image_url = 'https://amazonian-jt.s3.us-west-1.amazonaws.com/review-images/albo3.png'
     )
     begonia1= Review(
         user_id= 6,
-        product_id = 10,
+        product_id = 5,
         rating = 5,
         review = 'Thrilled with my Polka Dot Begonia plant! Its eye-catching leaves and compact growth habit make it a perfect choice for adding greenery to small spaces.',
         image_url = 'https://amazonian-jt.s3.us-west-1.amazonaws.com/review-images/begonia1.png'
