@@ -11,7 +11,7 @@ function UpdateReview(){
 
     useEffect(()=> {
         dispatch(reviewsByProductThunk(productId))
-    },[dispatch])
+    },[dispatch, productId])
 
     if(!reviews?.length){
         return <div>Loading...</div>

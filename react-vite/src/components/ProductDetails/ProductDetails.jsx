@@ -8,6 +8,7 @@ import { getAllUsersThunk } from "../../redux/users";
 import OpenModalMenuItem from '../Navigation/OpenModalMenuItem';
 import DeleteReview from "../DeleteReview/DeleteReview";
 import './ProductDetails.css'
+import Carts from "../Carts/Carts";
 
 function ProductDetails(){
     const dispatch = useDispatch()
@@ -23,7 +24,7 @@ function ProductDetails(){
         dispatch(getOneProductThunk(productId))
         dispatch(reviewsByProductThunk(productId))
         dispatch(getAllUsersThunk())
-    },[dispatch, deleteReivew])
+    },[dispatch, deleteReivew, productId])
 
     if(!oneProduct || !users){
         return <div>Loading...</div>
@@ -56,7 +57,12 @@ function ProductDetails(){
                         <div>Product Num Reviews here</div>
                     </div>
                     <p>${oneProduct.price}</p>
-                    <button><NavLink>Add to Cart</NavLink></button>
+                    <button className='add-to-cart-btn'>
+                        <OpenModalMenuItem
+                            itemText='Add to cart'
+                            modalComponent={<Carts />}
+                        />
+                    </button>
                     <h2>About this item</h2>
                     <p>{oneProduct.description}</p>
                     <h2>Seller Information</h2>

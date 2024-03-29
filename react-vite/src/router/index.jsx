@@ -6,6 +6,7 @@ import LandingPage from '../components/LandingPage/LandingPage';
 import ProductDetails from '../components/ProductDetails/ProductDetails';
 import CreateReview from '../components/CreateReview/CreateReview';
 import UpdateReview from '../components/UpdateReview/UpdateReivew';
+import Carts from '../components/Carts/Carts';
 
 export const router = createBrowserRouter([
   {
@@ -34,6 +35,10 @@ export const router = createBrowserRouter([
       {
         path:'/products/:productId/review/:reviewId/edit',
         element: <UpdateReview />
+      },
+      {
+        path:'/carts',
+        element: <Carts />
       },
       {
         path:'*',
