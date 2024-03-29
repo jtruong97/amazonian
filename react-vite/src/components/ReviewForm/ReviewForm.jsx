@@ -40,7 +40,7 @@ function ReviewForm({rev, button}){
             }
         }
         setValidation(errors)
-    }, [currUser, submitted, rating, review, image_url])
+    }, [currUser, submitted, rating, review, image_url, nav])
 
     const handleSubmit = async(e) => {
         e.preventDefault();

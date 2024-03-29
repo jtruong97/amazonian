@@ -7,12 +7,13 @@ from app.forms.cart_item_form import CartItemForm
 cart_routes = Blueprint('carts', __name__)
 
 # GET ALL CARTS OF CURRENT USER (all carts prev order or active cart)
-@cart_routes.route('/')
+@cart_routes.route('/all')
 @login_required
 def all_carts():
     if not current_user:
         return jsonify({'error': 'Unauthorized'}), 403
     user_carts = Cart.query.filter(Cart.user_id == current_user.id).all()
+    # user_carts = Cart.query.filter(Cart.user_id == userId).all()
     user_carts_lst = [cart.to_dict() for cart in user_carts]
     return {'Carts': user_carts_lst}
 
@@ -25,7 +26,10 @@ def active_carts():
     active_cart = Cart.query.filter(Cart.is_ordered == False).first() #should only ever have 1 active cart
     if not active_cart:
         return jsonify({'message': 'No active cart, create a new cart.'})
-    return {"Cart": active_cart.to_dict()}
+    if active_cart.user_id != current_user.id:
+        return jsonify({'message':'Unauthorized'}), 403
+
+    return {"ActiveCart": active_cart.to_dict()}
 
 
 # CREATE NEW CART (creates active cart)
