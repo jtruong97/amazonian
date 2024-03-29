@@ -20,11 +20,16 @@ class Cart(db.Model):
     # one cart has many cartItems
     cart_items = relationship('CartItem', back_populates='carts')
 
+    @property
+    def cartItems(self):
+        return [items.to_dict() for items in self.cart_items]
+
     def to_dict(self):
         return {
             'id': self.id,
             'user_id': self.user_id,
             'is_ordered': self.is_ordered,
+            'cart_items': self.cartItems,
             'createdAt': self.createdAt,
             'updatedAt':self.updatedAt
         }
