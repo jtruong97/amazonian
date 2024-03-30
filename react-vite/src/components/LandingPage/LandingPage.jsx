@@ -3,37 +3,46 @@ import { useDispatch, useSelector } from "react-redux"
 import { getAllProductsThunk } from "../../redux/product"
 import { NavLink } from 'react-router-dom';
 import OpenModalMenuItem from "../Navigation/OpenModalMenuItem";
-import './LandingPage.css'
+import LoginFormModal from "../LoginFormModal";
+import SignupFormModal from "../SignupFormModal";
 import Carts from "../Carts/Carts";
 import { allUserCartsThunk, createCartThunk } from "../../redux/cart";
 import { addItemToCartThunk } from "../../redux/cartItems";
+import './LandingPage.css'
+import { MdOutlineStar } from "react-icons/md";
+import { MdOutlineStarBorder } from "react-icons/md";
 
 function LandingPage(){
     const dispatch = useDispatch()
     const productsArr = useSelector(state => state.products.Products)
     const allCarts = useSelector(state => state.carts.Carts)
+    const currUser = useSelector(state => state.session)
 
     const [quantity, setQuantity] = useState('1')
 
     useEffect(() => {
         dispatch(getAllProductsThunk())
-        dispatch(allUserCartsThunk())
-    },[dispatch])
+        if(currUser.user){
+            dispatch(allUserCartsThunk())
+        }
+    },[dispatch, currUser.user])
 
-    if(!productsArr?.length || !allCarts){
+    if(!productsArr?.length){ // || !allCarts
         return <div>Loading...</div>
     }
 
     function formatDescription(description){
-        let newDescription = description.slice(0,100) + '...'
+        let newDescription = description.slice(0,120) + '...'
         return newDescription
     }
 
     // find active cart
     let activeCartObj
-    for(let cart of allCarts){
-        if(cart.is_ordered == false){
-            activeCartObj = cart
+    if(allCarts?.length){
+        for(let cart of allCarts){
+            if(cart.is_ordered == false){
+                activeCartObj = cart
+            }
         }
     }
 
@@ -45,18 +54,37 @@ function LandingPage(){
         }
         if(activeCartObj){
             // Has an open cart, add product to this cart
-            console.log('ADD ITEM TO ACTIVE CART')
             await dispatch(addItemToCartThunk(addItem, activeCartObj.id))
         }
         else{
             // create new cart, add product to new cart
-            console.log('CREATE A NEW CART THEN ADD ITEM TO IT')
             await dispatch(createCartThunk())
             await dispatch(addItemToCartThunk(addItem, activeCartObj.id))
         }
         return
     }
 
+    function avgRating(revArr){
+        let starRating = 0
+        for (let rev of revArr){
+            starRating += rev.rating
+        }
+        return (starRating/revArr.length).toFixed(1)
+    }
+    function starsIcon(avgRating){
+        let filledStar = Math.floor(avgRating) // round avg rating down
+        let arr =[1,2,3,4,5]
+        let starArr = []
+        arr.forEach(i => {
+            if( i <= filledStar){
+                starArr.push(<MdOutlineStar key={i}/>)
+            }
+            else{
+                starArr.push(<MdOutlineStarBorder key={i}/>)
+            }
+        })
+        return starArr
+    }
 
     return(
         <div className='landing-page-container'>
@@ -65,19 +93,27 @@ function LandingPage(){
                     <NavLink className='landing-nav-container' to={`/products/${product.id}`}>
                         <img src={product.image_url} className='product-img'/>
                         <div className='product-info'>
-                            <div>{product.name}</div>
-                            <div>{formatDescription(product.description)}</div>
+                            <div className='product-name-text'>{product.name}</div>
+                            <div className='product-description-text'>{formatDescription(product.description)}</div>
                             <div className='landing-rating-container'>
-                                <div>Product Rating here</div>
-                                <div>Number of Ratings here</div>
+                                <div>{avgRating(product.reviews)}</div>
+                                <div className='star-rating-icons'>{starsIcon(avgRating(product.reviews))}</div>
+                                <div>
+                                    {product.reviews.length == 0 && <div className='product-num-ratings'>No ratings</div>}
+                                    {product.reviews.length == 1 && <div className='product-num-ratings'>1 rating</div>}
+                                    {product.reviews.length > 1 && <div className='product-num-ratings'>{product.reviews.length} ratings</div>}
+                                </div>
                             </div>
-                            <div>${product.price}</div>
+                            <span className='product-cents-text'>$</span>
+                            <span className='product-price-text'>{product.price.toString().split('.')[0]}</span>
+                            <span className='product-cents-text'>{product.price.toString().split('.')[1]}</span>
                         </div>
                     </NavLink>
-                    <div>
+                    {currUser?.user?.id && (
+                        <div className='cart-item-feature'>
                             <form>
                                 <select onChange={(e) => setQuantity(e.target.value)}>
-                                    <option value='' disabled selected hidden>Select Quantity</option>
+                                    <option value='' disabled selected hidden>Select Qty</option>
                                     <option value = '1'>1</option>
                                     <option value = '2'>2</option>
                                     <option value = '3'>3</option>
@@ -90,13 +126,28 @@ function LandingPage(){
                                     <option value = '10'>10</option>
                                 </select>
                             </form>
-                    </div>
-                    <button className='add-to-cart-btn' onClick={() => addToCart(product.id)}>
-                        <OpenModalMenuItem
-                            itemText="Add to cart"
-                            modalComponent={<Carts />}
-                        />
-                    </button>
+                            <button className='add-to-cart-btn' onClick={() => addToCart(product.id)}>
+                                <OpenModalMenuItem
+                                    itemText="Add to cart"
+                                    modalComponent={<Carts />}
+                                />
+                            </button>
+                        </div>
+                    )}
+                    {!currUser?.user && (
+                        <p className='msg-to-add-cart'>
+                            <OpenModalMenuItem
+                                itemText={<span className='login-signup-text'>Log In</span>}
+                                modalComponent={<LoginFormModal />}
+                                className='login-signup-text'
+                            />
+                            or
+                            <OpenModalMenuItem
+                                itemText={<span className='login-signup-text'>Sign Up</span>}
+                                modalComponent={<SignupFormModal />}
+                            />
+                        to add this item to your cart</p>)
+                    }
                 </div>
             ))}
         </div>

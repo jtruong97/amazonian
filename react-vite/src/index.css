@@ -1,1 +1,23 @@
 /* TODO: Add sitewide styles */
+
+:root{
+    --yellow:rgb(255, 216, 21);
+    --orange: rgb(255, 153, 0);
+    --darkgrey:  rgb(53, 56, 54);
+    --lightsage: rgb(152, 173, 149);
+    --darksage: rgb(80, 94, 78);
+    --darkforest: rgb(40, 56, 43);
+    --green: rgb(72, 126, 82);
+    --burgundy: rgb(116, 26, 26);
+    --llsage: rgb(236, 238, 235);
+    --lllsage: rgb(247, 247, 247);
+    --darkgreen: rgb(23, 41, 25);
+}
+
+button {
+    cursor: pointer;
+}
+body{
+    background-color: var(--llsage);
+    margin: 0;
+}

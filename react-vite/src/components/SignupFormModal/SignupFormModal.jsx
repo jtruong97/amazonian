@@ -39,53 +39,60 @@ function SignupFormModal() {
   };
 
   return (
-    <>
-      <h1>Sign Up</h1>
-      {errors.server && <p>{errors.server}</p>}
-      <form onSubmit={handleSubmit}>
-        <label>
-          Email
-          <input
-            type="text"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            required
-          />
-        </label>
-        {errors.email && <p>{errors.email}</p>}
-        <label>
-          Username
-          <input
-            type="text"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-            required
-          />
-        </label>
-        {errors.username && <p>{errors.username}</p>}
-        <label>
-          Password
-          <input
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
-          />
-        </label>
-        {errors.password && <p>{errors.password}</p>}
-        <label>
-          Confirm Password
-          <input
-            type="password"
-            value={confirmPassword}
-            onChange={(e) => setConfirmPassword(e.target.value)}
-            required
-          />
-        </label>
-        {errors.confirmPassword && <p>{errors.confirmPassword}</p>}
-        <button type="submit">Sign Up</button>
-      </form>
-    </>
+    <div className='login-modal-page'>
+      <img src ='amazonian-logo-dark.png' className='sign-log-logo'/>
+      <div className='sign-in-form-container'>
+        <h2>Sign Up</h2>
+        {errors.server && <p>{errors.server}</p>}
+        <form onSubmit={handleSubmit} className='sign-in-form'>
+          <label className='signin-label'>
+            Email*
+            <input
+              className='signin-input'
+              type="text"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+            />
+          </label>
+          {errors.email && <p className='form-val-txt'>{errors.email}</p>}
+          <label  className='signin-label'>
+            Username*
+            <input
+              className='signin-input'
+              type="text"
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
+              required
+            />
+          </label>
+          {errors.username && <p className='form-val-txt'>{errors.username}</p>}
+          <label className='signin-label'>
+            Password*
+            <input
+              className='signin-input'
+              type="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              required
+            />
+          </label>
+          {errors.password && <p className='form-val-txt'>{errors.password}</p>}
+          <label className='signin-label'>
+            Confirm Password*
+            <input
+              className='signin-input'
+              type="password"
+              value={confirmPassword}
+              onChange={(e) => setConfirmPassword(e.target.value)}
+              required
+            />
+          </label>
+          {errors.confirmPassword && <p className='form-val-txt'>{errors.confirmPassword}</p>}
+          <button type="submit" className='login-btn'>Sign Up</button>
+        </form>
+      </div>
+    </div>
   );
 }
 

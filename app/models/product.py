@@ -27,6 +27,10 @@ class Product(db.Model):
     # one product belongs to many cartItems
     cart_items = relationship('CartItem', back_populates='products', cascade='all, delete-orphan')
 
+    @property
+    def product_reviews(self):
+        return [review.to_dict() for review in self.reviews]
+
     def to_dict(self):
         return {
             'id': self.id,
@@ -36,6 +40,7 @@ class Product(db.Model):
             'description': self.description,
             'category':self.category,
             'image_url':self.image_url,
+            'reviews': self.product_reviews,
             'createdAt': self.createdAt,
             'updatedAt': self.updatedAt
         }
