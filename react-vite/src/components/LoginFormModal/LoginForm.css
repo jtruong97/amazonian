@@ -1,0 +1,57 @@
+.login-modal-page{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px 100px;
+    background-color: var(--llsage);
+}
+
+.sign-log-logo{
+    height: 80px;
+    padding: 20px;
+}
+
+.sign-in-form-container{
+    border: 1px solid grey;
+    background-color: var(--lllsage);
+    display: flex;
+    flex-direction: column;
+    width: 400px;
+    padding: 30px;
+    margin-bottom: 25px;
+}
+.sign-in-form{
+    display: flex;
+    flex-direction: column;
+}
+
+.signin-input{
+    margin: 10px 0;
+    width: 100%;
+}
+
+.login-btn{
+    margin: 10px 0;
+    width: 100px;
+    padding: 10px 0px;
+    align-self: center;
+    color: white;
+    background-color: var(--darksage);
+    border: var(--darksage);
+}
+.login-btn:hover{
+    background-color: var(--lightsage);
+    border: var(--lightsage);
+}
+
+.demo-login-btn{
+    color: var(--darkforest);
+    align-self: center;
+}
+.demo-login-btn:hover{
+    color: var(--lightsage);
+}
+
+.form-val-txt{
+    color: var(--burgundy);
+}

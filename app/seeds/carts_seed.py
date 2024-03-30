@@ -3,11 +3,17 @@ from sqlalchemy.sql import text
 
 def seed_carts():
 
+    user1cart1 = Cart(
+        user_id = 1,
+        is_ordered = False
+    )
+
     user3cart1 = Cart(
         user_id = 3,
         is_ordered = True
     )
 
+    db.session.add(user1cart1)
     db.session.add(user3cart1)
     db.session.commit()
 

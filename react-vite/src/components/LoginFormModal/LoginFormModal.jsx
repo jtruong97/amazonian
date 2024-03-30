@@ -41,42 +41,47 @@ function LoginFormModal() {
   }
 
   return (
-    <>
-      <h1>Log In</h1>
-      <form onSubmit={handleSubmit}>
-        <label>
-          Email
-          <input
-            type="text"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            required
-          />
-        </label>
-        {errors.email && <p>{errors.email}</p>}
-        <label>
-          Password
-          <input
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
-          />
-        </label>
-        {errors.password && <p>{errors.password}</p>}
-        <button type="submit">Log In</button>
-        <NavLink
-          className='demo-login-btn'
-          onClick={loginGuest}
-          to='/'
-        > Login as Jasmine&apos;s Guest </NavLink>
-        <NavLink
-          className='demo-login-btn'
-          onClick={loginJasmine}
-          to='/'
-        > Login as Jasmine</NavLink>
-      </form>
-    </>
+    <div className='login-modal-page'>
+      <img src ='amazonian-logo-dark.png' className='sign-log-logo'/>
+      <div className='sign-in-form-container'>
+        <h2>Log In</h2>
+        <form onSubmit={handleSubmit} className='sign-in-form'>
+          <label className='signin-label'>
+            Email*
+            <input
+              className='signin-input'
+              type="text"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+            />
+          </label>
+          {errors.email && <p className='form-val-txt'>{errors.email}</p>}
+          <label className='signin-label'>
+            Password*
+            <input
+              className='signin-input'
+              type="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              required
+            />
+          </label>
+          {errors.password && <p className='form-val-txt'>{errors.password}</p>}
+          <button type="submit" className='login-btn'>Log In</button>
+          <NavLink
+            className='demo-login-btn'
+            onClick={loginGuest}
+            to='/'
+          > Login as Jasmine&apos;s Guest </NavLink>
+          <NavLink
+            className='demo-login-btn'
+            onClick={loginJasmine}
+            to='/'
+          > Login as Jasmine</NavLink>
+        </form>
+      </div>
+    </div>
   );
 }
 
