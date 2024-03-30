@@ -56,7 +56,8 @@ export const addItemToCartThunk = (addItem, cartId) => async (dispatch) => {
 
 export const updateQuantityThunk = (updateItem, cartItemId) => async (dispatch) => {
     const response = await fetch(`/api/carts/active/${cartItemId}/edit`, {
-        method: 'PUT',
+        method: "PUT",
+        headers: {'Content-Type': 'application/json'},
         body: JSON.stringify(updateItem)
     })
     if(!response.ok){
@@ -68,7 +69,7 @@ export const updateQuantityThunk = (updateItem, cartItemId) => async (dispatch) 
 }
 
 export const deleteCartItemThunk = (cartItemId) => async (dispatch) => {
-    response = await fetch(`/api/cart/active/${cartItemId}/delete`, {
+    const response = await fetch(`/api/carts/active/${cartItemId}/delete`, {
         method: 'DELETE'
     })
     if(!response.ok){
