@@ -97,8 +97,8 @@ def add_product_toCart(id):
         return add_toCart.to_dict()
     return jsonify({'error': form.errors}), 400
 
-# UPDATE CART ITEMS (update quanitity of product in active cart but cartItemId)
-@cart_routes.route('/active/<int:id>/edit', methods=['PUT'])
+# UPDATE CART ITEMS (update quanitity of product in active cart by cartItemId)
+@cart_routes.route('/active/<int:id>/edit', methods=['PUT']) #/active/cartItemId/edit
 @login_required
 def update_cart(id):
     if not current_user:

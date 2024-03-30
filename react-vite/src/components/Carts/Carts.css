@@ -1,0 +1,12 @@
+.carts-page{
+    overflow: scroll;
+}
+
+.carts-modal{
+    height: 98vh;
+    overflow-y: scroll;
+}
+.cart-text{
+    text-decoration: none;
+    color: white;
+}

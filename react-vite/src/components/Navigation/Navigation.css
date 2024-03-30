@@ -4,8 +4,9 @@
 .nav-ul-container{
   display: flex;
   justify-content: space-between;
+  align-items: center;
   list-style-type: none;
-  background-color: rgb(23, 41, 25);
+  background-color: var(--darkgreen);
   top:0;
   left: 0;
   right: 0;
@@ -14,4 +15,91 @@
 }
 .logo-img{
   height: 50px;
+}
+.cart-text{
+  align-self: center;
+  text-align: center;
+  font-size: 15px;
+}
+
+.cart-favicon{
+  color: white;
+}
+
+.search-bar{
+  width: 90%;
+  margin: 0 20px;
+  height: 25px;
+  align-self: center;
+}
+
+.logged-user-nav-bar{
+  display: flex;
+  padding: 0 10px;
+}
+.user-greeting{
+  color: white;
+  background-color: var(--darkgreen);
+  border: var(--darkgreen);
+  padding: 0 10px;
+  font-size: 13px;
+}
+
+.prev-order-txt{
+  color: white;
+  align-self: center;
+  text-decoration: none;
+  font-size: 14px;
+  padding: 5px;
+  text-align: center;
+}
+
+.profile-dropdown{
+  background-color: white;
+  color: var(--darkgreen);
+  padding: 20px;
+  border-radius: 5px 5px;
+  list-style-type: none;
+  justify-content: center;
+  align-items: center;
+  padding: 15px;
+  right: 35px;
+  z-index: 1;
+}
+
+.logout-btn{
+  background-color: var(--lightsage);
+  border: 1px solid var(--lightsage);
+  padding: 4px 12px;
+  margin: 12px 0 0 0;
+
+}
+.logout-btn:hover{
+  background-color: var(--darksage);
+  border: 1px solid var(--darksage);
+}
+
+.nav-bar{
+  display: flex;
+  flex-direction: column;
+}
+
+.categories-bar{
+  border-top: 1px solid white;
+  background-color: var(--darkgreen);
+}
+.category-ul{
+  background-color: var(--darkgreen);
+  margin: 0;
+  color: white;
+  display: flex;
+  justify-content: space-evenly;
+  list-style: none;
+}
+.cat-li{
+  padding: 10px 30px;
+}
+
+.cat-li:hover{
+  border: 1px solid white;
 }
