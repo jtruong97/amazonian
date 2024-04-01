@@ -46,8 +46,8 @@ function ProfileButton() {
     <>
       <button onClick={toggleMenu} className='user-greeting'>
         {/* <FaUserCircle /> */}
-        {user && (<p>Hello, {user?.first_name}</p>)}
-        {!user && (<p>Hello, sign in</p>)}
+        {user && (<p className='hello-btn'>Hello, {user?.first_name}</p>)}
+        {!user && (<p className='hello-btn'>Hello, sign in</p>)}
       </button>
       {showMenu && (
         <ul className={"profile-dropdown"} ref={ulRef}>
@@ -62,12 +62,13 @@ function ProfileButton() {
           ) : (
             <>
               <OpenModalMenuItem
-                itemText="Log In"
+                itemText={<span className='profile-dropdown-options'>Log In</span>}
                 onItemClick={closeMenu}
                 modalComponent={<LoginFormModal />}
               />
               <OpenModalMenuItem
-                itemText="Sign Up"
+                className='profile-dropdown-options'
+                itemText={<span className='profile-dropdown-options'>Sign Up</span>}
                 onItemClick={closeMenu}
                 modalComponent={<SignupFormModal />}
               />

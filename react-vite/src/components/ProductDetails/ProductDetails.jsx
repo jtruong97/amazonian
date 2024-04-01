@@ -5,7 +5,7 @@ import { getOneProductThunk } from "../../redux/product"
 import { NavLink } from 'react-router-dom';
 import { reviewsByProductThunk } from "../../redux/review";
 import { getAllUsersThunk } from "../../redux/users";
-import { addItemToCartThunk } from "../../redux/cartItems";
+import { addItemToCartThunk, updateQuantityThunk } from "../../redux/cartItems";
 import { createCartThunk } from "../../redux/cart";
 import OpenModalMenuItem from '../Navigation/OpenModalMenuItem';
 import LoginFormModal from "../LoginFormModal";
@@ -25,6 +25,7 @@ function ProductDetails(){
     const currUser = useSelector(state => state.session.user)
     const allCarts = useSelector(state => state.carts.Carts)
 
+    const [quantity, setQuantity] = useState('1')
     const [deleteReivew, setDeleteReview ]= useState(false)
 
     useEffect(() => {
@@ -50,11 +51,21 @@ function ProductDetails(){
         }
     }
 
+    let findInCart = activeCartObj?.cart_items?.find(item => item?.product_id == productId)
+
     const addToCart = async (productId) => {
         let addItem = {
             cart_id: activeCartObj.id,
             product_id: productId,
-            quantity: 1
+            quantity: quantity
+        }
+        if(activeCartObj && findInCart){
+            // product is already in the cart
+            let updateQty = {
+                product_id: productId,
+                quantity: (parseInt(findInCart.quantity) + parseInt(quantity))
+            }
+            return await dispatch(updateQuantityThunk(updateQty, findInCart.id))
         }
         if(activeCartObj){
             // Has an open cart, add product to this cart
@@ -133,12 +144,28 @@ function ProductDetails(){
                     <span className='product-price-text-d'>{oneProduct?.price?.toString().split('.')[0]}</span>
                     <span className='product-cents-text-d'>{oneProduct?.price?.toString().split('.')[1]}</span>
                     {currUser && (
-                        <button className='add-to-cart-btn details-add-cart-btn' onClick={() => addToCart(oneProduct?.id)}>
-                            <OpenModalMenuItem
-                                itemText='Add to cart'
-                                modalComponent={<Carts />}
-                            />
-                        </button>
+                        <div className="cart-item-feature">
+                            <form className='options-container'>
+                                <select onChange={(e) => setQuantity(e.target.value)}>
+                                    <option value = '1'>Qty: 1</option>
+                                    <option value = '2'>Qty: 2</option>
+                                    <option value = '3'>Qty: 3</option>
+                                    <option value = '4'>Qty: 4</option>
+                                    <option value = '5'>Qty: 5</option>
+                                    <option value = '6'>Qty: 6</option>
+                                    <option value = '7'>Qty: 7</option>
+                                    <option value = '8'>Qty: 8</option>
+                                    <option value = '9'>Qty: 9</option>
+                                    <option value = '10'>Qty: 10</option>
+                                </select>
+                            </form>
+                            <button className='add-to-cart-btn details-add-cart-btn' onClick={() => addToCart(oneProduct?.id)}>
+                                <OpenModalMenuItem
+                                    itemText='Add to cart'
+                                    modalComponent={<Carts />}
+                                />
+                            </button>
+                        </div>
                     )}
                     {!currUser && (
                         <p className='msg-to-add-cart detail-log-sign-msg'>

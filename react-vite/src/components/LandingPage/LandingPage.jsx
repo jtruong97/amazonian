@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux"
 import { getAllProductsThunk } from "../../redux/product"
 import { NavLink } from 'react-router-dom';
 import { allUserCartsThunk, createCartThunk } from "../../redux/cart";
-import { addItemToCartThunk } from "../../redux/cartItems";
+import { addItemToCartThunk, updateQuantityThunk } from "../../redux/cartItems";
 import OpenModalMenuItem from "../Navigation/OpenModalMenuItem";
 import LoginFormModal from "../LoginFormModal";
 import SignupFormModal from "../SignupFormModal";
@@ -18,7 +18,7 @@ function LandingPage(){
     const allCarts = useSelector(state => state.carts.Carts)
     const currUser = useSelector(state => state.session)
 
-    const [quantity, setQuantity] = useState('1')
+    // const [quantity, setQuantity] = useState('1') //quantity add to cart feature
     const [updateCart, setUpdateCart] = useState(false)
 
     useEffect(() => {
@@ -47,12 +47,24 @@ function LandingPage(){
         }
     }
 
+
     const addToCart = async (productId) => {
         let addItem = {
             cart_id: activeCartObj?.id,
             product_id: productId,
-            quantity: quantity
+            quantity: 1
         }
+        let findInCart = activeCartObj?.cart_items?.find(item => item?.product_id == productId)
+
+        if(activeCartObj && findInCart){
+            // product is already in the cart
+            let updateQty = {
+                product_id: productId,
+                quantity: (parseInt(findInCart.quantity) + 1)
+            }
+            return await dispatch(updateQuantityThunk(updateQty, findInCart.id))
+        }
+
         if(activeCartObj){
             // Has an open cart, add product to this cart
             await dispatch(addItemToCartThunk(addItem, activeCartObj.id))
@@ -117,7 +129,7 @@ function LandingPage(){
                     </NavLink>
                     {currUser?.user?.id && (
                         <div className='cart-item-feature'>
-                            <form>
+                            {/* <form> //quantity add to cart feature
                                 <select onChange={(e) => setQuantity(e.target.value)}>
                                     <option value='' disabled selected hidden>Qty: 1</option>
                                     <option value = '1'>Qty: 1</option>
@@ -131,7 +143,7 @@ function LandingPage(){
                                     <option value = '9'>Qty: 9</option>
                                     <option value = '10'>Qty: 10</option>
                                 </select>
-                            </form>
+                            </form> */}
                             <button className='add-to-cart-btn' onClick={() => addToCart(product.id)}>
                                 <OpenModalMenuItem
                                     itemText="Add to cart"

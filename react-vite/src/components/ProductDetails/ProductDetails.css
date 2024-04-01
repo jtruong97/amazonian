@@ -35,6 +35,11 @@
     font-size: 25px;
     padding: 10px 1px 1px 8px;
 }
+
+.options-container{
+    margin-top: 8px;
+}
+
 .product-cents-text-d{
     font-size: 12px;
     position: absolute;

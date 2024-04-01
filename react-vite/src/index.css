@@ -8,7 +8,7 @@
     --darksage: rgb(80, 94, 78);
     --darkforest: rgb(40, 56, 43);
     --green: rgb(72, 126, 82);
-    --burgundy: rgb(116, 26, 26);
+    --burgundy: rgb(146, 47, 47);
     --llsage: rgb(236, 238, 235);
     --lllsage: rgb(247, 247, 247);
     --darkgreen: rgb(23, 41, 25);
@@ -20,4 +20,7 @@ button {
 body{
     background-color: var(--llsage);
     margin: 0;
+    font-family: "Roboto", sans-serif;
+    font-weight: 300;
+    font-style: normal;
 }
