@@ -32,12 +32,12 @@ function Navigation() {
       </ul>
       <div className='categories-bar'>
           <ul className='category-ul'>
-            <li className='cat-li'>Fern</li>
-            <li className='cat-li'>Flower</li>
-            <li className='cat-li'>Shrub</li>
-            <li className='cat-li'>Succulent</li>
-            <li className='cat-li'>Tree</li>
-            <li className='cat-li'>Vine</li>
+            <a href='/products/categories/fern' className='cat-li'>Ferns</a>
+            <a href='/products/categories/flower' className='cat-li'>Flowers</a>
+            <a href='/products/categories/shrub' className='cat-li'>Shrubs</a>
+            <a href='/products/categories/succulent' className='cat-li'>Succulents</a>
+            <a href='/products/categories/tree' className='cat-li'>Trees</a>
+            <a href='/products/categories/vine' className='cat-li'>Vines</a>
           </ul>
       </div>
     </div>

@@ -70,22 +70,24 @@ function ProductDetails(){
 
     let seller
     for(let user of users){
-        if(user.id == oneProduct.user_id){
+        if(user?.id == oneProduct?.user_id){
             seller = user
         }
     }
 
     function refactorDate(date){
-        let newDate = date.split(' ')[2] + " " + date.split(' ')[3]
+        let newDate = date?.split(' ')[2] + " " + date?.split(' ')[3]
         return newDate
     }
 
     function avgRating(revArr){
         let starRating = 0
-        for (let rev of revArr){
-            starRating += rev.rating
+        if(revArr?.length){
+            for (let rev of revArr){
+                starRating += rev?.rating
+            }
         }
-        return (starRating/revArr.length).toFixed(1)
+        return (starRating/revArr?.length).toFixed(1)
     }
     function starsIcon(avgRating){
         let filledStar = Math.floor(avgRating) // round avg rating down
@@ -103,9 +105,11 @@ function ProductDetails(){
     }
 
     let canReview = true
-    for(let rev of reviewsArr){
-        if(rev?.user_id == currUser?.id){
-            canReview = false
+    if(reviewsArr?.length){
+        for(let rev of reviewsArr){
+            if(rev?.user_id == currUser?.id){
+                canReview = false
+            }
         }
     }
 
@@ -113,23 +117,23 @@ function ProductDetails(){
         <div className='details-page'>
         <div className='product-details-page'>
             <div className='product-detail-container'>
-                <img src={oneProduct.image_url} className='product-detail-img'/>
+                <img src={oneProduct?.image_url} className='product-detail-img'/>
                 <div className='product-info-container'>
-                    <h1>{oneProduct.name}</h1>
+                    <h1>{oneProduct?.name}</h1>
                     <div className='product-rating-container'>
-                        <div>{avgRating(oneProduct.reviews)}</div>
-                        <div className='star-rating-icons'>{starsIcon(avgRating(oneProduct.reviews))}</div>
+                        <div>{avgRating(oneProduct?.reviews)}</div>
+                        <div className='star-rating-icons'>{starsIcon(avgRating(oneProduct?.reviews))}</div>
                         <div>
-                            {oneProduct.reviews.length == 0 && <div className='product-num-ratings'>No ratings</div>}
-                            {oneProduct.reviews.length == 1 && <div className='product-num-ratings'>1 rating</div>}
-                            {oneProduct.reviews.length > 1 && <div className='product-num-ratings'>{oneProduct.reviews.length} ratings</div>}
+                            {oneProduct?.reviews?.length == 0 && <div className='product-num-ratings'>No ratings</div>}
+                            {oneProduct?.reviews?.length == 1 && <div className='product-num-ratings'>1 rating</div>}
+                            {oneProduct?.reviews?.length > 1 && <div className='product-num-ratings'>{oneProduct?.reviews?.length} ratings</div>}
                         </div>
                     </div>
                     <span className='product-cents-text-d'>$</span>
-                    <span className='product-price-text-d'>{oneProduct.price.toString().split('.')[0]}</span>
-                    <span className='product-cents-text-d'>{oneProduct.price.toString().split('.')[1]}</span>
+                    <span className='product-price-text-d'>{oneProduct?.price?.toString().split('.')[0]}</span>
+                    <span className='product-cents-text-d'>{oneProduct?.price?.toString().split('.')[1]}</span>
                     {currUser && (
-                        <button className='add-to-cart-btn details-add-cart-btn' onClick={() => addToCart(oneProduct.id)}>
+                        <button className='add-to-cart-btn details-add-cart-btn' onClick={() => addToCart(oneProduct?.id)}>
                             <OpenModalMenuItem
                                 itemText='Add to cart'
                                 modalComponent={<Carts />}
@@ -177,12 +181,12 @@ function ProductDetails(){
                         {review?.user_id == currUser?.id  && (
                             <div className='review-buttons'>
                                 <button className='review-btns'>
-                                    <NavLink to={`/products/${productId}/review/${review.id}/edit`} className='update-rev-btn'>Update Review</NavLink>
+                                    <NavLink to={`/products/${productId}/review/${review?.id}/edit`} className='update-rev-btn'>Update Review</NavLink>
                                 </button>
                                 <button className='review-btns delete-rev-btn'>
                                     <OpenModalMenuItem
                                         itemText='Delete Review'
-                                        modalComponent={<DeleteReview reviewId={review.id} productId={productId} renderDelete={renderDelete}/>}
+                                        modalComponent={<DeleteReview reviewId={review?.id} productId={productId} renderDelete={renderDelete}/>}
                                     />
                                 </button>
                             </div>

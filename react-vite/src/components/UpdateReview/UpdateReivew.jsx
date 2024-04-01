@@ -27,7 +27,7 @@ function UpdateReview(){
     let button = 'Update'
     return(
         <>
-            <h1>Update Review</h1>
+            <h1 className='rev-form-header'>Update Review</h1>
             <ReviewForm rev={rev} button={button}/>
         </>
     )

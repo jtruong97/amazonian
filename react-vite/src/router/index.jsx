@@ -41,6 +41,10 @@ export const router = createBrowserRouter([
         element: <Carts />
       },
       {
+        path: '/products/categories/:category',
+        element: <h1>Categories coming soon</h1>
+      },
+      {
         path:'*',
         element: <h1>Page Not Found</h1>
       }

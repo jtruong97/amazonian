@@ -98,8 +98,11 @@
 }
 .cat-li{
   padding: 10px 30px;
+  color: white;
+  text-decoration: none;
 }
 
 .cat-li:hover{
-  border: 1px solid white;
+  border-left: 1px solid white;
+  border-right: 1px solid white;
 }

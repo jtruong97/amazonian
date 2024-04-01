@@ -113,17 +113,17 @@ function LandingPage(){
                         <div className='cart-item-feature'>
                             <form>
                                 <select onChange={(e) => setQuantity(e.target.value)}>
-                                    <option value='' disabled selected hidden>Select Qty</option>
-                                    <option value = '1'>1</option>
-                                    <option value = '2'>2</option>
-                                    <option value = '3'>3</option>
-                                    <option value = '4'>4</option>
-                                    <option value = '5'>5</option>
-                                    <option value = '6'>6</option>
-                                    <option value = '7'>7</option>
-                                    <option value = '8'>8</option>
-                                    <option value = '9'>9</option>
-                                    <option value = '10'>10</option>
+                                    <option value='' disabled selected hidden>Qty: 1</option>
+                                    <option value = '1'>Qty: 1</option>
+                                    <option value = '2'>Qty: 2</option>
+                                    <option value = '3'>Qty: 3</option>
+                                    <option value = '4'>Qty: 4</option>
+                                    <option value = '5'>Qty: 5</option>
+                                    <option value = '6'>Qty: 6</option>
+                                    <option value = '7'>Qty: 7</option>
+                                    <option value = '8'>Qty: 8</option>
+                                    <option value = '9'>Qty: 9</option>
+                                    <option value = '10'>Qty: 10</option>
                                 </select>
                             </form>
                             <button className='add-to-cart-btn' onClick={() => addToCart(product.id)}>
