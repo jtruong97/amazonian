@@ -52,7 +52,7 @@ function ReviewForm({rev, button}){
         e.preventDefault();
         const formData = new FormData();
         formData.append('image_url', image_url)
-        formData.append('rating', rating)
+        formData.append('rating', parseInt(rating))
         formData.append('review', review)
 
         setImageLoading(true);
