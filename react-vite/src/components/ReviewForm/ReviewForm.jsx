@@ -62,11 +62,29 @@ function ReviewForm({rev, button}){
         nav(`/products/${productId}`)
     }
 
+    // const fileWrap = (e) => {
+    //     e.stopPropagation();
+
+    //     const tempFile = e.target.files[0];
+
+    //     // Check for max image size of 5Mb
+    //     if (tempFile.size > 5000000) {
+    //       setFilename(maxFileError); // "Selected image exceeds the maximum file size of 5Mb"
+    //         return
+    //     }
+
+    //     const newImageURL = URL.createObjectURL(tempFile); // Generate a local URL to render the image file inside of the <img> tag.
+    //     setImageURL(newImageURL);
+    //     setFile(tempFile);
+    //     setFilename(tempFile.name);
+    //     setOptional("");
+    // }
+
     return(
-        <>
+        <div className='review-product-form'>
             <div className='product-rev-container'>
-                <img src=''/>
-                <p></p>
+                {/* <img src=''/>
+                <p>Add product img here</p> */}
             </div>
             <form
                 onSubmit={handleSubmit}
@@ -75,6 +93,7 @@ function ReviewForm({rev, button}){
             >
                 <hr></hr>
                 <h2>Overall rating</h2>
+                <p>What would you rate your overall experience with this product?</p>
                 <label>
                     <div className='Stars-field'>
                             {[1, 2, 3, 4, 5].map((star, i) => {
@@ -106,6 +125,9 @@ function ReviewForm({rev, button}){
                     ></input>
                 </label>
                 {validation?.image_url && (<p className='validation-message'>{validation.image_url}</p>)}
+                {image_url.length > 0 && (
+                    <label htmlFor="post-image-input" className="file-input-labels-noname"><img src={image_url} className="thumbnails-noname"></img></label>
+                )}
                 <hr></hr>
                 <h2>Add a written review</h2>
                 <textarea
@@ -121,10 +143,10 @@ function ReviewForm({rev, button}){
                 {validation?.minRev && (<p className='validation-message'>{validation.minRev}</p>)}
                 {validation?.maxRev && (<p className='validation-message'>{validation.maxRev}</p>)}
                 <hr></hr>
-                <button type='submit'>{button}</button>
+                <button type='submit' className='rev-form-btn'>{button}</button>
                 {(imageLoading) && <p>Loading...</p>}
             </form>
-        </>
+        </div>
     )
 }
 
