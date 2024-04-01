@@ -4,14 +4,19 @@ from sqlalchemy.sql import text
 def seed_cart_items():
 
     user3item1 = CartItem(
-        cart_id=1,
+        cart_id=2,
         product_id = 3,
-        quantity = 1,
+        quantity = 3,
     )
     user3item2 = CartItem(
-        cart_id=1,
-        product_id = 13,
+        cart_id=2,
+        product_id = 4,
         quantity = 1
+    )
+    user3item3 = CartItem(
+        cart_id=2,
+        product_id = 16,
+        quantity = 2
     )
 
     db.session.add_all([user3item1, user3item2])

@@ -2,15 +2,15 @@ import { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { getAllProductsThunk } from "../../redux/product"
 import { NavLink } from 'react-router-dom';
+import { allUserCartsThunk, createCartThunk } from "../../redux/cart";
+import { addItemToCartThunk } from "../../redux/cartItems";
 import OpenModalMenuItem from "../Navigation/OpenModalMenuItem";
 import LoginFormModal from "../LoginFormModal";
 import SignupFormModal from "../SignupFormModal";
 import Carts from "../Carts/Carts";
-import { allUserCartsThunk, createCartThunk } from "../../redux/cart";
-import { addItemToCartThunk } from "../../redux/cartItems";
-import './LandingPage.css'
 import { MdOutlineStar } from "react-icons/md";
 import { MdOutlineStarBorder } from "react-icons/md";
+import './LandingPage.css'
 
 function LandingPage(){
     const dispatch = useDispatch()
@@ -19,13 +19,14 @@ function LandingPage(){
     const currUser = useSelector(state => state.session)
 
     const [quantity, setQuantity] = useState('1')
+    const [updateCart, setUpdateCart] = useState(false)
 
     useEffect(() => {
         dispatch(getAllProductsThunk())
         if(currUser.user){
             dispatch(allUserCartsThunk())
         }
-    },[dispatch, currUser.user])
+    },[dispatch, currUser.user, updateCart])
 
     if(!productsArr?.length){ // || !allCarts
         return <div>Loading...</div>
@@ -48,18 +49,23 @@ function LandingPage(){
 
     const addToCart = async (productId) => {
         let addItem = {
-            cart_id: activeCartObj.id,
+            cart_id: activeCartObj?.id,
             product_id: productId,
             quantity: quantity
         }
         if(activeCartObj){
             // Has an open cart, add product to this cart
             await dispatch(addItemToCartThunk(addItem, activeCartObj.id))
+            setUpdateCart(!updateCart)
         }
         else{
             // create new cart, add product to new cart
             await dispatch(createCartThunk())
-            await dispatch(addItemToCartThunk(addItem, activeCartObj.id))
+            .then((newCart) => {
+                addItem.cart_id = newCart.id
+                setUpdateCart(!updateCart)
+                return dispatch(addItemToCartThunk(addItem, newCart.id))
+            })
         }
         return
     }
