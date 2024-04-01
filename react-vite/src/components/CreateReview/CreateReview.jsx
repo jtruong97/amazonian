@@ -12,7 +12,7 @@ function CreateReview(){
 
     return(
         <>
-            <h1>Create Review</h1>
+            <h1 className='rev-form-header'>Create Review</h1>
             <ReviewForm rev={rev} button={button}/>
         </>
     )
