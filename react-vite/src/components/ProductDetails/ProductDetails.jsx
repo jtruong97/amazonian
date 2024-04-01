@@ -12,9 +12,9 @@ import LoginFormModal from "../LoginFormModal";
 import SignupFormModal from "../SignupFormModal";
 import DeleteReview from "../DeleteReview/DeleteReview";
 import Carts from "../Carts/Carts";
-import './ProductDetails.css'
 import { MdOutlineStar } from "react-icons/md";
 import { MdOutlineStarBorder } from "react-icons/md";
+import './ProductDetails.css'
 
 function ProductDetails(){
     const dispatch = useDispatch()
