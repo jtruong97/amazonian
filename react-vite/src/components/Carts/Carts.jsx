@@ -57,6 +57,7 @@ function Carts(){
     }
 
     let subTotal = 0
+    let itemCount = 0
 
     const handleCheckout = async () => {
         for(let item of cartItemsArr){
@@ -79,8 +80,9 @@ function Carts(){
                     <div className='cart-product-info'>
                         <NavLink className='item-name-price-container' to={`/products/${item?.product_id}`}>
                             <div className='cart-prod-name'>{productsArr[(item?.product_id) -1]?.name}</div>
-                            <div className='cart-prod-price'>${productsArr[(item?.product_id) -1]?.price}</div>
-                            <div hidden='hidden'>{subTotal+= productsArr[(item?.product_id) -1]?.price}</div>
+                            <div className='cart-prod-price'>${(productsArr[(item?.product_id) -1]?.price * item?.quantity).toFixed(2)}</div>
+                            <div hidden='hidden'>{subTotal+= (productsArr[(item?.product_id) -1]?.price * item?.quantity)}</div>
+                            <div hidden='hideen'>{itemCount += item.quantity}</div>
                         </NavLink>
                         <div className='qty-container'>
                             Quantity: {item?.quantity}
@@ -109,11 +111,11 @@ function Carts(){
                 </div>
             ))}
             <hr></hr>
-            {cartItemsArr?.length == 1 && <h3 className='sub-total-txt'>
-                Subtotal (<span>{cartItemsArr?.length} item</span>) : {subTotal.toFixed(2)}
+            {itemCount == 1 && <h3 className='sub-total-txt'>
+                Subtotal (<span>{itemCount} item</span>) : {subTotal.toFixed(2)}
             </h3>}
-            {cartItemsArr?.length >1 && <h3 className='sub-total-txt'>
-                Subtotal (<span>{cartItemsArr?.length} items</span>) : ${subTotal.toFixed(2)}
+            {itemCount >1 && <h3 className='sub-total-txt'>
+                Subtotal (<span>{itemCount} items</span>) : ${subTotal.toFixed(2)}
             </h3>}
             {cartItemsArr?.length > 0 && <button onClick={handleCheckout} className='checkout-btn'>Proceed to checkout</button>}
         </div>

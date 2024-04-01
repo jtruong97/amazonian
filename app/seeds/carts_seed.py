@@ -13,8 +13,14 @@ def seed_carts():
         is_ordered = True
     )
 
+    user3cart2 = Cart(
+        user_id = 3,
+        is_ordered = False
+    )
+
     db.session.add(user1cart1)
     db.session.add(user3cart1)
+    db.session.add(user3cart2)
     db.session.commit()
 
 

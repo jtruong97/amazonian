@@ -3,14 +3,16 @@ import { useDispatch, useSelector } from "react-redux"
 import { useNavigate, useParams} from 'react-router-dom'
 import { createReviewThunk, updateReviewThunk } from "../../redux/review"
 import './ReviewForm.css'
-import { FaRegStar } from "react-icons/fa";
-import { FaStar } from "react-icons/fa";
+import { MdOutlineStar } from "react-icons/md";
+import { MdOutlineStarBorder } from "react-icons/md";
+import { getOneProductThunk } from "../../redux/product"
 
 function ReviewForm({rev, button}){
     const dispatch = useDispatch()
     const nav = useNavigate()
     const { productId, reviewId } = useParams()
     const currUser = useSelector(state => state.session.user)
+    const product = useSelector(state => state.products)
 
     const [rating, setRating] = useState(rev?.rating)
     const [review, setReview] = useState(rev?.review)
@@ -19,6 +21,10 @@ function ReviewForm({rev, button}){
     const [imageLoading, setImageLoading] = useState(false)
     const [hover, setHover] = useState(null)
     const [submitted, setSubmitted] = useState(false)
+
+    useEffect(()=>{
+        dispatch(getOneProductThunk(productId))
+    },[dispatch, productId])
 
     useEffect(() => {
         const errors = {}
@@ -62,29 +68,11 @@ function ReviewForm({rev, button}){
         nav(`/products/${productId}`)
     }
 
-    // const fileWrap = (e) => {
-    //     e.stopPropagation();
-
-    //     const tempFile = e.target.files[0];
-
-    //     // Check for max image size of 5Mb
-    //     if (tempFile.size > 5000000) {
-    //       setFilename(maxFileError); // "Selected image exceeds the maximum file size of 5Mb"
-    //         return
-    //     }
-
-    //     const newImageURL = URL.createObjectURL(tempFile); // Generate a local URL to render the image file inside of the <img> tag.
-    //     setImageURL(newImageURL);
-    //     setFile(tempFile);
-    //     setFilename(tempFile.name);
-    //     setOptional("");
-    // }
-
     return(
         <div className='review-product-form'>
             <div className='product-rev-container'>
-                {/* <img src=''/>
-                <p>Add product img here</p> */}
+                <img src={product.image_url} className='product-rev-img'/>
+                <p className='product-rev-name'>{product.name}</p>
             </div>
             <form
                 onSubmit={handleSubmit}
@@ -92,30 +80,32 @@ function ReviewForm({rev, button}){
                 className='review-form-container'
             >
                 <hr></hr>
-                <h2>Overall rating</h2>
+                <div className='header-w-require'>
+                    <h2>Overall rating</h2>
+                    <p className='requried-txt'>required*</p>
+                </div>
                 <p>What would you rate your overall experience with this product?</p>
                 <label>
                     <div className='Stars-field'>
-                            {[1, 2, 3, 4, 5].map((star, i) => {
-                                const ratingValue = i + 1;
-                                return (
-                                    <label key={i}>
-                                        <span
-                                            className='stars'
-                                            onClick={() => setRating(ratingValue)}
-                                            onMouseEnter={() => setHover(ratingValue)}
-                                            onMouseLeave={() => setHover(ratingValue)}
-                                        >
-                                            {ratingValue <= (hover || star) ? <FaStar /> : <FaRegStar />}
-                                        </span>
-                                    </label>
-                                );
-                            })}
+                            {[1,2,3,4,5].map(star => (
+                                <span
+                                    key={star}
+                                    className='stars'
+                                    onMouseEnter={()=> setHover(star)}
+                                    onMouseLeave={()=> setHover(0)}
+                                    onClick={() => setRating(star)}
+                                >
+                                    {(star <= rating || star <= hover)? <MdOutlineStar /> : <MdOutlineStarBorder />}
+                                </span>
+                            ))}
                     </div>
                 </label>
                 {validation?.rating && (<p className='validation-message'>{validation.rating}</p>)}
                 <hr></hr>
-                <h2>Add a photo</h2>
+                <div className='header-w-require'>
+                    <h2>Add a photo</h2>
+                    <p className='requried-txt'>required*</p>
+                </div>
                 <p>Shoppers find images more helpful than text alone.</p>
                 <label>
                     <input
@@ -129,7 +119,10 @@ function ReviewForm({rev, button}){
                     <label htmlFor="post-image-input" className="file-input-labels-noname"><img src={image_url} className="thumbnails-noname"></img></label>
                 )}
                 <hr></hr>
-                <h2>Add a written review</h2>
+                <div className='header-w-require'>
+                    <h2>Add a written review</h2>
+                    <p className='requried-txt'>required*</p>
+                </div>
                 <textarea
                         className='review-textarea'
                         type='text'

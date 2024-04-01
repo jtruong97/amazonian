@@ -30,6 +30,7 @@ const deleteCartItem = (item) => {
 }
 
 // THUNKS
+// get all cart items
 export const allCartItemsThunk = (cartId) => async (dispatch) => {
     const response = await fetch(`/api/carts/${cartId}`)
     if(!response.ok){
@@ -40,6 +41,7 @@ export const allCartItemsThunk = (cartId) => async (dispatch) => {
     return data
 }
 
+// add new item to cart
 export const addItemToCartThunk = (addItem, cartId) => async (dispatch) => {
     const response = await fetch(`/api/carts/${cartId}/products/new`, {
         method: "POST",
@@ -54,6 +56,7 @@ export const addItemToCartThunk = (addItem, cartId) => async (dispatch) => {
     return data
 }
 
+// update qty of item in cart
 export const updateQuantityThunk = (updateItem, cartItemId) => async (dispatch) => {
     const response = await fetch(`/api/carts/active/${cartItemId}/edit`, {
         method: "PUT",
@@ -68,6 +71,7 @@ export const updateQuantityThunk = (updateItem, cartItemId) => async (dispatch) 
     return data
 }
 
+// delete cart item
 export const deleteCartItemThunk = (cartItemId) => async (dispatch) => {
     const response = await fetch(`/api/carts/active/${cartItemId}/delete`, {
         method: 'DELETE'
