@@ -6,6 +6,8 @@ import "./SignupForm.css";
 
 function SignupFormModal() {
   const dispatch = useDispatch();
+  const [first_name, setFirstname] = useState('');
+  const [last_name, setLastname] = useState('');
   const [email, setEmail] = useState("");
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -22,12 +24,26 @@ function SignupFormModal() {
           "Confirm Password field must be the same as the Password field",
       });
     }
+    if(!first_name){
+      return setErrors({
+        first_name:
+          "First name is required"
+      })
+    }
+    if(!last_name){
+      return setErrors({
+        last_name:
+          "Last name is required"
+      })
+    }
 
     const serverResponse = await dispatch(
       thunkSignup({
         email,
         username,
         password,
+        first_name,
+        last_name
       })
     );
 
@@ -45,6 +61,28 @@ function SignupFormModal() {
         <h2>Sign Up</h2>
         {errors.server && <p>{errors.server}</p>}
         <form onSubmit={handleSubmit} className='sign-in-form'>
+        <label className='signin-label'>
+          First Name*
+          <input
+            className='signin-input'
+            type="text"
+            value={first_name}
+            onChange={(e) => setFirstname(e.target.value)}
+            required
+          />
+        </label>
+        {errors.first_name && <p>{errors.first_name}</p>}
+        <label className='signin-label'>
+          Last Name*
+          <input
+            className='signin-input'
+            type="text"
+            value={last_name}
+            onChange={(e) => setLastname(e.target.value)}
+            required
+          />
+        </label>
+        {errors.first_name && <p>{errors.first_name}</p>}
           <label className='signin-label'>
             Email*
             <input

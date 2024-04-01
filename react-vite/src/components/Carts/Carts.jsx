@@ -23,8 +23,11 @@ function Carts(){
         dispatch(getAllProductsThunk())
     },[dispatch, updateQuantity, deleteItem, quantity, activeCartObj?.length, allCarts?.length, productsArr?.length])
 
-    if(!currUser || !allCarts?.length || !productsArr?.length){
+    if(!currUser || !productsArr?.length){
         return <div>Loading...</div>
+    }
+    if(!allCarts?.length){
+        return <div>Your cart is empty</div>
     }
 
     // find active cart
