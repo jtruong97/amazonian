@@ -46,7 +46,7 @@ export const reviewsByProductThunk = (productId) => async (dispatch) => {
 
 // create new review
 export const createReviewThunk = (productId, newReview) => async (dispatch) => {
-    const response = await fetch(`/api/products/${productId}/reviews/new`, {
+    const response = await fetch(`/api/products/${parseInt(productId)}/reviews/new`, {
         method: 'POST',
         body: newReview
     })
@@ -60,7 +60,7 @@ export const createReviewThunk = (productId, newReview) => async (dispatch) => {
 
 // update review by review id
 export const updateReviewThunk = (reviewId, updatedReview) => async (dispatch) => {
-    const response = await fetch (`/api/reviews/${reviewId}/edit`, {
+    const response = await fetch (`/api/reviews/${parseInt(reviewId)}/edit`, {
         method: 'PUT',
         body: updatedReview
     })
@@ -74,7 +74,7 @@ export const updateReviewThunk = (reviewId, updatedReview) => async (dispatch) =
 
 // delete review by review id
 export const deleteReviewThunk = (reviewId) => async (dispatch) => {
-    const response = await fetch(`/api/reviews/${reviewId}/delete`, {
+    const response = await fetch(`/api/reviews/${parseInt(reviewId)}/delete`, {
         method: 'DELETE'
     })
     if(!response.ok){
