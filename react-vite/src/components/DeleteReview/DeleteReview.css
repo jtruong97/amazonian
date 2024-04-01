@@ -1,0 +1,32 @@
+.delete-rev-modal{
+    border: 1px solid grey;
+    background-color: var(--lllsage);
+    display: flex;
+    flex-direction: column;
+    width: 400px;
+    padding: 30px;
+}
+
+.confirm-del-txt{
+    text-align: center;
+}
+
+.del-rev-btns{
+    margin: 10px 0;
+    width: 200px;
+    padding: 15px 0px;
+    align-self: center;
+    color: white;
+    background-color: var(--darksage);
+    border: var(--darksage);
+    border-radius: 5px 5px;
+}
+.confirm-delete-btn:hover{
+    background-color: var(--burgundy);
+    border: var(--burgundy);
+}
+
+.cancel-delete-btn:hover {
+    background-color: var(--lightsage);
+    border: var(--lightsage);
+}

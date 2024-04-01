@@ -2,6 +2,7 @@ import { useNavigate } from "react-router-dom";
 import { useModal } from "../../context/Modal";
 import { deleteReviewThunk } from "../../redux/review";
 import { useDispatch } from "react-redux";
+import './DeleteReview.css'
 
 function DeleteReview({reviewId, productId, renderDelete}){
     const { closeModal } = useModal()
@@ -10,18 +11,18 @@ function DeleteReview({reviewId, productId, renderDelete}){
 
     const deleteReview = async (e) => {
         e.preventDefault()
-        dispatch(deleteReviewThunk(reviewId))
+        await dispatch(deleteReviewThunk(reviewId))
         renderDelete()
         closeModal()
         nav(`/products/${productId}`)
     }
 
     return(
-        <>
-            <h1>Are you sure you want to remove this review?</h1>
-            <button onClick={deleteReview}>Yes (Delete Review)</button>
-            <button onClick={closeModal}>Cancel</button>
-        </>
+        <div className='delete-rev-modal'>
+            <h1 className='confirm-del-txt'>Are you sure you want to remove this review?</h1>
+            <button className='del-rev-btns confirm-delete-btn' onClick={deleteReview}>Yes (Delete Review)</button>
+            <button className='del-rev-btns cancel-delete-btn' onClick={closeModal}>Cancel</button>
+        </div>
     )
 }
 

@@ -38,6 +38,7 @@
     color: white;
     background-color: var(--darksage);
     border: var(--darksage);
+    border-radius: 5px 5px;
 }
 .login-btn:hover{
     background-color: var(--lightsage);
