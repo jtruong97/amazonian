@@ -82,7 +82,7 @@ function Carts(){
                             <div className='cart-prod-name'>{productsArr[(item?.product_id) -1]?.name}</div>
                             <div className='cart-prod-price'>${(productsArr[(item?.product_id) -1]?.price * item?.quantity).toFixed(2)}</div>
                             <div hidden='hidden'>{subTotal+= (productsArr[(item?.product_id) -1]?.price * item?.quantity)}</div>
-                            <div hidden='hideen'>{itemCount += item.quantity}</div>
+                            <div hidden='hidden'>{itemCount += item.quantity}</div>
                         </NavLink>
                         <div className='qty-container'>
                             Quantity: {item?.quantity}
