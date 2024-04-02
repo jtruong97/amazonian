@@ -24,16 +24,40 @@ function SignupFormModal() {
           "Confirm Password field must be the same as the Password field",
       });
     }
+    if(password.length < 8 || password.length > 30){
+      return setErrors({
+        passwordLength:
+          "Password must be at least 8 characters and no more than 30 characters long",
+      });
+    }
     if(!first_name){
       return setErrors({
         first_name:
           "First name is required"
       })
     }
+    if(first_name.length < 1 || first_name.length > 30){
+      return setErrors({
+        first_nameLength:
+          "First name must be at least 1 character and no more than 30 characters long"
+      })
+    }
     if(!last_name){
       return setErrors({
         last_name:
           "Last name is required"
+      })
+    }
+    if(last_name.length < 1 || last_name.length > 30){
+      return setErrors({
+        last_nameLength:
+          "Last name must be at least 1 character and no more than 30 characters long"
+      })
+    }
+    if(username.length < 3 || username.length > 30){
+      return setErrors({
+        usernameLength:
+          "Username must be at least 3 characters and no more than 30 characters long"
       })
     }
 
@@ -71,7 +95,8 @@ function SignupFormModal() {
             required
           />
         </label>
-        {errors.first_name && <p>{errors.first_name}</p>}
+        {errors.first_name && <p className='form-val-txt'>{errors.first_name}</p>}
+        {errors.first_nameLength && <p className='form-val-txt'>{errors.first_nameLength}</p>}
         <label className='signin-label'>
           Last Name*
           <input
@@ -82,7 +107,8 @@ function SignupFormModal() {
             required
           />
         </label>
-        {errors.first_name && <p>{errors.first_name}</p>}
+        {errors.first_name && <p className='form-val-txt'>{errors.first_name}</p>}
+        {errors.last_nameLength && <p className='form-val-txt'>{errors.last_nameLength}</p>}
           <label className='signin-label'>
             Email*
             <input
@@ -105,6 +131,7 @@ function SignupFormModal() {
             />
           </label>
           {errors.username && <p className='form-val-txt'>{errors.username}</p>}
+          {errors.usernameLength && <p className='form-val-txt'>{errors.usernameLength}</p>}
           <label className='signin-label'>
             Password*
             <input
@@ -116,6 +143,7 @@ function SignupFormModal() {
             />
           </label>
           {errors.password && <p className='form-val-txt'>{errors.password}</p>}
+          {errors.passwordLength && <p className='form-val-txt'>{errors.passwordLength}</p>}
           <label className='signin-label'>
             Confirm Password*
             <input

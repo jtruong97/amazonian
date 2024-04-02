@@ -30,7 +30,7 @@ function Navigation() {
         {user && (
           <div className='logged-user-nav-bar'>
             {/* <p className='user-greeting'> Hello, {user.first_name}</p> */}
-            <NavLink to='' className='prev-order-txt' onClick={() => alert('Feature coming soon')}>Previous Orders</NavLink>
+            {/* <NavLink to='' className='prev-order-txt' onClick={() => alert('Feature coming soon')}>Previous Orders</NavLink> */}
             <NavLink to='/carts' className='cart-text'>
               <BsCart className="cart-favicon"/> Cart
             </NavLink>
