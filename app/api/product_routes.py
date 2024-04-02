@@ -78,3 +78,10 @@ def new_review(id):
         return new_review.to_dict()
     return form.errors, 400
 
+@product_routes.route('/categories/<string:category>')
+def getByCategory(category):
+    products = Product.query.filter(Product.category == category).all()
+    if not products:
+        return jsonify({'error': 'No products with this category.'}), 404
+    products_lst = [product.to_dict() for product in products]
+    return {'Category':products_lst}

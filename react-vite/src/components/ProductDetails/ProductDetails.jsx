@@ -222,8 +222,7 @@ function ProductDetails(){
                 ))}
             </div>
         </div>
-        </div>
-    )
+    </div>)
 }
 
 export default ProductDetails

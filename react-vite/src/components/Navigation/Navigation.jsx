@@ -42,12 +42,12 @@ function Navigation() {
       </ul>
       <div className='categories-bar'>
           <ul className='category-ul'>
-            <a href='/products/categories/fern' className='cat-li'><GiFern className='cat-icons'/>Ferns</a>
-            <a href='/products/categories/flower' className='cat-li'><PiFlowerTulipDuotone className='cat-icons'/>Flowers</a>
-            <a href='/products/categories/shrub' className='cat-li'><LuShrub className='cat-icons'/>Shrubs</a>
-            <a href='/products/categories/succulent' className='cat-li'><GiAgave className='cat-icons'/>Succulents</a>
-            <a href='/products/categories/tree' className='cat-li'><TbTrees className='cat-icons'/>Trees</a>
-            <a href='/products/categories/vine' className='cat-li'><GiVineLeaf className='cat-icons'/>Vines</a>
+            <a href='/products/categories/Fern' className='cat-li'><GiFern className='cat-icons'/>Ferns</a>
+            <a href='/products/categories/Flower' className='cat-li'><PiFlowerTulipDuotone className='cat-icons'/>Flowers</a>
+            <a href='/products/categories/Shrub' className='cat-li'><LuShrub className='cat-icons'/>Shrubs</a>
+            <a href='/products/categories/Succulent' className='cat-li'><GiAgave className='cat-icons'/>Succulents</a>
+            <a href='/products/categories/Tree' className='cat-li'><TbTrees className='cat-icons'/>Trees</a>
+            <a href='/products/categories/Vine' className='cat-li'><GiVineLeaf className='cat-icons'/>Vines</a>
           </ul>
       </div>
     </div>
