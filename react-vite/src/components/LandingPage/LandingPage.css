@@ -107,6 +107,7 @@
 
 .prod-det-rev-txt{
     margin: 5px;
+    word-break: break-all;
 }
 
 .rev-name{

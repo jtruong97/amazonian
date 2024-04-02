@@ -93,7 +93,10 @@ function ReviewForm({rev, button}){
                                     className='stars'
                                     onMouseEnter={()=> setHover(star)}
                                     onMouseLeave={()=> setHover(0)}
-                                    onClick={() => setRating(star)}
+                                    onClick={() => {
+                                        setRating(star)
+                                        setHover(0)
+                                    }}
                                 >
                                     {(star <= rating || star <= hover)? <MdOutlineStar /> : <MdOutlineStarBorder />}
                                 </span>
@@ -137,7 +140,7 @@ function ReviewForm({rev, button}){
                 {validation?.maxRev && (<p className='validation-message'>{validation.maxRev}</p>)}
                 <hr></hr>
                 <button type='submit' className='rev-form-btn'>{button}</button>
-                {(imageLoading) && <p>Loading...</p>}
+                {(imageLoading) && Object.values(validation).length < 0 && <p>Loading...</p>}
             </form>
         </div>
     )

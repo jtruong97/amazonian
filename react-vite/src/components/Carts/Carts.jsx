@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux"
 import { allUserCartsThunk } from "../../redux/cart"
 import { getAllProductsThunk } from "../../redux/product"
 import { NavLink } from 'react-router-dom';
+import { useModal } from "../../context/Modal";
 import { deleteCartItemThunk, updateQuantityThunk } from "../../redux/cartItems"
 import './Carts.css'
 
@@ -15,12 +16,19 @@ function Carts(){
     const [quantity, setQuantity] = useState()
     const [updateQuantity, setUpdateQuantity] = useState(false)
     const [deleteItem, setDeleteItem ] = useState(false)
+    const [checkout, setCheckout] = useState(false)
+    const [modalMsg, setModalMsg] = useState(false)
+    const { closeModal } = useModal()
 
     let activeCartObj
 
     useEffect(()=> {
         dispatch(allUserCartsThunk())
         dispatch(getAllProductsThunk())
+        if(!location.pathname.includes('carts')){
+            //this is a modal
+            setModalMsg(true)
+        }
     },[dispatch, updateQuantity, deleteItem, quantity, activeCartObj?.length, allCarts?.length, productsArr?.length])
 
     if(!currUser || !productsArr?.length){
@@ -49,6 +57,7 @@ function Carts(){
         }
         await dispatch(updateQuantityThunk(updateItem, cartItemId))
         setUpdateQuantity(!updateQuantity)
+        closeModal()
     }
 
     const deleteCartItem = async(cartItemId) => {
@@ -62,13 +71,19 @@ function Carts(){
     const handleCheckout = async () => {
         for(let item of cartItemsArr){
             await dispatch(deleteCartItemThunk(item.id))
+            setCheckout(true)
         }
         setDeleteItem(!deleteItem)
+        setTimeout(() => {
+            closeModal();
+        }, 3000);
     }
 
     return(
         <div className='carts-modal'>
             <h1 className='cart-compont-name'>Shopping Cart</h1>
+            {checkout && <p>Thank you for checking out with Amazonian</p>}
+            {modalMsg && checkout && <p>Closing in 3 seconds...</p>}
             <hr className="line"></hr>
             {/* <p className='price-head-txt'>Price</p> */}
             {!cartItemsArr?.length && (<p>Your cart is empty</p>)}
