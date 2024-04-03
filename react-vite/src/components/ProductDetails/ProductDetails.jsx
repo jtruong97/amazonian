@@ -133,7 +133,7 @@ function ProductDetails(){
                 <div className='product-info-container'>
                     <h1>{oneProduct?.name}</h1>
                     <div className='product-rating-container'>
-                        <div>{avgRating(oneProduct?.reviews)}</div>
+                        {isNaN(oneProduct?.reviews)  && <div>{avgRating(oneProduct?.reviews)}</div>}
                         <div className='star-rating-icons'>{starsIcon(avgRating(oneProduct?.reviews))}</div>
                         <div>
                             {oneProduct?.reviews?.length == 0 && <div className='product-num-ratings'>No ratings</div>}

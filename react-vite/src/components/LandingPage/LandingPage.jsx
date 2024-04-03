@@ -108,15 +108,15 @@ function LandingPage(){
     return(
         <div className='landing-page-container'>
             {productsArr?.map (product => (
-                <div className='landing-product-container' key={product.id}>
-                    <NavLink className='landing-nav-container' to={`/products/${product.id}`}>
-                        <img src={product.image_url} className='product-img'/>
+                <div className='landing-product-container' key={product?.id}>
+                    <NavLink className='landing-nav-container' to={`/products/${product?.id}`}>
+                        <img src={product?.image_url} className='product-img'/>
                         <div className='product-info'>
-                            <div className='product-name-text'>{product.name}</div>
-                            <div className='product-description-text'>{formatDescription(product.description)}</div>
+                            <div className='product-name-text'>{product?.name}</div>
+                            <div className='product-description-text'>{formatDescription(product?.description)}</div>
                             <div className='landing-rating-container'>
-                                <div>{avgRating(product.reviews)}</div>
-                                <div className='star-rating-icons'>{starsIcon(avgRating(product.reviews))}</div>
+                                {isNaN(product?.reviews) && <div>{avgRating(product?.reviews)}</div>}
+                                <div className='star-rating-icons'>{starsIcon(avgRating(product?.reviews))}</div>
                                 <div>
                                     {product.reviews.length == 0 && <div className='product-num-ratings'>No ratings</div>}
                                     {product.reviews.length == 1 && <div className='product-num-ratings'>1 rating</div>}

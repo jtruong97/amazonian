@@ -108,22 +108,22 @@ function Categories(){
     return(
         <div className='categories-page'>
             <h1>Amazonian: {category}s</h1>
-            {categoriesArr.length == 1 && <p>{categoriesArr.length} result</p>}
-            {categoriesArr.length > 1 && <p>{categoriesArr.length} results</p>}
+            {categoriesArr?.length == 1 && <p>{categoriesArr?.length} result</p>}
+            {categoriesArr?.length > 1 && <p>{categoriesArr?.length} results</p>}
             {categoriesArr?.map (product => (
-                <div key={product.id} className='cat-product-containers'>
-                    <NavLink className='cat-nav-container' to={`/products/${product.id}`}>
-                        <img src={product.image_url} className='cat-product-img'/>
+                <div key={product?.id} className='cat-product-containers'>
+                    <NavLink className='cat-nav-container' to={`/products/${product?.id}`}>
+                        <img src={product?.image_url} className='cat-product-img'/>
                         <div className='cat-product-info'>
-                            <div className='cat-name-text'>{product.name}</div>
-                            <div className='cat-description-text'>{product.description}</div>
+                            <div className='cat-name-text'>{product?.name}</div>
+                            <div className='cat-description-text'>{product?.description}</div>
                             <div className='cat-rating-container'>
-                                <div>{avgRating(product.reviews)}</div>
+                                {isNaN(product?.reviews) && <div>{avgRating(product?.reviews)}</div>}
                                 <div className='star-rating-icons'>{starsIcon(avgRating(product.reviews))}</div>
                                 <div>
-                                    {product.reviews.length == 0 && <div className='product-num-ratings'>No ratings</div>}
-                                    {product.reviews.length == 1 && <div className='product-num-ratings'>1 rating</div>}
-                                    {product.reviews.length > 1 && <div className='product-num-ratings'>{product.reviews.length} ratings</div>}
+                                    {product?.reviews?.length == 0 && <div className='product-num-ratings'>No ratings</div>}
+                                    {product?.reviews?.length == 1 && <div className='product-num-ratings'>1 rating</div>}
+                                    {product?.reviews?.length > 1 && <div className='product-num-ratings'>{product.reviews.length} ratings</div>}
                                 </div>
                             </div>
                             <span className='cat-cents-text'>$</span>
