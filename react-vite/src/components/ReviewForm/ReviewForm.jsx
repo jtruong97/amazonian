@@ -59,11 +59,9 @@ function ReviewForm({rev, button}){
         setImageLoading(true);
         setSubmitted(true);
         if(!reviewId){
-            console.log('create new review')
             await dispatch(createReviewThunk(productId, formData))
         }
         else{
-            console.log('update review')
             await dispatch(updateReviewThunk(reviewId, formData))
         }
         nav(`/products/${productId}`)
