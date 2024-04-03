@@ -24,3 +24,22 @@ body{
     font-weight: 300;
     font-style: normal;
 }
+
+.loading-txt{
+    font-size: 20px;
+    padding: 40px;
+}
+.plant-icon {
+    color: var(--green);
+    animation: grow 1s infinite alternate;
+    margin-left: 10px;
+}
+
+@keyframes grow {
+    from {
+        transform: scale(1);
+    }
+    to {
+        transform: scale(1.8); /* Increase the size by 50% */
+    }
+}

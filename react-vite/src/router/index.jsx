@@ -8,6 +8,7 @@ import CreateReview from '../components/CreateReview/CreateReview';
 import UpdateReview from '../components/UpdateReview/UpdateReivew';
 import Carts from '../components/Carts/Carts';
 import Categories from '../components/Categories/Categories';
+import UserReviews from '../components/UserReviews/UserReviews';
 
 export const router = createBrowserRouter([
   {
@@ -44,6 +45,10 @@ export const router = createBrowserRouter([
       {
         path: '/products/categories/:category',
         element: <Categories />
+      },
+      {
+        path: '/userReviews',
+        element: <UserReviews />
       },
       {
         path:'*',

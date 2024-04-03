@@ -10,6 +10,7 @@ import SignupFormModal from "../SignupFormModal";
 import Carts from "../Carts/Carts";
 import { MdOutlineStar } from "react-icons/md";
 import { MdOutlineStarBorder } from "react-icons/md";
+import { PiPlantDuotone } from "react-icons/pi";
 import './LandingPage.css'
 
 function LandingPage(){
@@ -29,7 +30,7 @@ function LandingPage(){
     },[dispatch, currUser.user, updateCart])
 
     if(!productsArr?.length){ // || !allCarts
-        return <div>Loading...</div>
+        return <div className='loading-txt'>Loading...<PiPlantDuotone className='plant-icon'/></div>
     }
 
     function formatDescription(description){

@@ -154,3 +154,16 @@
   cursor: pointer;
   color: var(--darksage);
 }
+.user-dropdowns{
+  margin-bottom: 7px;
+}
+
+.your-rev-nav{
+  text-decoration: none;
+  color: var(--darkgreen);
+  margin: 5px 0;
+  border: 1px soldi red;
+}
+.your-rev-nav:hover{
+  text-decoration: underline;
+}

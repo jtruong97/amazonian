@@ -12,6 +12,8 @@ import LoginFormModal from "../LoginFormModal";
 import SignupFormModal from "../SignupFormModal";
 import Carts from "../Carts/Carts";
 import './Categories.css'
+import { PiPlantDuotone } from "react-icons/pi";
+
 
 function Categories(){
     const { category } = useParams()
@@ -36,7 +38,7 @@ function Categories(){
         return <h1 className="invalid-cat-txt">No results for this category</h1>
     }
     if(!categoriesArr?.length){
-        return <div>Loading...</div>
+        return <div className='loading-txt'>Loading...<PiPlantDuotone className='plant-icon'/></div>
     }
 
     function avgRating(revArr){
