@@ -46,7 +46,7 @@ function ProductDetails(){
     let activeCartObj
     if(allCarts?.length){
         for(let cart of allCarts){
-            if(cart.is_ordered == false){
+            if(cart?.is_ordered == false){
                 activeCartObj = cart
             }
         }
@@ -56,7 +56,7 @@ function ProductDetails(){
 
     const addToCart = async (productId) => {
         let addItem = {
-            cart_id: activeCartObj.id,
+            cart_id: activeCartObj?.id,
             product_id: productId,
             quantity: quantity
         }
@@ -64,7 +64,7 @@ function ProductDetails(){
             // product is already in the cart
             let updateQty = {
                 product_id: productId,
-                quantity: (parseInt(findInCart.quantity) + parseInt(quantity))
+                quantity: (parseInt(findInCart?.quantity) + parseInt(quantity))
             }
             return await dispatch(updateQuantityThunk(updateQty, findInCart.id))
         }
@@ -119,7 +119,7 @@ function ProductDetails(){
     let canReview = true
     if(reviewsArr?.length){
         for(let rev of reviewsArr){
-            if(rev?.user_id == currUser?.id){
+            if(rev?.user_id == currUser?.id || seller?.id == currUser?.id){
                 canReview = false
             }
         }
@@ -198,6 +198,7 @@ function ProductDetails(){
                 {currUser && canReview && (
                     <button className='new-rev-btn'><NavLink to={`/products/${productId}/review/new`} className='new-rev-txt'>Write a customer review</NavLink></button>
                 )}
+                { seller.id == currUser.id && <p className="cannot-rev-txt">*You cannot review your own product</p>}
                 {reviewsArr?.map (review => (
                     <div key={review?.id} className='review-container'>
                         <div className='review-info-container'>

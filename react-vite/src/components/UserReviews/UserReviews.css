@@ -7,11 +7,12 @@
     margin: 20px 0;
     border: 1px solid lightgrey;
     background-color: var(--lllsage);
+    min-width: 450px;
 }
 
 .rev-img{
-    height: 200px;
-    width: 160px;
+    height: 100px;
+    width: 80px;
 }
 
 .rev-prod-container{
@@ -31,8 +32,15 @@
     display: flex;
     align-items: center;
 }
+.reviewed-txt{
+    margin: 0;
+}
+
 .rev-date{
     padding-left: 8px;
+}
+.star-rev{
+    padding: 0;
 }
 
 .your-rev-txt{
@@ -41,4 +49,14 @@
 
 .rev-text{
     word-break: break-all;
+}
+.rev-buttons{
+    display: flex;
+    align-items: baseline;
+}
+
+.rev-page-btns{
+    height: 40px;
+    width: 120px;
+    transform: translateY(-15px);
 }

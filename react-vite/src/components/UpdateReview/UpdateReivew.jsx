@@ -9,7 +9,7 @@ import { PiPlantDuotone } from "react-icons/pi";
 function UpdateReview(){
     const dispatch = useDispatch()
     const {reviewId, productId} = useParams()
-    const reviews = useSelector(state => state.reviews.Reviews)
+    const reviews = useSelector(state => state?.reviews?.Reviews)
 
     useEffect(()=> {
         dispatch(reviewsByProductThunk(productId))
@@ -21,7 +21,7 @@ function UpdateReview(){
 
     let rev
     for(let review of reviews){
-        if(review.id ==reviewId){
+        if(review?.id ==reviewId){
             rev = review
         }
     }
