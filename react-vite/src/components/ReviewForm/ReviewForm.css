@@ -30,12 +30,10 @@
     margin: 0;
     padding: 0 20px;
 }
-.Stars-field{
-    container: 1px solid red;
-}
 
 .stars {
     color: rgb(255, 153, 0);
+    cursor: pointer;
 }
 .validation-message{
     color: var(--burgundy);
