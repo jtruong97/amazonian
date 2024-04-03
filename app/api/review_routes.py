@@ -14,7 +14,7 @@ def user_reviews():
         return jsonify({'error': 'Unauthorized'}), 403
     user_reviews = Review.query.filter_by(user_id=current_user.id).all()
     user_rev_lst = [review.to_dict() for review in user_reviews]
-    return {'Reviews': user_rev_lst}
+    return {'UserReviews': user_rev_lst}
 
 # UPDATE REVIEW BY REVIEW ID
 @review_routes.route('/<int:id>/edit', methods=['PUT'])

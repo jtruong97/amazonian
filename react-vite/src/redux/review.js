@@ -2,6 +2,7 @@ const GET_ALL_REVIEWS = '/reviews'
 const CREATE_NEW_REVIEW = '/reviews/new'
 const UPDATE_REVIEW = '/reviews/update'
 const DELETE_REVIEW = '/reviews/delete'
+const GET_USER_REVIEWS = '/userReviews'
 
 // ACTION TYPES
 const getAllReviews = (reviews) => {
@@ -29,6 +30,13 @@ const deleteReview = (review) => {
     return {
         type: DELETE_REVIEW,
         review
+    }
+}
+
+const getUserReviews = (reviews) => {
+    return{
+        type: GET_USER_REVIEWS,
+        reviews
     }
 }
 
@@ -84,6 +92,16 @@ export const deleteReviewThunk = (reviewId) => async (dispatch) => {
     dispatch(deleteReview(data))
 }
 
+export const getUserReviewsThunk = () => async (dispatch) => {
+    const response = await fetch (`/api/reviews/current`)
+    if(!response.ok){
+        throw new Error('Failed to get current user reviews.')
+    }
+    const data = await response.json()
+    dispatch(getUserReviews(data))
+    return data
+}
+
 
 // REDUCER
 function reviewReducer(state = {}, action){
@@ -101,6 +119,9 @@ function reviewReducer(state = {}, action){
             const deleteState = {...state}
             delete deleteState[action.review]
             return deleteState
+        }
+        case GET_USER_REVIEWS: {
+            return{...state, ...action.reviews}
         }
         default:
             return state

@@ -1,0 +1,44 @@
+.user-reviews-page{
+    padding:  20px 80px;
+}
+
+.rev-containers{
+    padding: 20px;
+    margin: 20px 0;
+    border: 1px solid lightgrey;
+    background-color: var(--lllsage);
+}
+
+.rev-img{
+    height: 200px;
+    width: 160px;
+}
+
+.rev-prod-container{
+    display: flex;
+}
+
+.nav-rev-prod{
+    text-decoration: none;
+    color: black;
+}
+.nav-rev-prod:hover{
+    text-decoration: underline;
+    color: var(--darksage);
+}
+
+.rev-rev-container{
+    display: flex;
+    align-items: center;
+}
+.rev-date{
+    padding-left: 8px;
+}
+
+.your-rev-txt{
+    font-size: 18px;
+}
+
+.rev-text{
+    word-break: break-all;
+}

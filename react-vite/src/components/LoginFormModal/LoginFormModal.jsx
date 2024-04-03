@@ -42,7 +42,7 @@ function LoginFormModal() {
 
   return (
     <div className='login-modal-page'>
-      <img src ='amazonian-logo-dark.png' className='sign-log-logo'/>
+      <img src ='https://i.postimg.cc/9f0StV8m/amazonian-logo-light.png' className='sign-log-logo'/>
       <div className='sign-in-form-container'>
         <h2>Log In</h2>
         <form onSubmit={handleSubmit} className='sign-in-form'>

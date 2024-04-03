@@ -6,6 +6,7 @@ import './ReviewForm.css'
 import { MdOutlineStar } from "react-icons/md";
 import { MdOutlineStarBorder } from "react-icons/md";
 import { getOneProductThunk } from "../../redux/product"
+import { PiPlantDuotone } from "react-icons/pi";
 
 function ReviewForm({rev, button}){
     const dispatch = useDispatch()
@@ -92,8 +93,15 @@ function ReviewForm({rev, button}){
                                     key={star}
                                     className='stars'
                                     onMouseEnter={()=> setHover(star)}
-                                    onMouseLeave={()=> setHover(0)}
-                                    onClick={() => setRating(star)}
+                                    onMouseLeave={()=> {
+                                        if (!rating) {
+                                            setHover(0);
+                                        }
+                                    }}
+                                    onClick={() => {
+                                        setHover(0);
+                                        setRating(star);
+                                    }}
                                 >
                                     {(star <= rating || star <= hover)? <MdOutlineStar /> : <MdOutlineStarBorder />}
                                 </span>
@@ -137,7 +145,7 @@ function ReviewForm({rev, button}){
                 {validation?.maxRev && (<p className='validation-message'>{validation.maxRev}</p>)}
                 <hr></hr>
                 <button type='submit' className='rev-form-btn'>{button}</button>
-                {(imageLoading) && <p>Loading...</p>}
+                {(imageLoading) && Object.values(validation).length < 0 && <p className='loading-txt'><PiPlantDuotone className='plant-icon'/></p>}
             </form>
         </div>
     )

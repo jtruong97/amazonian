@@ -14,6 +14,7 @@ import DeleteReview from "../DeleteReview/DeleteReview";
 import Carts from "../Carts/Carts";
 import { MdOutlineStar } from "react-icons/md";
 import { MdOutlineStarBorder } from "react-icons/md";
+import { PiPlantDuotone } from "react-icons/pi";
 import './ProductDetails.css'
 
 function ProductDetails(){
@@ -35,7 +36,7 @@ function ProductDetails(){
     },[dispatch, deleteReivew, productId])
 
     if(!oneProduct || !users){
-        return <div>Loading...</div>
+        return <div className='loading-txt'>Loading...<PiPlantDuotone className='plant-icon'/></div>
     }
     const renderDelete = () => {
         setDeleteReview(!deleteReivew)
@@ -222,8 +223,7 @@ function ProductDetails(){
                 ))}
             </div>
         </div>
-        </div>
-    )
+    </div>)
 }
 
 export default ProductDetails

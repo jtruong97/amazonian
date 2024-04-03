@@ -6,6 +6,7 @@ import OpenModalMenuItem from "./OpenModalMenuItem";
 import LoginFormModal from "../LoginFormModal";
 import SignupFormModal from "../SignupFormModal";
 import { useNavigate } from "react-router-dom";
+import { NavLink } from 'react-router-dom';
 
 function ProfileButton() {
   const dispatch = useDispatch();
@@ -53,8 +54,9 @@ function ProfileButton() {
         <ul className={"profile-dropdown"} ref={ulRef}>
           {user ? (
             <>
-              <li>{user.username}</li>
-              <li>{user.email}</li>
+              <li className="user-dropdowns">{user.username}</li>
+              <li className="user-dropdowns">{user.email}</li>
+              <NavLink to='/userReviews' className='your-rev-nav'>My Reviews</NavLink>
               <li>
                 <button onClick={logout} className='logout-btn'>Log Out</button>
               </li>
