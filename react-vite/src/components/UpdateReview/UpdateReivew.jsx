@@ -3,6 +3,8 @@ import ReviewForm from "../ReviewForm/ReviewForm"
 import { useParams } from "react-router-dom"
 import { useEffect } from "react"
 import { reviewsByProductThunk } from "../../redux/review"
+import { PiPlantDuotone } from "react-icons/pi";
+
 
 function UpdateReview(){
     const dispatch = useDispatch()
@@ -14,7 +16,7 @@ function UpdateReview(){
     },[dispatch, productId])
 
     if(!reviews?.length){
-        return <div>Loading...</div>
+        return <div className="loading-txt">Loading...<PiPlantDuotone className='plant-icon'/></div>
     }
 
     let rev

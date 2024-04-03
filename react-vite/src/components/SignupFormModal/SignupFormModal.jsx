@@ -80,7 +80,7 @@ function SignupFormModal() {
 
   return (
     <div className='login-modal-page'>
-      <img src ='amazonian-logo-dark.png' className='sign-log-logo'/>
+      <img src ='https://i.postimg.cc/9f0StV8m/amazonian-logo-light.png' className='sign-log-logo'/>
       <div className='sign-in-form-container'>
         <h2>Sign Up</h2>
         {errors.server && <p>{errors.server}</p>}

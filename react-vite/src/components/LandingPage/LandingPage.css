@@ -21,6 +21,10 @@
     text-decoration: none;
     color: black;
 }
+.landing-nav-container:hover .product-name-text{
+    text-decoration: underline;
+    color: var(--darksage);
+}
 
 .product-info{
     position: relative;
