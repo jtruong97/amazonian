@@ -20,7 +20,7 @@ function ReviewForm({rev, button}){
     const [image_url, setImageUrl] = useState(rev?.image_url)
     const [validation, setValidation] = useState()
     const [imageLoading, setImageLoading] = useState(false)
-    const [hover, setHover] = useState(null)
+    // const [hover, setHover] = useState(null)
     const [submitted, setSubmitted] = useState(false)
 
     useEffect(()=>{
@@ -92,18 +92,18 @@ function ReviewForm({rev, button}){
                                 <span
                                     key={star}
                                     className='stars'
-                                    onMouseEnter={()=> setHover(star)}
-                                    onMouseLeave={()=> {
-                                        if (!rating) {
-                                            setHover(0);
-                                        }
-                                    }}
+                                    // onMouseEnter={()=> setHover(star)}
+                                    // onMouseLeave={()=> {
+                                    //     if (!rating) {
+                                    //         setHover(0);
+                                    //     }
+                                    // }}
                                     onClick={() => {
-                                        setHover(0);
+                                        // setHover(0);
                                         setRating(star);
                                     }}
                                 >
-                                    {(star <= rating || star <= hover)? <MdOutlineStar /> : <MdOutlineStarBorder />}
+                                    {(star <= rating)? <MdOutlineStar /> : <MdOutlineStarBorder />}
                                 </span>
                             ))}
                     </div>
