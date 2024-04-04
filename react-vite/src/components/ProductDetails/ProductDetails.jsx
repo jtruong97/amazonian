@@ -198,7 +198,7 @@ function ProductDetails(){
                 {currUser && canReview && (
                     <button className='new-rev-btn'><NavLink to={`/products/${productId}/review/new`} className='new-rev-txt'>Write a customer review</NavLink></button>
                 )}
-                { seller.id == currUser.id && <p className="cannot-rev-txt">*You cannot review your own product</p>}
+                { seller?.id == currUser?.id && <p className="cannot-rev-txt">*You cannot review your own product</p>}
                 {reviewsArr?.map (review => (
                     <div key={review?.id} className='review-container'>
                         <div className='review-info-container'>

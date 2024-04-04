@@ -17,7 +17,7 @@
     align-items: center;
     font-size: 12px;
     color: grey;
-    padding: 8px;
+    padding: 0 8px;
 }
 
 .product-rev-img{
@@ -29,6 +29,13 @@
     height: 100%;
     margin: 0;
     padding: 0 20px;
+}
+.rev-form-head{
+    margin-bottom: 8px;
+}
+
+.rev-form-txt{
+    margin: 0 0 8px 0;
 }
 
 .stars {
