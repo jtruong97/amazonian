@@ -37,7 +37,13 @@ function Carts(){
         return <div className="loading-txt">Loading...<PiPlantDuotone className='plant-icon'/></div>
     }
     if(!allCarts?.length){
-        return <div>Your cart is empty</div>
+        return (
+            <>
+                <h1 className='no-cart-name'>Shopping Cart</h1>
+                <hr></hr>
+                <div className='no-cart-msg'>Your cart is empty</div>
+            </>
+        )
     }
 
     // find active cart

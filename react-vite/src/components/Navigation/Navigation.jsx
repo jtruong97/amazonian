@@ -20,7 +20,7 @@ function Navigation() {
       <ul className='nav-ul-container'>
         <li className="logo-container">
           <NavLink to="/" className='logo-nav-container'>
-            <img src='https://amazonian-jt.s3.us-west-1.amazonaws.com/amazonian-logo-light.png' alt='amazonian-logo' className='logo-img'/>
+            <img src='https://i.postimg.cc/9f0StV8m/amazonian-logo-light.png' alt='amazonian-logo' className='logo-img'/>
           </NavLink>
         </li>
         <div className='search-container'>
