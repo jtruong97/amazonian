@@ -37,7 +37,13 @@ function Carts(){
         return <div className="loading-txt">Loading...<PiPlantDuotone className='plant-icon'/></div>
     }
     if(!allCarts?.length){
-        return <div>Your cart is empty</div>
+        return (
+            <div className='no-cart-modal'>
+                <h1 className='no-cart-name'>Shopping Cart</h1>
+                <hr></hr>
+                <div className='no-cart-msg'>Your cart is empty</div>
+            </div>
+        )
     }
 
     // find active cart
@@ -59,7 +65,6 @@ function Carts(){
         }
         await dispatch(updateQuantityThunk(updateItem, cartItemId))
         setUpdateQuantity(!updateQuantity)
-        closeModal()
     }
 
     const deleteCartItem = async(cartItemId) => {
@@ -72,7 +77,7 @@ function Carts(){
 
     const handleCheckout = async () => {
         for(let item of cartItemsArr){
-            await dispatch(deleteCartItemThunk(item.id))
+            await dispatch(deleteCartItemThunk(item?.id))
             setCheckout(true)
         }
         setDeleteItem(!deleteItem)
@@ -99,16 +104,16 @@ function Carts(){
                             <div className='cart-prod-name'>{productsArr[(item?.product_id) -1]?.name}</div>
                             <div className='cart-prod-price'>${(productsArr[(item?.product_id) -1]?.price * item?.quantity).toFixed(2)}</div>
                             <div hidden='hidden'>{subTotal+= (productsArr[(item?.product_id) -1]?.price * item?.quantity)}</div>
-                            <div hidden='hidden'>{itemCount += item.quantity}</div>
+                            <div hidden='hidden'>{itemCount += item?.quantity}</div>
                         </NavLink>
                         <div className='qty-container'>
                             Quantity: {item?.quantity}
                             <form
-                                onSubmit={(e) => handleUpdate(e, item.id, item.product_id)}
+                                onSubmit={(e) => handleUpdate(e, item?.id, item?.product_id)}
                                 className='update-quantity-form'
                             >
                                 <select onChange={(e) => setQuantity(e.target.value)} className='select-qty-dropdown'>
-                                    <option value='' disabled selected hidden>Qty:{item.quantity}</option>
+                                    <option value='' disabled selected hidden>Qty:{item?.quantity}</option>
                                     <option value = '1'>Qty: 1</option>
                                     <option value = '2'>Qty: 2</option>
                                     <option value = '3'>Qty: 3</option>
@@ -122,7 +127,7 @@ function Carts(){
                                 </select>
                                 <button type='submit' className='cart-btns updat-btn'>Update</button>
                             </form>
-                                <button onClick={() => deleteCartItem(item.id)} className='cart-btns delete-cart-btn'>Delete</button>
+                                <button onClick={() => deleteCartItem(item?.id)} className='cart-btns delete-cart-btn'>Delete</button>
                         </div>
                     </div>
                 </div>

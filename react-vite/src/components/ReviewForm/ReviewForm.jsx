@@ -9,6 +9,7 @@ import { getOneProductThunk } from "../../redux/product"
 import { PiPlantDuotone } from "react-icons/pi";
 
 function ReviewForm({rev, button}){
+
     const dispatch = useDispatch()
     const nav = useNavigate()
     const { productId, reviewId } = useParams()
@@ -25,7 +26,12 @@ function ReviewForm({rev, button}){
 
     useEffect(()=>{
         dispatch(getOneProductThunk(productId))
-    },[dispatch, productId])
+        if (rev) {
+            setRating(rev?.rating)
+            setReview(rev?.review)
+            setImageUrl(rev?.image_url)
+        }
+    },[dispatch, productId, rev])
 
     useEffect(() => {
         const errors = {}
@@ -70,8 +76,8 @@ function ReviewForm({rev, button}){
     return(
         <div className='review-product-form'>
             <div className='product-rev-container'>
-                <img src={product.image_url} className='product-rev-img'/>
-                <p className='product-rev-name'>{product.name}</p>
+                <img src={product?.image_url} className='product-rev-img'/>
+                <p className='product-rev-name'>Product: {product?.name}</p>
             </div>
             <form
                 onSubmit={handleSubmit}
@@ -80,10 +86,10 @@ function ReviewForm({rev, button}){
             >
                 <hr></hr>
                 <div className='header-w-require'>
-                    <h2>Overall rating</h2>
+                    <h2 className='rev-form-head'>Overall rating</h2>
                     <p className='requried-txt'>required*</p>
                 </div>
-                <p>What would you rate your overall experience with this product?</p>
+                <p className='rev-form-txt'>What would you rate your overall experience with this product?</p>
                 <label>
                     <div className='Stars-field'>
                             {[1,2,3,4,5].map(star => (
@@ -106,13 +112,13 @@ function ReviewForm({rev, button}){
                             ))}
                     </div>
                 </label>
-                {validation?.rating && (<p className='validation-message'>{validation.rating}</p>)}
+                {validation?.rating && (<p className='validation-message'>{validation?.rating}</p>)}
                 <hr></hr>
                 <div className='header-w-require'>
-                    <h2>Add a photo</h2>
+                    <h2 className='rev-form-head'>Add a photo</h2>
                     <p className='requried-txt'>required*</p>
                 </div>
-                <p>Shoppers find images more helpful than text alone.</p>
+                <p className='rev-form-txt'>Shoppers find images more helpful than text alone.</p>
                 <label>
                     <input
                         type='file'
@@ -120,13 +126,13 @@ function ReviewForm({rev, button}){
                         onChange={(e) => setImageUrl(e.target.files[0])}
                     ></input>
                 </label>
-                {validation?.image_url && (<p className='validation-message'>{validation.image_url}</p>)}
-                {image_url.length > 0 && (
+                {validation?.image_url && (<p className='validation-message'>{validation?.image_url}</p>)}
+                {image_url?.length > 0 && (
                     <label htmlFor="post-image-input" className="file-input-labels-noname"><img src={image_url} className="thumbnails-noname"></img></label>
                 )}
                 <hr></hr>
                 <div className='header-w-require'>
-                    <h2>Add a written review</h2>
+                    <h2 className='rev-form-head'>Add a written review</h2>
                     <p className='requried-txt'>required*</p>
                 </div>
                 <textarea
@@ -139,8 +145,8 @@ function ReviewForm({rev, button}){
                         rows={7}
                         cols={70}
                 />
-                {validation?.minRev && (<p className='validation-message'>{validation.minRev}</p>)}
-                {validation?.maxRev && (<p className='validation-message'>{validation.maxRev}</p>)}
+                {validation?.maxRev && (<p className='validation-message'>{validation?.maxRev}</p>)}
+                {validation?.minRev && (<p className='validation-message'>{validation?.minRev}</p>)}
                 <hr></hr>
                 <button type='submit' className='rev-form-btn'>{button}</button>
                 {(imageLoading) && Object.values(validation).length < 0 && <p className='loading-txt'><PiPlantDuotone className='plant-icon'/></p>}

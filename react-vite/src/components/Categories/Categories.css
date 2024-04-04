@@ -76,8 +76,8 @@
 .cat-modals{
     display: flex;
     justify-content: end;
-    z-index: 1;
+    z-index: 0;
     position: absolute;
-    left: 70%;
+    left: 50%;
     transform: translateY(-40px);
 }

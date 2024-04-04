@@ -24,7 +24,7 @@ function LandingPage(){
 
     useEffect(() => {
         dispatch(getAllProductsThunk())
-        if(currUser.user){
+        if(currUser?.user){
             dispatch(allUserCartsThunk())
         }
     },[dispatch, currUser.user, updateCart])
@@ -34,7 +34,7 @@ function LandingPage(){
     }
 
     function formatDescription(description){
-        let newDescription = description.slice(0,120) + '...'
+        let newDescription = description?.slice(0,120) + '...'
         return newDescription
     }
 
@@ -42,7 +42,7 @@ function LandingPage(){
     let activeCartObj
     if(allCarts?.length){
         for(let cart of allCarts){
-            if(cart.is_ordered == false){
+            if(cart?.is_ordered == false){
                 activeCartObj = cart
             }
         }
@@ -61,14 +61,14 @@ function LandingPage(){
             // product is already in the cart
             let updateQty = {
                 product_id: productId,
-                quantity: (parseInt(findInCart.quantity) + 1)
+                quantity: (parseInt(findInCart?.quantity) + 1)
             }
             return await dispatch(updateQuantityThunk(updateQty, findInCart.id))
         }
 
         if(activeCartObj){
             // Has an open cart, add product to this cart
-            await dispatch(addItemToCartThunk(addItem, activeCartObj.id))
+            await dispatch(addItemToCartThunk(addItem, activeCartObj?.id))
             setUpdateCart(!updateCart)
         }
         else{
@@ -86,9 +86,9 @@ function LandingPage(){
     function avgRating(revArr){
         let starRating = 0
         for (let rev of revArr){
-            starRating += rev.rating
+            starRating += rev?.rating
         }
-        return (starRating/revArr.length).toFixed(1)
+        return (starRating/revArr?.length).toFixed(1)
     }
     function starsIcon(avgRating){
         let filledStar = Math.floor(avgRating) // round avg rating down
@@ -115,17 +115,17 @@ function LandingPage(){
                             <div className='product-name-text'>{product?.name}</div>
                             <div className='product-description-text'>{formatDescription(product?.description)}</div>
                             <div className='landing-rating-container'>
-                                {isNaN(product?.reviews) && <div>{avgRating(product?.reviews)}</div>}
+                                <div>{avgRating(product?.reviews)}</div>
                                 <div className='star-rating-icons'>{starsIcon(avgRating(product?.reviews))}</div>
                                 <div>
-                                    {product.reviews.length == 0 && <div className='product-num-ratings'>No ratings</div>}
-                                    {product.reviews.length == 1 && <div className='product-num-ratings'>1 rating</div>}
-                                    {product.reviews.length > 1 && <div className='product-num-ratings'>{product.reviews.length} ratings</div>}
+                                    {product?.reviews?.length == 0 && <div className='product-num-ratings'>No ratings</div>}
+                                    {product?.reviews?.length == 1 && <div className='product-num-ratings'>1 rating</div>}
+                                    {product?.reviews?.length > 1 && <div className='product-num-ratings'>{product?.reviews?.length} ratings</div>}
                                 </div>
                             </div>
                             <span className='product-cents-text'>$</span>
-                            <span className='product-price-text'>{product.price.toString().split('.')[0]}</span>
-                            <span className='product-cents-text'>{product.price.toString().split('.')[1]}</span>
+                            <span className='product-price-text'>{product?.price?.toString().split('.')[0]}</span>
+                            <span className='product-cents-text'>{product?.price?.toString().split('.')[1]}</span>
                         </div>
                     </NavLink>
                     {currUser?.user?.id && (
@@ -145,7 +145,7 @@ function LandingPage(){
                                     <option value = '10'>Qty: 10</option>
                                 </select>
                             </form> */}
-                            <button className='add-to-cart-btn' onClick={() => addToCart(product.id)}>
+                            <button className='add-to-cart-btn' onClick={() => addToCart(product?.id)}>
                                 <OpenModalMenuItem
                                     itemText="Add to cart"
                                     modalComponent={<Carts />}

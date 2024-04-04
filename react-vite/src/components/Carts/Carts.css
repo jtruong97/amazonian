@@ -6,6 +6,7 @@
     flex-direction: column;
     align-items: center;
     height: 98vh;
+    min-width: 600px;
     overflow-y: scroll;
     padding: 30px 50px;
 }
@@ -109,4 +110,15 @@
 .checkout-btn:hover{
     background-color: var(--orange);
     border: var(--orange);
+}
+
+.no-cart-msg{
+    padding: 15px;
+    text-align: center;
+}
+.no-cart-name{
+    text-align: center;
+}
+.no-cart-modal{
+    padding: 30px 50px;
 }

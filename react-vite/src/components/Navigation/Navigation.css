@@ -99,9 +99,10 @@
 .logout-btn{
   background-color: var(--lightsage);
   border: 1px solid var(--lightsage);
-  padding: 4px 12px;
+  border-radius: 5px 5px;
+  color: white;
+  padding: 5px 12px;
   margin: 12px 0 0 0;
-
 }
 .logout-btn:hover{
   background-color: var(--darksage);
