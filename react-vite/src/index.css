@@ -12,6 +12,10 @@
     --llsage: rgb(236, 238, 235);
     --lllsage: rgb(247, 247, 247);
     --darkgreen: rgb(23, 41, 25);
+    --lbrown: rgb(229, 224, 224);
+    --llbrown: rgb(240, 238, 238);
+    --lllbrown: rgb(146, 142, 142);
+    --brown:rgb(88, 87, 87);
 }
 
 button {

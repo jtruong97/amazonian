@@ -115,7 +115,7 @@ function LandingPage(){
                             <div className='product-name-text'>{product?.name}</div>
                             <div className='product-description-text'>{formatDescription(product?.description)}</div>
                             <div className='landing-rating-container'>
-                                <div>{avgRating(product?.reviews)}</div>
+                                {isNaN(product?.reviews) &&<div>{avgRating(product?.reviews)}</div>}
                                 <div className='star-rating-icons'>{starsIcon(avgRating(product?.reviews))}</div>
                                 <div>
                                     {product?.reviews?.length == 0 && <div className='product-num-ratings'>No ratings</div>}

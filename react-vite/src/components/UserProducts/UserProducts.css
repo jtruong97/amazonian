@@ -1,0 +1,72 @@
+.user-products-page{
+    background-color: var(--lbrown);
+    padding: 10px 80px;
+}
+
+.create-prod-btn{
+    text-decoration: none;
+    color: white;
+}
+.new-prod-btn{
+    background-color: var(--lllbrown);
+    border: 1px solid var(--lllbrown);
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+.new-prod-btn:hover {
+    background-color: var(--brown);
+}
+
+.user-prod-container{
+    border: 1px solid lightgrey;
+    background-color: var(--llbrown);
+    padding: 20px;
+    margin: 20px 0;
+    min-width: 550px;
+    display: flex;
+    flex-direction: row;
+}
+
+.user-prod-img{
+    height: 300px;
+    width: 270px;
+}
+
+.user-prod-info{
+    padding-left: 20px;
+}
+
+.prod-txt{
+    padding-bottom: 8px;
+}
+
+.user-prod-name{
+    font-size: 22px;
+}
+
+.prod-btns{
+    list-style: none;
+    color: white;
+    background-color: var(--lllbrown);
+    border: 1px solid var(--lllbrown);
+    border-radius: 5px;
+    padding: 10px;
+}
+.prod-btns:hover{
+    background-color: var(--brown);
+    border: 1px solid var(--brown);
+}
+
+.prod-update-btn{
+    text-decoration: none;
+    color: white;
+}
+
+.prod-del-btn{
+    margin-left: 10px;
+}
+.prod-del-btn:hover{
+    background-color: var(--burgundy);
+    border: 1px solid var(--burgundy);
+}

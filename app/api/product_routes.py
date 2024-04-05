@@ -33,7 +33,7 @@ def users_product():
         return jsonify({'error': 'Unauthorized'}), 403
     user_products = Product.query.filter_by(user_id=current_user.id).all()
     user_prod_lst = [product.to_dict() for product in user_products]
-    return  {"Products": user_prod_lst}
+    return  {"myProducts": user_prod_lst}
 
 
 # GET ALL REVIEWS BY PRODUCT ID
