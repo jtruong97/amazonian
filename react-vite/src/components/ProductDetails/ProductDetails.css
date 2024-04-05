@@ -23,6 +23,11 @@
     height: 100%;
     position: relative;
 }
+
+.prod-details-name{
+    white-space: nowrap;
+}
+
 .product-rating-container{
     display: flex;
     padding-bottom: 5px;

@@ -131,7 +131,7 @@ function ProductDetails(){
             <div className='product-detail-container'>
                 <img src={oneProduct?.image_url} className='product-detail-img'/>
                 <div className='product-info-container'>
-                    <h1>{oneProduct?.name}</h1>
+                    <h1 className='prod-details-name'>{oneProduct?.name}</h1>
                     <div className='product-rating-container'>
                         <div>{avgRating(oneProduct?.reviews)}</div>
                         <div className='star-rating-icons'>{starsIcon(avgRating(oneProduct?.reviews))}</div>
