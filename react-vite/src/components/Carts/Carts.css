@@ -6,6 +6,7 @@
     flex-direction: column;
     align-items: center;
     height: 98vh;
+    min-width: 600px;
     overflow-y: scroll;
     padding: 30px 50px;
 }
@@ -117,4 +118,7 @@
 }
 .no-cart-name{
     text-align: center;
+}
+.no-cart-modal{
+    padding: 30px 50px;
 }

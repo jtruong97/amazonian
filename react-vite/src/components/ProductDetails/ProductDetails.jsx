@@ -131,7 +131,7 @@ function ProductDetails(){
             <div className='product-detail-container'>
                 <img src={oneProduct?.image_url} className='product-detail-img'/>
                 <div className='product-info-container'>
-                    <h1>{oneProduct?.name}</h1>
+                    <h1 className='prod-details-name'>{oneProduct?.name}</h1>
                     <div className='product-rating-container'>
                         <div>{avgRating(oneProduct?.reviews)}</div>
                         <div className='star-rating-icons'>{starsIcon(avgRating(oneProduct?.reviews))}</div>
@@ -198,7 +198,7 @@ function ProductDetails(){
                 {currUser && canReview && (
                     <button className='new-rev-btn'><NavLink to={`/products/${productId}/review/new`} className='new-rev-txt'>Write a customer review</NavLink></button>
                 )}
-                { seller.id == currUser.id && <p className="cannot-rev-txt">*You cannot review your own product</p>}
+                { seller?.id == currUser?.id && <p className="cannot-rev-txt">*You cannot review your own product</p>}
                 {reviewsArr?.map (review => (
                     <div key={review?.id} className='review-container'>
                         <div className='review-info-container'>

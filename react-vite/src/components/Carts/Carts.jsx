@@ -38,11 +38,11 @@ function Carts(){
     }
     if(!allCarts?.length){
         return (
-            <>
+            <div className='no-cart-modal'>
                 <h1 className='no-cart-name'>Shopping Cart</h1>
                 <hr></hr>
                 <div className='no-cart-msg'>Your cart is empty</div>
-            </>
+            </div>
         )
     }
 

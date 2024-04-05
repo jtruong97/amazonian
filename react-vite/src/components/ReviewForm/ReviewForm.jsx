@@ -77,7 +77,7 @@ function ReviewForm({rev, button}){
         <div className='review-product-form'>
             <div className='product-rev-container'>
                 <img src={product?.image_url} className='product-rev-img'/>
-                <p className='product-rev-name'>{product?.name}</p>
+                <p className='product-rev-name'>Product: {product?.name}</p>
             </div>
             <form
                 onSubmit={handleSubmit}
@@ -86,10 +86,10 @@ function ReviewForm({rev, button}){
             >
                 <hr></hr>
                 <div className='header-w-require'>
-                    <h2>Overall rating</h2>
+                    <h2 className='rev-form-head'>Overall rating</h2>
                     <p className='requried-txt'>required*</p>
                 </div>
-                <p>What would you rate your overall experience with this product?</p>
+                <p className='rev-form-txt'>What would you rate your overall experience with this product?</p>
                 <label>
                     <div className='Stars-field'>
                             {[1,2,3,4,5].map(star => (
@@ -115,10 +115,10 @@ function ReviewForm({rev, button}){
                 {validation?.rating && (<p className='validation-message'>{validation?.rating}</p>)}
                 <hr></hr>
                 <div className='header-w-require'>
-                    <h2>Add a photo</h2>
+                    <h2 className='rev-form-head'>Add a photo</h2>
                     <p className='requried-txt'>required*</p>
                 </div>
-                <p>Shoppers find images more helpful than text alone.</p>
+                <p className='rev-form-txt'>Shoppers find images more helpful than text alone.</p>
                 <label>
                     <input
                         type='file'
@@ -132,7 +132,7 @@ function ReviewForm({rev, button}){
                 )}
                 <hr></hr>
                 <div className='header-w-require'>
-                    <h2>Add a written review</h2>
+                    <h2 className='rev-form-head'>Add a written review</h2>
                     <p className='requried-txt'>required*</p>
                 </div>
                 <textarea
