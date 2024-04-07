@@ -42,10 +42,10 @@ function ReviewForm({rev, button}){
             if(!rating || rating < 1 || rating > 5){
                 errors.rating = 'Rating must be between 1 and 5 stars.'
             }
-            if(review.length < 5){
+            if(review?.length < 5){
                 errors.minRev = 'Review must be more than 5 characters.'
             }
-            if(review.length > 2000){
+            if(review?.length > 2000){
                 errors.maxRev = 'Review must be less than 2000 characters.'
             }
             if(!image_url){

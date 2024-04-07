@@ -21,7 +21,7 @@ function UpdateReview(){
 
     let rev
     for(let review of reviews){
-        if(review?.id ==reviewId){
+        if(review?.id == reviewId){
             rev = review
         }
     }

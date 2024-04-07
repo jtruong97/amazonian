@@ -183,7 +183,7 @@ function ProductDetails(){
                         to add this item to your cart</p>)
                     }
                     <h2>About this item</h2>
-                    <p>{oneProduct.description}</p>
+                    <p>{oneProduct?.description}</p>
                     <h2>Seller Information</h2>
                     <div className='seller-details-container'>
                         <p className='seller-info-text'>Product listed by : {seller?.username}</p>
@@ -202,7 +202,7 @@ function ProductDetails(){
                 {reviewsArr?.map (review => (
                     <div key={review?.id} className='review-container'>
                         <div className='review-info-container'>
-                            <p className='prod-det-rev-txt rev-name'>{users[(review.user_id)-1]?.first_name} <span className='review-date-txt'>wrote a review on {refactorDate(review.createdAt)}</span></p>
+                            <p className='prod-det-rev-txt rev-name'>{users[(review?.user_id)-1]?.first_name} <span className='review-date-txt'>wrote a review on {refactorDate(review?.createdAt)}</span></p>
                             <p className='star-rating-icons prod-det-rev-txt'>{starsIcon(review?.rating)}</p>
                             <p className='prod-det-rev-txt review-txt'>{review?.review}</p>
                         </div>
