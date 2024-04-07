@@ -27,7 +27,7 @@ function LandingPage(){
         if(currUser?.user){
             dispatch(allUserCartsThunk())
         }
-    },[dispatch, currUser.user, updateCart])
+    },[dispatch, currUser?.user, updateCart])
 
     if(!productsArr?.length){ // || !allCarts
         return <div className='loading-txt'>Loading...<PiPlantDuotone className='plant-icon'/></div>
@@ -63,7 +63,7 @@ function LandingPage(){
                 product_id: productId,
                 quantity: (parseInt(findInCart?.quantity) + 1)
             }
-            return await dispatch(updateQuantityThunk(updateQty, findInCart.id))
+            return await dispatch(updateQuantityThunk(updateQty, findInCart?.id))
         }
 
         if(activeCartObj){
