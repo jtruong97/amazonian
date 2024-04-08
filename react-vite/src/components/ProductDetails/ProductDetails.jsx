@@ -66,16 +66,17 @@ function ProductDetails(){
                 product_id: productId,
                 quantity: (parseInt(findInCart?.quantity) + parseInt(quantity))
             }
-            return await dispatch(updateQuantityThunk(updateQty, findInCart.id))
+            return await dispatch(updateQuantityThunk(updateQty, findInCart?.id))
         }
         if(activeCartObj){
             // Has an open cart, add product to this cart
-            await dispatch(addItemToCartThunk(addItem, activeCartObj.id))
+            await dispatch(addItemToCartThunk(addItem, activeCartObj?.id))
         }
         else{
             // create new cart, add product to new cart
-            await dispatch(createCartThunk())
-            await dispatch(addItemToCartThunk(addItem, activeCartObj.id))
+            const createCart = await dispatch(createCartThunk())
+            const newCartId = createCart?.id;
+            await dispatch(addItemToCartThunk(addItem, newCartId))
         }
         return
     }

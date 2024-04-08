@@ -36,15 +36,6 @@ function Carts(){
     if(!currUser || !productsArr?.length){
         return <div className="loading-txt">Loading...<PiPlantDuotone className='plant-icon'/></div>
     }
-    if(!allCarts?.length){
-        return (
-            <div className='no-cart-modal'>
-                <h1 className='no-cart-name'>Shopping Cart</h1>
-                <hr></hr>
-                <div className='no-cart-msg'>Your cart is empty</div>
-            </div>
-        )
-    }
 
     // find active cart
     if(allCarts?.length > 0){
@@ -54,6 +45,17 @@ function Carts(){
             }
         }
     }
+
+    if(!allCarts?.length){
+        return (
+            <div className='no-cart-modal'>
+                <h1 className='no-cart-name'>Shopping Cart</h1>
+                <hr></hr>
+                <div className='no-cart-msg'>Your cart is empty</div>
+            </div>
+        )
+    }
+    
     const cartItemsArr = activeCartObj?.cart_items // arr of products in active cart
 
     const handleUpdate = async(e, cartItemId, productId) => {
