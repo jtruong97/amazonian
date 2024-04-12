@@ -66,16 +66,17 @@ function ProductDetails(){
                 product_id: productId,
                 quantity: (parseInt(findInCart?.quantity) + parseInt(quantity))
             }
-            return await dispatch(updateQuantityThunk(updateQty, findInCart.id))
+            return await dispatch(updateQuantityThunk(updateQty, findInCart?.id))
         }
         if(activeCartObj){
             // Has an open cart, add product to this cart
-            await dispatch(addItemToCartThunk(addItem, activeCartObj.id))
+            await dispatch(addItemToCartThunk(addItem, activeCartObj?.id))
         }
         else{
             // create new cart, add product to new cart
-            await dispatch(createCartThunk())
-            await dispatch(addItemToCartThunk(addItem, activeCartObj.id))
+            const createCart = await dispatch(createCartThunk())
+            const newCartId = createCart?.id;
+            await dispatch(addItemToCartThunk(addItem, newCartId))
         }
         return
     }
@@ -131,7 +132,7 @@ function ProductDetails(){
             <div className='product-detail-container'>
                 <img src={oneProduct?.image_url} className='product-detail-img'/>
                 <div className='product-info-container'>
-                    <h1>{oneProduct?.name}</h1>
+                    <h1 className='prod-details-name'>{oneProduct?.name}</h1>
                     <div className='product-rating-container'>
                         {isNaN(oneProduct?.reviews)  && <div>{avgRating(oneProduct?.reviews)}</div>}
                         <div className='star-rating-icons'>{starsIcon(avgRating(oneProduct?.reviews))}</div>
@@ -183,7 +184,7 @@ function ProductDetails(){
                         to add this item to your cart</p>)
                     }
                     <h2>About this item</h2>
-                    <p>{oneProduct.description}</p>
+                    <p>{oneProduct?.description}</p>
                     <h2>Seller Information</h2>
                     <div className='seller-details-container'>
                         <p className='seller-info-text'>Product listed by : {seller?.username}</p>
@@ -202,7 +203,7 @@ function ProductDetails(){
                 {reviewsArr?.map (review => (
                     <div key={review?.id} className='review-container'>
                         <div className='review-info-container'>
-                            <p className='prod-det-rev-txt rev-name'>{users[(review.user_id)-1]?.first_name} <span className='review-date-txt'>wrote a review on {refactorDate(review.createdAt)}</span></p>
+                            <p className='prod-det-rev-txt rev-name'>{users[(review?.user_id)-1]?.first_name} <span className='review-date-txt'>wrote a review on {refactorDate(review?.createdAt)}</span></p>
                             <p className='star-rating-icons prod-det-rev-txt'>{starsIcon(review?.rating)}</p>
                             <p className='prod-det-rev-txt review-txt'>{review?.review}</p>
                         </div>
