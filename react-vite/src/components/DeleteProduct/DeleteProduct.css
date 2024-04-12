@@ -1,0 +1,29 @@
+.delete-product-modal{
+    border: 1px solid grey;
+    background-color: var(--lllsage);
+    display: flex;
+    flex-direction: column;
+    width: 400px;
+    padding: 30px;
+}
+
+.del-prod-btns{
+    margin: 10px 0;
+    width: 200px;
+    padding: 15px 0px;
+    align-self: center;
+    color: white;
+    background-color: var(--lllbrown);
+    border: var(--lllbrown);
+    border-radius: 5px 5px;
+}
+
+.del-prod-btns:hover{
+    background-color: var(--brown);
+    border: var(--brown);
+}
+
+.confirm-delete-btn:hover{
+    background-color: var(--burgundy);
+    border: var(--burgundy);
+}

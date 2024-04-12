@@ -91,7 +91,6 @@
   list-style-type: none;
   justify-content: center;
   align-items: center;
-  padding: 15px;
   right: 35px;
   z-index: 1;
 }
@@ -102,8 +101,8 @@
   border-radius: 5px 5px;
   color: white;
   padding: 5px 12px;
-  margin: 12px 0 0 0;
 }
+
 .logout-btn:hover{
   background-color: var(--darksage);
   border: 1px solid var(--darksage);
@@ -159,13 +158,13 @@
 }
 .user-dropdowns{
   margin-bottom: 7px;
+  width: 100%;
 }
 
 .your-rev-nav{
   text-decoration: none;
   color: var(--darkgreen);
   margin: 5px 0;
-  border: 1px soldi red;
 }
 .your-rev-nav:hover{
   text-decoration: underline;

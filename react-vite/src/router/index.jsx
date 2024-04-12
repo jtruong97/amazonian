@@ -9,6 +9,9 @@ import UpdateReview from '../components/UpdateReview/UpdateReivew';
 import Carts from '../components/Carts/Carts';
 import Categories from '../components/Categories/Categories';
 import UserReviews from '../components/UserReviews/UserReviews';
+import CreateProduct from '../components/CreateProduct/CreateProduct';
+import UpdateProduct from '../components/UpdateProduct/UpdateProduct';
+import UserProducts from '../components/UserProducts/UserProducts';
 
 export const router = createBrowserRouter([
   {
@@ -49,6 +52,18 @@ export const router = createBrowserRouter([
       {
         path: '/userReviews',
         element: <UserReviews />
+      },
+      {
+        path: '/userProducts',
+        element: <UserProducts />
+      },
+      {
+        path: '/products/new',
+        element: <CreateProduct />
+      },
+      {
+        path: '/products/:productId/edit',
+        element: <UpdateProduct />
       },
       {
         path:'*',
