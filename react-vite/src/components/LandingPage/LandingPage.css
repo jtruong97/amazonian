@@ -66,15 +66,20 @@
 }
 
 .add-to-cart-btn{
+    border: none;
+    padding: 0;
+    margin-top: 8px;
+    border-radius: 12px;
+}
+.add-to-cart-btn * {
     list-style: none;
     border-radius: 12px;
     padding: 5px 8px;
-    /* margin-left: 10px; */
-    margin-top: 8px;
+    /* margin-top: 8px; */
     background-color: var(--yellow);
     border: 1px solid var(--yellow);
 }
-.add-to-cart-btn:hover{
+.add-to-cart-btn:hover *{
     background-color: var(--orange);
     border: 1px solid var(--orange);
 }

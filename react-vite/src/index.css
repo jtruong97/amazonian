@@ -48,3 +48,26 @@ body{
         transform: scale(1.8); /* Increase the size by 50% */
     }
 }
+
+@media (max-width: 1200px) {
+    .seller-details-container{
+        display: flex;
+        flex-direction: column;
+    }
+    .owners-hub{
+        margin: 10px 0 0 0;
+    }
+}
+
+@media (max-width: 899px) {
+    .product-detail-container{
+        display: flex;
+        flex-direction: column;
+        height: auto;
+    }
+    .product-detail-img{
+        height: 300px;
+        width: auto;
+        margin-top: 10px;
+    }
+}

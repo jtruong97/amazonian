@@ -18,6 +18,11 @@
     padding-bottom: 10px;
 }
 
+.form-label-info{
+    display: flex;
+    margin: 0;
+}
+
 .product-form-btn{
     background-color: var(--lllbrown);
     border: 1px solid var(--lllbrown);
@@ -25,6 +30,7 @@
     padding: 10px;
     width: 100px;
     color: white;
+    margin-top: 20px;
 }
 .product-form-btn:hover{
     background-color: var(--brown);

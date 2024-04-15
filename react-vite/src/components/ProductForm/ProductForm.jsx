@@ -84,7 +84,11 @@ function ProductForm({button, updateProduct}){
                 className='review-form-container'
             >
                 <label className='prod-form-label'>
-                    Product Name *
+                    <div className='form-label-info'>
+                        <h2 className='product-form-label-title'>Product Name</h2>
+                        <span className="requried-txt">required*</span>
+                    </div>
+                    <p className='rev-form-txt'>Enter a clear and descriptive title for your product. Include important keywords to help customers find your listing in search results.</p>
                     <input
                         type='text'
                         name={name}
@@ -94,7 +98,11 @@ function ProductForm({button, updateProduct}){
                 </label>
                 {validation?.name && <p className='validation-message'>{validation?.name}</p>}
                 <label className='prod-form-label'>
-                    Category
+                    <div className='form-label-info'>
+                        <h2>Category</h2>
+                        <span className="requried-txt">required*</span>
+                    </div>
+                    <p className='rev-form-txt'>Select the category or type that best fits your product. This helps customers find your product when browsing or searching by category.</p>
                     <select
                         value = {category}
                         onChange={(e) => setCategory(e.target.value)}
@@ -111,18 +119,27 @@ function ProductForm({button, updateProduct}){
                 {validation?.category && <p className='validation-message'>{validation?.category}</p>}
 
                 <label className='prod-form-label'>
-                    Price*
+                    <div className='form-label-info'>
+                        <h2>Price</h2>
+                        <span className="requried-txt">required*</span>
+                    </div>
+                    <p className='rev-form-txt'>Enter the price at which you want to sell your product. Consider factors such as market value, competition, and profit margins when setting the price.</p>
                     <input
                         type='text'
                         name={price}
                         value={price}
                         onChange={(e) => setPrice(e.target.value)}
+                        placeholder="$"
                         ></input>
                 </label>
                 {validation?.priceNum && <p className='validation-message'>{validation?.priceNum}</p>}
                 {validation?.price && <p className='validation-message'>{validation?.price}</p>}
                 <label className='prod-form-label'>
-                    Product Description
+                    <div className='form-label-info'>
+                        <h2>Product Description</h2>
+                        <span className="requried-txt">required*</span>
+                    </div>
+                    <p className='rev-form-txt'>Provide a detailed description of your product. Highlight key features, specifications, and any unique selling points.</p>
                     <textarea
                         type='text'
                         name={description}
@@ -134,6 +151,11 @@ function ProductForm({button, updateProduct}){
                 </label>
                 {validation?.description && <p className='validation-message'>{validation?.description}</p>}
                 <label className='prod-form-label'>
+                    <div className='form-label-info'>
+                        <h2>Add a Photo</h2>
+                        <span className="requried-txt">required*</span>
+                    </div>
+                    <p className='rev-form-txt'>Shoppers find images more helpful than text alone.</p>
                     <input
                         type='file'
                         accept="image/*"

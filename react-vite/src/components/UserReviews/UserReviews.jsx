@@ -53,6 +53,7 @@ function UserReviews(){
     return(
         <div className='user-reviews-page'>
             <h1>{currUser?.first_name} Reviews</h1>
+            <hr></hr>
             {userRevs?.length == 0 && <p>You have no reviews</p>}
             {userRevs?.length == 1 && <p>You have {userRevs?.length} review</p>}
             {userRevs?.length >1 && <p>You have {userRevs?.length} reviews</p>}

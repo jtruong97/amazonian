@@ -26,6 +26,9 @@ function UserProducts(){
         setDeleteProduct(!deleteProduct)
     }
 
+    const noNav = (e) => {
+        e.preventDefault()
+    }
 
     return(
         <div className='user-products-page'>
@@ -37,7 +40,7 @@ function UserProducts(){
             <button className='new-prod-btn'><NavLink to='/products/new' className='create-prod-btn'>Create a New Product Listing</NavLink></button>
             <hr></hr>
             {userProducts?.map (product => (
-                <div key={product?.id} className='user-prod-container'>
+                <NavLink to={`/products/${product.id}`} key={product?.id} className='user-prod-container'>
                     <img src={product?.image_url} className='user-prod-img'/>
                     <div className='user-prod-info'>
                         <div className='prod-txt user-prod-name'>{product?.name}</div>
@@ -46,14 +49,14 @@ function UserProducts(){
                         <div className='prod-txt '>Listing Price: ${product?.price}</div>
                         <div className='prod-txt '>{product?.description}</div>
                         <button className='prod-btns'><NavLink to={`/products/${product?.id}/edit`} className='prod-update-btn'>Update</NavLink></button>
-                        <button className='prod-btns prod-del-btn'>
+                        <button className='prod-btns prod-del-btn' type='button' onClick={(noNav)}>
                             <OpenModalMenuItem
                                 itemText='Delete Product'
                                 modalComponent={<DeleteProduct productId={product?.id} renderDelete={renderDelete}/>}
                             />
                         </button>
                     </div>
-                </div>
+                </NavLink>
             ))}
         </div>
     )

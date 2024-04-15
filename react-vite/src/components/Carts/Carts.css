@@ -121,4 +121,5 @@
 }
 .no-cart-modal{
     padding: 30px 50px;
+    min-height: 90vh;
 }

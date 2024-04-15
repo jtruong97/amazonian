@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
-import { useParams } from "react-router-dom"
+import { useNavigate, useParams } from "react-router-dom"
 import { getOneProductThunk } from "../../redux/product"
 import { NavLink } from 'react-router-dom';
 import { reviewsByProductThunk } from "../../redux/review";
@@ -15,11 +15,13 @@ import Carts from "../Carts/Carts";
 import { MdOutlineStar } from "react-icons/md";
 import { MdOutlineStarBorder } from "react-icons/md";
 import { PiPlantDuotone } from "react-icons/pi";
+import DeleteProduct from '../DeleteProduct/DeleteProduct';
 import './ProductDetails.css'
 
 function ProductDetails(){
     const dispatch = useDispatch()
     const { productId } = useParams()
+    const nav = useNavigate()
     const oneProduct = useSelector(state => state.products)
     const reviewsArr = useSelector(state => state.reviews.Reviews)
     const users = useSelector(state => state.user.users)
@@ -40,6 +42,9 @@ function ProductDetails(){
     }
     const renderDelete = () => {
         setDeleteReview(!deleteReivew)
+    }
+    const deleteProduct = () => {
+        nav('/')
     }
 
     // find active cart
@@ -163,6 +168,7 @@ function ProductDetails(){
                             </form>
                             <button className='add-to-cart-btn details-add-cart-btn' onClick={() => addToCart(oneProduct?.id)}>
                                 <OpenModalMenuItem
+                                    className='add-cart-modal'
                                     itemText='Add to cart'
                                     modalComponent={<Carts />}
                                 />
@@ -187,16 +193,32 @@ function ProductDetails(){
                     <p>{oneProduct?.description}</p>
                     <h2>Seller Information</h2>
                     <div className='seller-details-container'>
-                        <p className='seller-info-text'>Product listed by : {seller?.username}</p>
-                        <p className='seller-info-text'>{seller?.first_name}</p>
-                        <p className='seller-info-text'>Member since : {refactorDate(seller?.createdAt)}</p>
+                        <div className='sellers-info'>
+                            <p className='seller-info-text'>Product listed by : {seller?.username}</p>
+                            <p className='seller-info-text'>{seller?.first_name}</p>
+                            <p className='seller-info-text'>Member since : {refactorDate(seller?.createdAt)}</p>
+                        </div>
+                        {seller?.id == currUser?.id &&
+                            <div className='owners-hub'>
+                                <p className='prod-listing-date'>Product listed on: {oneProduct?.createdAt.slice(0,-13)}</p>
+                                <div className='owners-btns'>
+                                    <button className='prod-btns'><NavLink to={`/products/${oneProduct?.id}/edit`} className='prod-update-btn'>Update</NavLink></button>
+                                    <button className='prod-btns prod-del-btn'>
+                                        <OpenModalMenuItem
+                                            itemText='Delete Product'
+                                            modalComponent={<DeleteProduct productId={oneProduct?.id} renderDelete={deleteProduct}/>}
+                                        />
+                                    </button>
+                                </div>
+                            </div>
+                        }
                     </div>
                 </div>
             </div>
             <hr></hr>
             <div className='review-detail-container'>
                 <h1>Customer Reviews</h1>
-                {currUser && canReview && (
+                {currUser && canReview && seller?.id != currUser?.id &&(
                     <button className='new-rev-btn'><NavLink to={`/products/${productId}/review/new`} className='new-rev-txt'>Write a customer review</NavLink></button>
                 )}
                 { seller?.id == currUser?.id && <p className="cannot-rev-txt">*You cannot review your own product</p>}

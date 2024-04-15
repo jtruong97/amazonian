@@ -1,6 +1,7 @@
 .user-products-page{
     background-color: var(--lbrown);
     padding: 10px 80px;
+    min-height: 90vh;
 }
 
 .create-prod-btn{
@@ -26,6 +27,8 @@
     min-width: 550px;
     display: flex;
     flex-direction: row;
+    text-decoration: none;
+    color: black;
 }
 
 .user-prod-img{
@@ -45,7 +48,15 @@
     font-size: 22px;
 }
 
-.prod-btns{
+/* .prod-btns{
+    list-style: none;
+    color: white;
+    background-color: var(--lllbrown);
+    border: 1px solid var(--lllbrown);
+    border-radius: 5px;
+    padding: 10px;
+} */
+.prod-btns * {
     list-style: none;
     color: white;
     background-color: var(--lllbrown);
@@ -53,7 +64,14 @@
     border-radius: 5px;
     padding: 10px;
 }
-.prod-btns:hover{
+.prod-btns{
+    border: none;
+    padding: 0;
+    margin: 0;
+    background-color: var(--lllsage);
+}
+
+.prod-btns:hover *{
     background-color: var(--brown);
     border: 1px solid var(--brown);
 }
@@ -66,7 +84,7 @@
 .prod-del-btn{
     margin-left: 10px;
 }
-.prod-del-btn:hover{
+.prod-del-btn:hover *{
     background-color: var(--burgundy);
     border: 1px solid var(--burgundy);
 }
