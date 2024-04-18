@@ -160,7 +160,7 @@ function SignupFormModal() {
         </form>
         <a href={`${window.origin}/api/auth/oauth_login`} className='google-oauth'>
           <button className='google-login-btn'>
-            <img src={google} alt='google-icon'className='google-logo'/>Sign in with Google
+            <img src={google} alt='google-icon'className='google-logo'/>Sign up with Google
           </button>
         </a>
       </div>

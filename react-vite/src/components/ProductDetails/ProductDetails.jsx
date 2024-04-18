@@ -60,7 +60,6 @@ function ProductDetails(){
     let findInCart = activeCartObj?.cart_items?.find(item => item?.product_id == productId)
 
     const addToCart = async (productId) => {
-        console.log(productId,'PRODUCTID HERE!!!')
         let addItem = {
             cart_id: activeCartObj?.id,
             product_id: productId,
@@ -84,12 +83,11 @@ function ProductDetails(){
             const newCartId = createCart?.id;
             await dispatch(addItemToCartThunk(addItem, newCartId))
         }
-        return
     }
 
     let seller
     for(let user of users){
-        if(user?.id == oneProduct?.user_id){
+        if(user?.id == oneProduct[productId]?.user_id){
             seller = user
         }
     }
@@ -136,21 +134,21 @@ function ProductDetails(){
         <div className='details-page'>
         <div className='product-details-page'>
             <div className='product-detail-container'>
-                <img src={oneProduct?.image_url} className='product-detail-img'/>
+                <img src={oneProduct[productId]?.image_url} className='product-detail-img'/>
                 <div className='product-info-container'>
-                    <h1 className='prod-details-name'>{oneProduct?.name}</h1>
+                    <h1 className='prod-details-name'>{oneProduct[productId]?.name}</h1>
                     <div className='product-rating-container'>
-                        {isNaN(oneProduct?.reviews)  && <div>{avgRating(oneProduct?.reviews)}</div>}
-                        <div className='star-rating-icons'>{starsIcon(avgRating(oneProduct?.reviews))}</div>
+                        {isNaN(oneProduct[productId]?.reviews)  && <div>{avgRating(oneProduct[productId]?.reviews)}</div>}
+                        <div className='star-rating-icons'>{starsIcon(avgRating(oneProduct[productId]?.reviews))}</div>
                         <div>
-                            {oneProduct?.reviews?.length == 0 && <div className='product-num-ratings'>No ratings</div>}
-                            {oneProduct?.reviews?.length == 1 && <div className='product-num-ratings'>1 rating</div>}
-                            {oneProduct?.reviews?.length > 1 && <div className='product-num-ratings'>{oneProduct?.reviews?.length} ratings</div>}
+                            {oneProduct[productId]?.reviews?.length == 0 && <div className='product-num-ratings'>No ratings</div>}
+                            {oneProduct[productId]?.reviews?.length == 1 && <div className='product-num-ratings'>1 rating</div>}
+                            {oneProduct[productId]?.reviews?.length > 1 && <div className='product-num-ratings'>{oneProduct[productId]?.reviews?.length} ratings</div>}
                         </div>
                     </div>
                     <span className='product-cents-text-d'>$</span>
-                    <span className='product-price-text-d'>{oneProduct?.price?.toString().split('.')[0]}</span>
-                    <span className='product-cents-text-d'>{oneProduct?.price?.toString().split('.')[1]}</span>
+                    <span className='product-price-text-d'>{oneProduct[productId]?.price?.toString().split('.')[0]}</span>
+                    <span className='product-cents-text-d'>{oneProduct[productId]?.price?.toString().split('.')[1]}</span>
                     {currUser && (
                         <div className="cart-item-feature">
                             <form className='options-container'>
@@ -167,7 +165,7 @@ function ProductDetails(){
                                     <option value = '10'>Qty: 10</option>
                                 </select>
                             </form>
-                            <button className='add-to-cart-btn details-add-cart-btn' onClick={() => addToCart(oneProduct?.id)}>
+                            <button className='add-to-cart-btn details-add-cart-btn' onClick={() => addToCart(oneProduct[productId]?.id)}>
                                 <OpenModalMenuItem
                                     className='add-cart-modal'
                                     itemText='Add to cart'
@@ -191,7 +189,7 @@ function ProductDetails(){
                         to add this item to your cart</p>)
                     }
                     <h2>About this item</h2>
-                    <p>{oneProduct?.description}</p>
+                    <p>{oneProduct[productId]?.description}</p>
                     <h2>Seller Information</h2>
                     <div className='seller-details-container'>
                         <div className='sellers-info'>
@@ -201,13 +199,13 @@ function ProductDetails(){
                         </div>
                         {seller?.id == currUser?.id &&
                             <div className='owners-hub'>
-                                <p className='prod-listing-date'>Product listed on: {oneProduct?.createdAt?.slice(0,-13)}</p>
+                                <p className='prod-listing-date'>Product listed on: {oneProduct[productId]?.createdAt?.slice(0,-13)}</p>
                                 <div className='owners-btns'>
-                                    <button className='prod-btns'><NavLink to={`/products/${oneProduct?.id}/edit`} className='prod-update-btn'>Update</NavLink></button>
+                                    <button className='prod-btns'><NavLink to={`/products/${oneProduct[productId]?.id}/edit`} className='prod-update-btn'>Update</NavLink></button>
                                     <button className='prod-btns prod-del-btn'>
                                         <OpenModalMenuItem
                                             itemText='Delete Product'
-                                            modalComponent={<DeleteProduct productId={oneProduct?.id} renderDelete={deleteProduct}/>}
+                                            modalComponent={<DeleteProduct productId={oneProduct[productId]?.id} renderDelete={deleteProduct}/>}
                                         />
                                     </button>
                                 </div>

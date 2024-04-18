@@ -152,10 +152,14 @@ function productReducer(state = {}, action) {
             return newState;
         }
         case GET_ONE_PRODUCT:{
-            return{...state, ...action.product}
+            return{...state, [action.product?.id]:action?.product}
         }
         case GET_BY_CAT:{
-            return{...state, ...action.product}
+            const catState={};
+            action.product.Category.forEach(p => {
+                catState[p.id]= p
+            })
+            return catState
         }
         case GET_USERS_PRODUCTS: {
             return {...state, ...action.products}

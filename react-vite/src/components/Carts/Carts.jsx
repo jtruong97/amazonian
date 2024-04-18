@@ -23,7 +23,6 @@ function Carts(){
 
 
     let activeCartObj
-    console.log(products)
     let productsArr = Object.values(products)
 
     useEffect(()=> {
