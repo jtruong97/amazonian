@@ -60,6 +60,7 @@ function ProductDetails(){
     let findInCart = activeCartObj?.cart_items?.find(item => item?.product_id == productId)
 
     const addToCart = async (productId) => {
+        console.log(productId,'PRODUCTID HERE!!!')
         let addItem = {
             cart_id: activeCartObj?.id,
             product_id: productId,
@@ -200,7 +201,7 @@ function ProductDetails(){
                         </div>
                         {seller?.id == currUser?.id &&
                             <div className='owners-hub'>
-                                <p className='prod-listing-date'>Product listed on: {oneProduct?.createdAt.slice(0,-13)}</p>
+                                <p className='prod-listing-date'>Product listed on: {oneProduct?.createdAt?.slice(0,-13)}</p>
                                 <div className='owners-btns'>
                                     <button className='prod-btns'><NavLink to={`/products/${oneProduct?.id}/edit`} className='prod-update-btn'>Update</NavLink></button>
                                     <button className='prod-btns prod-del-btn'>

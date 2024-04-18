@@ -45,9 +45,17 @@
     border: var(--lightsage);
 }
 
+.demo-logins{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    padding: 15px 0;
+}
+
 .demo-login-btn{
     color: var(--darkforest);
     align-self: center;
+    padding: 0 10px;
 }
 .demo-login-btn:hover{
     color: var(--lightsage);
@@ -55,4 +63,25 @@
 
 .form-val-txt{
     color: var(--burgundy);
+}
+
+.google-oauth{
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    text-decoration: none;
+}
+.google-login-btn{
+    padding: 10px;
+    margin-top: 5px;
+    display: flex;
+    background-color: var(--lllsage);
+    border: 1px solid grey;
+}
+.google-login-btn:hover{
+    background-color: white;
+}
+.google-logo{
+    padding-right: 5px;
+    height: 15px;
 }

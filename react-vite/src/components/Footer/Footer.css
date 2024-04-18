@@ -38,6 +38,7 @@
 
 .footer-icons-link:hover{
     box-shadow: 3px 3px 3px var(--darksage);
+    background-color: var(--lllsage);
 }
 
 .foot-logos{

@@ -145,7 +145,11 @@ export const deleteProductThunk = (productId) => async (dispatch) => {
 function productReducer(state = {}, action) {
     switch(action.type){
         case GET_ALL_PRODUCTS:{
-            return{...state, ...action.products}
+            const newState={};
+            action.products.Products.forEach(p => {
+                newState[p.id] = p
+            })
+            return newState;
         }
         case GET_ONE_PRODUCT:{
             return{...state, ...action.product}

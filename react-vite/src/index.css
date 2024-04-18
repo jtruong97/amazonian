@@ -70,4 +70,7 @@ body{
         width: auto;
         margin-top: 10px;
     }
+    .carts-modal{
+        width: 80%;
+    }
 }
