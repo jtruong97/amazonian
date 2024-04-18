@@ -1,100 +1,96 @@
 # amazonian
+Amazonian is inspired by the popular e-commerce platform 'Amazon', that features some of my favorite plants! This site mimics Amazon's layout, functionality, aethestics, and intuitive navigation. Amazonian features 3 full CRUD functionalities for managing products, reviews, and shopping carts. Amazonian also features OAuth which streamlines signup and login process for user convenience and security. Join Amazonian today to feature your favorite plant or to explore our products!
 
 ## Live Site
 - https://amazonian-blt9.onrender.com/
 
+## Clone This Project
+1. Clone this repository
+2. Install your dependencies
+    - In root run: `pipenv install -r requirements.txt`
+    - In react-vite run: `npm install`
+3. Create .env file and include
+    - SECRET_KEY
+    - DATABASE_URL
+    - FLASK_ENV
+    - SCHEMA
+    - S3_BUCKET
+    - S3_KEY
+    - S3_SECRET
+    - GOOGLE_OAUTH_CLIENT_ID
+    - GOOGLE_OAUTH_CLIENT_SECRET
+4. Create your local database
+    - Enter your virtual environment
+        - In root run: `pipenv shell`
+    - Create database
+        - In virtual environment run: `flask db init`
+        - In virtual environment run: `flask db migrate`
+        - In virtual environment run: `flask db upgrade`
+    - Seed Data
+        - In virtual environment run: `flask seed all`
+5. Run Local Servers
+    - Enter virtual shell
+        - In virtual environment run: `flask run`
+    - In react-vite run: `npm run dev`
 
-<!-- # Database Schema
+## Featured Technology
+### Frameworks and Libraries
+![Python](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54)
+![Flask](https://img.shields.io/badge/flask-%23000.svg?style=for-the-badge&logo=flask&logoColor=white)
+![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E)
+![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)
+![Redux](https://img.shields.io/badge/redux-%23593d88.svg?style=for-the-badge&logo=redux&logoColor=white)
+![HML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white)
+![CSS3](https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white)
+![AWS](https://img.shields.io/badge/AWS-%23FF9900.svg?style=for-the-badge&logo=amazon-aws&logoColor=white)
+
+### Database
+![Postgres](https://img.shields.io/badge/postgres-%23316192.svg?style=for-the-badge&logo=postgresql&logoColor=white)
+
+### Hosting
+![Render](https://img.shields.io/badge/Render-%46E3B7.svg?style=for-the-badge&logo=render&logoColor=white)
+
+## Database Schema
 [![amazon-db-ss.png](https://i.postimg.cc/kXKWBgL2/amazon-db-ss.png)](https://postimg.cc/mtZPnBL4)
 
-# User Stories
+## Feature List
+1. Products
+    - View all products
+    - Create a new product
+    - Update user's exisiting product
+    - Delete user's exisiting product
+2. Reviews
+    - View all reviews on a product
+    - Create a new review on a product
+    - Update user's exisiting review
+    - Delete user's exisiting review
+3. Cart
+    - View all products in cart
+    - Add new product into cart
+    - Update product quantity in cart
+    - Delete product from cart
 
-## Users
-### Sign Up
-- As an unregistered and unauthorized user, I want to be able to sign up for the website via a sign-up form.
-- When I am on the `/signup` page:
-    - I would like to be able to enter my username, email, first name, last name, and password on a form.
-    - I would like the website to log me in upon successful completion of the sign-up form
-    - When I enter invalid data on the sign-up form:
-        - I would like the website to inform me of the validations I failed to pass and can repopulate the form with my previous entries, so that I can try again without needing to refill the form again.
-    - I would like a button that will redirect me to the sign up page if I am already an exisiting user.
+## Future Features
+4. Search/Sort Filter
+    - User will be able to search for product by category or name
+5. Order History
+    - Users will be able to view their order history if a cart has been checkout
 
-### Log In
-- As a registered authorized user, I want to be able to log in to the website via a log-in form.
-- When i am in the `/login` page:
-    - I would to be able to enter my username and password on the a form
-    - When I enter invalid data on the log-in form:
-        - I would like the website to inform me of the validations I failed to pass and repopulate the form with my invalid entries so I can try again without needing to refill the form again.
-
-### Demo User
-- As an unregistered user, I would like an button on the login `/login` page that allows me to visit the site as a guest without having to sign up or log in.
-- The Demo User button will log me in and allow me to access the site as a normal user, so that I can test the site's features and functionality.
-
-### Log Out
-- As a logged in user, I want to log out via a log out button in the navigation bar.
-- While on any page of the site:
-    - I can be logged out of my account and be redirected to the langing page.
-
-## Reviews
-### View Reviews
-- As a logged in or logged out user, I want to be able to view all reviews on a product.
-    - When I am on the `/product/:productId` page:
-        - I can view the product information as well as all the product's reviews.
-
-### Create Review
-- As a logged in user, I want to be able to create a review on a product.
-- When I am on the `/product/:productId`, I want to be able to click on a 'Create Review' button that will bring me to a review form.
-    - When I am on the `/product/:productId/review/new`, I should see a form allowing me to put in a review rating as well as a description.
-
-### Update Review
-- As a logged in user, I can update my exisiting review by clicking an 'Edit' button associated with the logged in user.
-- When I am on the `/product/:productId` page, I can click on an 'Edit' button that will bring me to a form page with my exisiting review information.
-    - Clicking on an 'Update' button will make changes to my exisiting review I have previously posted.
-
-### Delete Review
-- As a logged in user, I can delete my exisiting review by clicking a 'Delete' button next to the review associated with the logged in user.
-
-## Cart
-### Create Cart
-- As a logged in user, I want to be able to add products into my cart
-    - On the product page `/product/:productId`, I want to be able to access an 'Add to Cart' button.
-
-### View Cart
-- In the navigation bar, I should be able to view my cart
-    - Clicking on the view cart button should redirect me to `/user/:userId/cart` that will show all the cart items in my cart.
-
-### Update Cart
-- As a logged in user I can update my cart item quantity
-    - Typing in a number into a text box and clicking update will change the quantity of the cart item and adjust the subtotal accordingly.
-
-### Delete Cart
-- As a logged in user, I want to be able to delete products from my cart with a delete button
-    - Clicking delete will update your subtotal as well as remove the item from the cart.
-
-# MVP's Feature List
-## Reviews
-- Logged in users can create, view, edit, and delete their review.
-- Logged out users can view all reviews
-
-## Cart
-- Logged in users can create, view, edit, and delete items in their cart.
-
-## Products
-- Logged in users can create, view, edit, and delete products to sell on amazonian.
-- Logged out users can view all products.
-
-## Order History (bonus feature)
-- Logged in user can view their order history if a cart has been checked out.
-
-## Search (bonus feature)
-- Logged in and out users can search for specific products
-
-# Wire Frames
-## Landing Page `/`
-[![amazon-landing-drawio.png](https://i.postimg.cc/D0CwCMC4/amazon-landing-drawio.png)](https://postimg.cc/xNzQ8tV9)
-
-## Product Reviews `/product/:productId`
-[![amazon-product-product-Id-drawio.png](https://i.postimg.cc/hGrvzv90/amazon-product-product-Id-drawio.png)](https://postimg.cc/Y4vMTpD4)
-
-## Cart `/user/:userId/cart`
-[![amazon-cart-drawio.png](https://i.postimg.cc/ZKB1CQr7/amazon-cart-drawio.png)](https://postimg.cc/4mG80B2V) -->
+## Endpoints
+### Auth
+| Request   | Purpose      | Return Value |
+| --------- | ------------ | ------------ |
+| GET /api/auth | Retrieve data| {} |
+| POST /api/auth/unauthorized | Create data  | {} |
+| POST /api/auth/signup | Create data  | {} |
+| POST /api/auth/login | Logs in a current user with valid credentials and returns the current user's information.  | {}|
+| POST /api/auth/logout | Logs out the current user and return a message if successful | {}|
+### Reviews
+| Request   | Purpose      | Return Value |
+| --------- | ------------ | ------------ |
+### Shopping Cart
+| Request   | Purpose      | Return Value |
+| --------- | ------------ | ------------ |
+### Products
+| Request   | Purpose      | Return Value |
+| --------- | ------------ | ------------ |
