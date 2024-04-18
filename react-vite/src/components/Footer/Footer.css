@@ -1,0 +1,56 @@
+.footer-container{
+    background-color: var(--lightsage);
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    bottom: vh100;
+}
+.contactme-txt{
+    margin: 5px;
+    color: var(--darksage)
+}
+.gitlink{
+    text-decoration: none;
+    color: var(--darksage);
+    margin-bottom: 5px;
+}
+.gitlink:hover{
+    text-decoration: underline;
+    color: var(--forest);
+}
+
+.icons-container{
+    margin: 0;
+    display: flex;
+}
+
+.footer-icons-link{
+    justify-content: center;
+    align-self: center;
+    width: 40px;
+    border-radius: 8px;
+    margin: 5px 25px;
+    padding: 5px;
+    border: 1px solid var(--lsage);
+    background-color: var(--lsage);
+}
+
+.footer-icons-link:hover{
+    box-shadow: 3px 3px 3px var(--darksage);
+    background-color: var(--lllsage);
+}
+
+.foot-logos{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.jt-log{
+    height: 40px;
+    width: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

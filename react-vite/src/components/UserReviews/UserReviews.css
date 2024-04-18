@@ -1,5 +1,6 @@
 .user-reviews-page{
     padding:  20px 80px;
+    min-height: 90vh;
 }
 
 .rev-containers{

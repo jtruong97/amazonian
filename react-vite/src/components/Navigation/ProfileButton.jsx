@@ -56,7 +56,12 @@ function ProfileButton() {
             <>
               <li className="user-dropdowns">{user.username}</li>
               <li className="user-dropdowns">{user.email}</li>
-              <NavLink to='/userReviews' className='your-rev-nav'>My Reviews</NavLink>
+              <li className="user-dropdowns">
+                <NavLink to='/userReviews' className='your-rev-nav'>My Reviews</NavLink>
+              </li>
+              <li className="user-dropdowns">
+                <NavLink to='/userProducts' className='your-rev-nav'>My Products</NavLink>
+              </li>
               <li>
                 <button onClick={logout} className='logout-btn'>Log Out</button>
               </li>

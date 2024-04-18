@@ -13,7 +13,7 @@ import './UserReviews.css'
 function UserReviews(){
     const dispatch = useDispatch()
     const userRevs = useSelector(state => state.reviews.UserReviews)
-    const products = useSelector(state => state.products.Products)
+    const prod = useSelector(state => state.products)
     const currUser = useSelector(state => state.session.user)
     const [deleteReivew, setDeleteReview ]= useState(false)
 
@@ -25,6 +25,8 @@ function UserReviews(){
     const renderDelete = () => {
         setDeleteReview(!deleteReivew)
     }
+
+    let products = Object.values(prod)
 
     if(!products?.length || currUser?.length){
         return <div className='loading-txt'>Loading...<PiPlantDuotone className='plant-icon'/></div>
@@ -53,14 +55,15 @@ function UserReviews(){
     return(
         <div className='user-reviews-page'>
             <h1>{currUser?.first_name} Reviews</h1>
+            <hr></hr>
             {userRevs?.length == 0 && <p>You have no reviews</p>}
             {userRevs?.length == 1 && <p>You have {userRevs?.length} review</p>}
             {userRevs?.length >1 && <p>You have {userRevs?.length} reviews</p>}
             {userRevs?.map (review => (
                 <div key={review?.id} className='rev-containers'>
-                    <NavLink to={`/products/${products[(review?.product_id) -1]?.id}`} className='nav-rev-prod'>
-                        <h2>Product: {products[(review?.product_id) -1]?.name}</h2>
-                        <img src={products[(review?.product_id) - 1]?.image_url} className='rev-img'/>
+                    <NavLink to={`/products/${prod[(review?.product_id)]?.id}`} className='nav-rev-prod'>
+                        <h2>Product: {prod[(review?.product_id)]?.name}</h2>
+                        <img src={prod[(review?.product_id)]?.image_url} className='rev-img'/>
                     </NavLink>
                     <hr></hr>
                     <div className='rev-rev-container'>
@@ -72,12 +75,12 @@ function UserReviews(){
                     <div className='rev-buttons'>
                         <img src={review?.image_url} className='rev-img'/>
                         <button className='review-btns rev-page-btns'>
-                            <NavLink to={`/products/${products[(review?.product_id) -1]?.id}/review/${review?.id}/edit`} className='update-rev-btn'>Update Review</NavLink>
+                            <NavLink to={`/products/${prod[(review?.product_id)]?.id}/review/${review?.id}/edit`} className='update-rev-btn'>Update Review</NavLink>
                         </button>
                         <button className='review-btns delete-rev-btn rev-page-btns'>
                             <OpenModalMenuItem
                                 itemText='Delete Review'
-                                modalComponent={<DeleteReview reviewId={review?.id} productId={products[(review?.product_id) -1]?.id} renderDelete={renderDelete}/>}
+                                modalComponent={<DeleteReview reviewId={review?.id} productId={prod[(review?.product_id)]?.id} renderDelete={renderDelete}/>}
                             />
                         </button>
                     </div>

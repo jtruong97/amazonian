@@ -9,9 +9,14 @@
     --darkforest: rgb(40, 56, 43);
     --green: rgb(72, 126, 82);
     --burgundy: rgb(146, 47, 47);
+    --lsage: rgb(208, 216, 204);
     --llsage: rgb(236, 238, 235);
     --lllsage: rgb(247, 247, 247);
     --darkgreen: rgb(23, 41, 25);
+    --lbrown: rgb(229, 224, 224);
+    --llbrown: rgb(240, 238, 238);
+    --lllbrown: rgb(146, 142, 142);
+    --brown:rgb(88, 87, 87);
 }
 
 button {
@@ -41,5 +46,31 @@ body{
     }
     to {
         transform: scale(1.8); /* Increase the size by 50% */
+    }
+}
+
+@media (max-width: 1200px) {
+    .seller-details-container{
+        display: flex;
+        flex-direction: column;
+    }
+    .owners-hub{
+        margin: 10px 0 0 0;
+    }
+}
+
+@media (max-width: 899px) {
+    .product-detail-container{
+        display: flex;
+        flex-direction: column;
+        height: auto;
+    }
+    .product-detail-img{
+        height: 300px;
+        width: auto;
+        margin-top: 10px;
+    }
+    .carts-modal{
+        width: 80%;
     }
 }

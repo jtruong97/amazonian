@@ -1,6 +1,10 @@
 const GET_ALL_PRODUCTS = '/products/getAllProducts'
 const GET_ONE_PRODUCT = '/products/productId'
 const GET_BY_CAT = '/categories/category'
+const GET_USERS_PRODUCTS = '/products/currentUser'
+const CREATE_PRODUCT = '/products/new'
+const UPDATE_PRODUCT = '/product/edit'
+const DELETE_PRODUCT = 'product/delete'
 
 // ACTION TYPES
 const getAllProducts = (products) => {
@@ -19,6 +23,34 @@ const getOneProduct = (product) => {
 const getCategory = (product) => {
     return{
         type: GET_BY_CAT,
+        product
+    }
+}
+
+const getUserProducts = (products) => {
+    return {
+        type: GET_USERS_PRODUCTS,
+        products
+    }
+}
+
+const createProduct = (product) => {
+    return{
+        type: CREATE_PRODUCT,
+        product
+    }
+}
+
+const updateProduct = (product) => {
+    return {
+        type: UPDATE_PRODUCT,
+        product
+    }
+}
+
+const deleteProduct = (product) => {
+    return {
+        type: DELETE_PRODUCT,
         product
     }
 }
@@ -47,6 +79,7 @@ export const getOneProductThunk = (productId) => async (dispatch) => {
     return data
 }
 
+// get all products by category
 export const getByCategoryThunk = (categoryName) => async (dispatch) => {
     const response = await fetch(`/api/products/categories/${categoryName}`)
     if(!response.ok){
@@ -57,17 +90,86 @@ export const getByCategoryThunk = (categoryName) => async (dispatch) => {
     return data
 }
 
+// get current users products
+export const getUserProductsThunk = () => async (dispatch) => {
+    const response = await fetch ('/api/products/current')
+    if(!response.ok){
+        throw new Error ('Failed to get current user products')
+    }
+    const data = await response.json()
+    dispatch(getUserProducts(data))
+    return data
+}
+
+// create new product
+export const createProductThunk = (newProduct) => async (dispatch) => {
+    const response = await fetch(`/api/products/new`, {
+        method: 'POST',
+        body: newProduct
+    })
+    if(!response.ok){
+        throw new Error ('Failed to create new product.')
+    }
+    const data = await response.json()
+    dispatch(createProduct(data))
+    return data
+}
+
+// update product by product id
+export const updateProductThunk = (productId, updatedProduct) => async (dispatch) => {
+    const response = await fetch (`/api/products/${productId}/edit`, {
+        method: 'PUT',
+        body: updatedProduct
+    })
+    if(!response.ok){
+        throw new Error ('Failed to update product.')
+    }
+    const data = await response.json()
+    dispatch(updateProduct(data))
+    return data
+}
+
+// delete product by product id
+export const deleteProductThunk = (productId) => async (dispatch) => {
+    const response = await fetch (`/api/products/${productId}/delete`, {
+        method: 'DELETE'
+    })
+    if(!response.ok){
+        throw new Error ('Failed to delete product.')
+    }
+    const data = await response.json()
+    dispatch(deleteProduct(data))
+}
+
 // REDUCER
 function productReducer(state = {}, action) {
     switch(action.type){
         case GET_ALL_PRODUCTS:{
-            return{...state, ...action.products}
+            const newState={};
+            action.products.Products.forEach(p => {
+                newState[p.id] = p
+            })
+            return newState;
         }
         case GET_ONE_PRODUCT:{
             return{...state, ...action.product}
         }
         case GET_BY_CAT:{
             return{...state, ...action.product}
+        }
+        case GET_USERS_PRODUCTS: {
+            return {...state, ...action.products}
+        }
+        case CREATE_PRODUCT: {
+            return {...state, ...action.product}
+        }
+        case UPDATE_PRODUCT: {
+            return {...state, ...action.product}
+        }
+        case DELETE_PRODUCT: {
+            const deleteState = {...state}
+            delete deleteState[action.product]
+            return deleteState
         }
         default:
             return state

@@ -28,10 +28,10 @@ function UpdateReview(){
 
     let button = 'Update'
     return(
-        <>
+        <div className='update-prod-page'>
             <h1 className='rev-form-header'>Update Review</h1>
             <ReviewForm rev={rev} button={button}/>
-        </>
+        </div>
     )
 }
 

@@ -15,9 +15,10 @@ import './LandingPage.css'
 
 function LandingPage(){
     const dispatch = useDispatch()
-    const productsArr = useSelector(state => state.products.Products)
+    const products = useSelector(state => state.products)
     const allCarts = useSelector(state => state.carts.Carts)
     const currUser = useSelector(state => state.session)
+
 
     // const [quantity, setQuantity] = useState('1') //quantity add to cart feature
     const [updateCart, setUpdateCart] = useState(false)
@@ -29,6 +30,7 @@ function LandingPage(){
         }
     },[dispatch, currUser?.user, updateCart])
 
+    let productsArr = Object.values(products)
     if(!productsArr?.length){ // || !allCarts
         return <div className='loading-txt'>Loading...<PiPlantDuotone className='plant-icon'/></div>
     }
@@ -84,6 +86,9 @@ function LandingPage(){
     }
 
     function avgRating(revArr){
+        if(!revArr){
+            return
+        }
         let starRating = 0
         for (let rev of revArr){
             starRating += rev?.rating
@@ -115,7 +120,7 @@ function LandingPage(){
                             <div className='product-name-text'>{product?.name}</div>
                             <div className='product-description-text'>{formatDescription(product?.description)}</div>
                             <div className='landing-rating-container'>
-                                {isNaN(product?.reviews) &&<div>{avgRating(product?.reviews)}</div>}
+                                {isNaN(product?.reviews) && product?.reviews?.length &&<div>{avgRating(product?.reviews)}</div>}
                                 <div className='star-rating-icons'>{starsIcon(avgRating(product?.reviews))}</div>
                                 <div>
                                     {product?.reviews?.length == 0 && <div className='product-num-ratings'>No ratings</div>}

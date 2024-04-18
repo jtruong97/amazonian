@@ -12,7 +12,7 @@ function Carts(){
     const dispatch = useDispatch()
     const currUser = useSelector(state => state.session.user)
     const allCarts = useSelector(state => state.carts.Carts) // all current users carts
-    const productsArr = useSelector(state => state.products.Products) // all avail products to purchase
+    const products = useSelector(state => state.products) // all avail products to purchase
 
     const [quantity, setQuantity] = useState()
     const [updateQuantity, setUpdateQuantity] = useState(false)
@@ -23,6 +23,8 @@ function Carts(){
 
 
     let activeCartObj
+    console.log(products)
+    let productsArr = Object.values(products)
 
     useEffect(()=> {
         dispatch(allUserCartsThunk())
@@ -55,7 +57,7 @@ function Carts(){
             </div>
         )
     }
-    
+
     const cartItemsArr = activeCartObj?.cart_items // arr of products in active cart
 
     const handleUpdate = async(e, cartItemId, productId) => {
@@ -99,13 +101,13 @@ function Carts(){
             {cartItemsArr?.map (item => (
                 <div className='cart-items-container' key={item?.id}>
                     <NavLink to={`/products/${item?.product_id}`} className='cart-img-nav'>
-                        <img src={productsArr[(item?.product_id) -1]?.image_url} className="cart-prod-img"/>
+                        <img src={products[(item?.product_id)]?.image_url} className="cart-prod-img"/>
                     </NavLink>
                     <div className='cart-product-info'>
                         <NavLink className='item-name-price-container' to={`/products/${item?.product_id}`}>
-                            <div className='cart-prod-name'>{productsArr[(item?.product_id) -1]?.name}</div>
-                            <div className='cart-prod-price'>${(productsArr[(item?.product_id) -1]?.price * item?.quantity).toFixed(2)}</div>
-                            <div hidden='hidden'>{subTotal+= (productsArr[(item?.product_id) -1]?.price * item?.quantity)}</div>
+                            <div className='cart-prod-name'>{products[(item?.product_id)]?.name}</div>
+                            <div className='cart-prod-price'>${(products[(item?.product_id)]?.price * item?.quantity).toFixed(2)}</div>
+                            <div hidden='hidden'>{subTotal+= (products[(item?.product_id)]?.price * item?.quantity)}</div>
                             <div hidden='hidden'>{itemCount += item?.quantity}</div>
                         </NavLink>
                         <div className='qty-container'>

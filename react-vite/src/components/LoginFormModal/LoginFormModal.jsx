@@ -4,6 +4,7 @@ import { useDispatch } from "react-redux";
 import { useModal } from "../../context/Modal";
 import { NavLink } from 'react-router-dom';
 import "./LoginForm.css";
+import google from '../../../public/google.png'
 
 function LoginFormModal() {
   const dispatch = useDispatch();
@@ -69,17 +70,25 @@ function LoginFormModal() {
           </label>
           {errors.password && <p className='form-val-txt'>{errors.password}</p>}
           <button type="submit" className='login-btn'>Log In</button>
+        </form>
+        <div className='demo-logins'>
           <NavLink
             className='demo-login-btn'
             onClick={loginGuest}
             to='/'
           > Login as Jasmine&apos;s Guest </NavLink>
+          ||
           <NavLink
             className='demo-login-btn'
             onClick={loginJasmine}
             to='/'
           > Login as Jasmine</NavLink>
-        </form>
+        </div>
+        <a href={`${window.origin}/api/auth/oauth_login`} className='google-oauth'>
+          <button className='google-login-btn'>
+            <img src={google} alt='google-icon'className='google-logo'/>Sign in with Google
+          </button>
+        </a>
       </div>
     </div>
   );
