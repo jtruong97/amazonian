@@ -13,6 +13,7 @@ from tempfile import NamedTemporaryFile
 import json
 
 auth_routes = Blueprint('auth', __name__)
+environment = os.getenv("FLASK_ENV");
 
 ############ OAUTH 2.0 SETUP #####################################################################
 # Here we will configure our Flow class and also perform some other preliminary setup steps.
@@ -70,11 +71,16 @@ which is not shown as it has a default value of True, which is preceisely what w
 As a result, our flow class constructor will generate a code verifier for us and transmit it in
 URL parameters of the first redirect in our OAuth flow.
 """
+
+uri = "http://localhost:8000/api/auth/callback"
+if(environment == 'production'):
+    uri = "https://amazonian-blt9.onrender.com/api/auth/callback"
+
 flow = google_auth_oauthlib.flow.Flow(
     oauth2_session,
     client_type='web',
     client_config=client_config,
-    redirect_uri="http://localhost:8000/api/auth/callback",
+    redirect_uri=uri,
 )
 
 ############ END OAUTH 2.0 SETUP ##########################################################################
