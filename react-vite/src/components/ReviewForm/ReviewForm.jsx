@@ -76,8 +76,8 @@ function ReviewForm({rev, button}){
     return(
         <div className='review-product-form'>
             <div className='product-rev-container'>
-                <img src={product?.image_url} className='product-rev-img'/>
-                <p className='product-rev-name'>Product: {product?.name}</p>
+                <img src={product[productId]?.image_url} className='product-rev-img'/>
+                <p className='product-rev-name'>Product: {product[productId]?.name}</p>
             </div>
             <form
                 onSubmit={handleSubmit}

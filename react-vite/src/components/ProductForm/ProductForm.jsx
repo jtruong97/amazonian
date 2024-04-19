@@ -35,6 +35,9 @@ function ProductForm({button, updateProduct}){
             if(price && isNaN(price)){
                 errors.priceNum = 'Price must only contain numbers.'
             }
+            if(price.split('.')[1].length !== 2){
+                errors.priceDec = 'Price cents must be from 01 to 99'
+            }
             if(!description){
                 errors.description = 'Product description is required.'
             }
@@ -64,15 +67,17 @@ function ProductForm({button, updateProduct}){
         setImageLoading(true);
         setSubmitted(true);
 
+        let prodId = productId
         if(!productId){
             // console.log('create new product')
-            await dispatch(createProductThunk(formData))
+            const newProd = await dispatch(createProductThunk(formData))
+            prodId = newProd.id
         }
         else{
-            console.log('update product')
+            // console.log('update product')
             await dispatch(updateProductThunk(productId, formData))
         }
-        nav(`/products/${productId}`)
+        nav(`/products/${prodId}`)
     }
 
     return(
@@ -134,6 +139,7 @@ function ProductForm({button, updateProduct}){
                 </label>
                 {validation?.priceNum && <p className='validation-message'>{validation?.priceNum}</p>}
                 {validation?.price && <p className='validation-message'>{validation?.price}</p>}
+                {validation?.priceDec && <p className='validation-message'>{validation?.priceDec}</p>}
                 <label className='prod-form-label'>
                     <div className='form-label-info'>
                         <h2>Product Description</h2>
