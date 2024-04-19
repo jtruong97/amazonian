@@ -165,7 +165,7 @@ function productReducer(state = {}, action) {
             return {...state, ...action.products}
         }
         case CREATE_PRODUCT: {
-            return {...state, ...action.product}
+            return{...state, [action.product?.id]:action?.product}
         }
         case UPDATE_PRODUCT: {
             return {...state, ...action.product}
