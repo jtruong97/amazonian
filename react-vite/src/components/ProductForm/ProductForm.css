@@ -5,6 +5,7 @@
 .product-form-page{
     padding: 0 80px 30px 80px;
     background-color: var(--lbrown);
+    min-height: 90vh;
 }
 
 .review-form-container{
@@ -35,4 +36,9 @@
 .product-form-btn:hover{
     background-color: var(--brown);
     border: 1px solid var(--brown);
+}
+
+.prod-input-field{
+    padding: 5px;
+    border: lightgray;
 }

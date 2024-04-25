@@ -25,6 +25,12 @@
 .cart-favicon{
   color: white;
 }
+
+.div-wo-search{
+  display: flex;
+  flex-direction: row;
+}
+
 .search-container{
   width: 90%;
   position: relative;

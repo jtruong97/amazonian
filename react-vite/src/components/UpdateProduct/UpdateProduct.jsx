@@ -10,15 +10,16 @@ import { PiPlantDuotone } from "react-icons/pi";
 function UpdateProduct(){
     const { productId } = useParams()
     const dispatch = useDispatch()
-    const product = useSelector(state => state.products)
+    const allProducts = useSelector(state => state.products)
 
     useEffect(()=>{
         dispatch(getOneProductThunk(productId))
     }, [dispatch, productId])
 
+    let product = allProducts[productId]
     if(product?.id != productId){
-        return <div className="loading-txt">Loading...<PiPlantDuotone className='plant-icon'/></div>
-    }
+            return <div className="loading-txt">Loading...<PiPlantDuotone className='plant-icon'/></div>
+        }
 
     const updateProduct = {
         name: product?.name,

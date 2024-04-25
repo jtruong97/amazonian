@@ -152,7 +152,7 @@ function ProductDetails(){
                     {currUser && (
                         <div className="cart-item-feature">
                             <form className='options-container'>
-                                <select onChange={(e) => setQuantity(e.target.value)}>
+                                <select onChange={(e) => setQuantity(e.target.value)} className="select-qty-dropdown">
                                     <option value = '1'>Qty: 1</option>
                                     <option value = '2'>Qty: 2</option>
                                     <option value = '3'>Qty: 3</option>
@@ -189,6 +189,7 @@ function ProductDetails(){
                         to add this item to your cart</p>)
                     }
                     <h2>About this item</h2>
+                    <p>Category: {oneProduct[productId]?.category}</p>
                     <p>{oneProduct[productId]?.description}</p>
                     <h2>Seller Information</h2>
                     <div className='seller-details-container'>

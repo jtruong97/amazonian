@@ -9,7 +9,7 @@ import { TbTrees } from "react-icons/tb";
 import { GiVineLeaf } from "react-icons/gi";
 import { GiAgave } from "react-icons/gi";
 import { LuShrub } from "react-icons/lu";
-import { BiSearchAlt2 } from "react-icons/bi";
+// import { BiSearchAlt2 } from "react-icons/bi";
 
 
 function Navigation() {
@@ -23,22 +23,24 @@ function Navigation() {
             <img src='https://i.postimg.cc/9f0StV8m/amazonian-logo-light.png' alt='amazonian-logo' className='logo-img'/>
           </NavLink>
         </li>
-        <div className='search-container'>
+        {/* <div className='search-container'>
           <input type="text" placeholder="Search.." className='search-bar' onClick={() => alert('Feature coming soon')}/>
           <button className='search-btn' onClick={() => alert('Feature coming soon')}><BiSearchAlt2 /></button>
+        </div> */}
+        <div className='div-wo-search'>
+          {user && (
+            <div className='logged-user-nav-bar'>
+              {/* <p className='user-greeting'> Hello, {user.first_name}</p> */}
+              {/* <NavLink to='' className='prev-order-txt' onClick={() => alert('Feature coming soon')}>Previous Orders</NavLink> */}
+              <NavLink to='/carts' className='cart-text'>
+                <BsCart className="cart-favicon"/> Cart
+              </NavLink>
+            </div>
+          )}
+          <li>
+            <ProfileButton />
+          </li>
         </div>
-        {user && (
-          <div className='logged-user-nav-bar'>
-            {/* <p className='user-greeting'> Hello, {user.first_name}</p> */}
-            {/* <NavLink to='' className='prev-order-txt' onClick={() => alert('Feature coming soon')}>Previous Orders</NavLink> */}
-            <NavLink to='/carts' className='cart-text'>
-              <BsCart className="cart-favicon"/> Cart
-            </NavLink>
-          </div>
-        )}
-        <li>
-          <ProfileButton />
-        </li>
       </ul>
       <div className='categories-bar'>
           <ul className='category-ul'>

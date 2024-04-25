@@ -6,15 +6,14 @@ from app.api.aws import ALLOWED_EXTENSIONS
 
 product_category =['Fern', 'Flower', 'Shrub', 'Succulent', 'Tree', 'Vine']
 
-def validate_price(form, field):
-    if field.data is not None and isinstance(field.data, float):
-        decimal_part = str(field.data).split('.')[1]
-        if len(decimal_part) > 2:
-            raise ValidationError('Price must have at most two decimal places.')
+def val_price(form, field):
+    dec = str(field.data).split(".")[1]
+    if dec and len(dec) > 2:
+        raise ValidationError('Price must be less than 2 decimals')
 
 class CreateProductForm(FlaskForm):
     name = StringField('Product Name', validators=[DataRequired()])
-    price = DecimalField('Price', places=2, validators=[DataRequired()])
+    price = DecimalField('Price', places=2, validators=[DataRequired(), val_price])
     description = StringField('Description', validators=[DataRequired(), Length(min=5)])
     category = SelectField('Category',choices=product_category, validators=[DataRequired()])
     image_url = FileField('Review Image', validators =[FileAllowed(list(ALLOWED_EXTENSIONS))])
