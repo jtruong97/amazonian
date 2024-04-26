@@ -32,11 +32,12 @@ class Product(db.Model):
         return [review.to_dict() for review in self.reviews]
 
     def to_dict(self):
+        formatted_price = f"{self.price:.2f}"
         return {
             'id': self.id,
             'user_id': self.user_id,
             'name': self.name,
-            'price': self.price,
+            'price': formatted_price,
             'description': self.description,
             'category':self.category,
             'image_url':self.image_url,

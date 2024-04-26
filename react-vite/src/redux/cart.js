@@ -38,6 +38,7 @@ export const allUserCartsThunk = () => async (dispatch) => {
     return data
 }
 
+// get current user's active cart
 export const activeCartThunk = () => async (dispatch) => {
     const response = await fetch ('/api/carts/active')
     if(!response.ok){

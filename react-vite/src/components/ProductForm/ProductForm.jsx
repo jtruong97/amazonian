@@ -35,8 +35,8 @@ function ProductForm({button, updateProduct}){
             if(price && isNaN(price)){
                 errors.priceNum = 'Price must only contain numbers.'
             }
-            if(price.split('.')[1].length !== 2){
-                errors.priceDec = 'Price cents must be from 01 to 99'
+            if(price?.includes('.') && price?.split('.')[1]?.length > 2){
+                errors.priceDec = 'Price cents must be less than 100.'
             }
             if(!description){
                 errors.description = 'Product description is required.'
@@ -95,6 +95,8 @@ function ProductForm({button, updateProduct}){
                     </div>
                     <p className='rev-form-txt'>Enter a clear and descriptive title for your product. Include important keywords to help customers find your listing in search results.</p>
                     <input
+                        className='prod-input-field'
+                        placeholder="Product Name"
                         type='text'
                         name={name}
                         value={name}
@@ -111,6 +113,7 @@ function ProductForm({button, updateProduct}){
                     <select
                         value = {category}
                         onChange={(e) => setCategory(e.target.value)}
+                        className='prod-input-field'
                     >
                         <option value='' hidden>Select a Category</option>
                         <option value='Fern'>Fern</option>
@@ -130,6 +133,7 @@ function ProductForm({button, updateProduct}){
                     </div>
                     <p className='rev-form-txt'>Enter the price at which you want to sell your product. Consider factors such as market value, competition, and profit margins when setting the price.</p>
                     <input
+                        className='prod-input-field'
                         type='text'
                         name={price}
                         value={price}
@@ -152,6 +156,7 @@ function ProductForm({button, updateProduct}){
                         value={description}
                         placeholder="Describe your product"
                         rows={8}
+                        className="prod-input-field"
                         onChange={(e) => setDescription(e.target.value)}
                     ></textarea>
                 </label>

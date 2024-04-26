@@ -4,6 +4,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    min-height: 90vh;
 }
 .invalid-cat-txt{
     font-weight: bold;

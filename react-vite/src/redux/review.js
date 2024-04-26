@@ -92,6 +92,7 @@ export const deleteReviewThunk = (reviewId) => async (dispatch) => {
     dispatch(deleteReview(data))
 }
 
+// get all curr user's reviews
 export const getUserReviewsThunk = () => async (dispatch) => {
     const response = await fetch (`/api/reviews/current`)
     if(!response.ok){
