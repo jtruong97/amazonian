@@ -34,10 +34,9 @@ function Carts(){
         }
     },[dispatch, updateQuantity, deleteItem, quantity, activeCartObj?.length, allCarts?.length, productsArr?.length])
 
-    if(!currUser || !productsArr?.length){
+    if(!currUser || !productsArr?.length || !productsArr[0]?.id || !allCarts?.length){
         return <div className="loading-txt">Loading...<PiPlantDuotone className='plant-icon'/></div>
     }
-
     // find active cart
     if(allCarts?.length > 0){
         for(let cart of allCarts){
@@ -58,7 +57,6 @@ function Carts(){
     }
 
     const cartItemsArr = activeCartObj?.cart_items // arr of products in active cart
-
     const handleUpdate = async(e, cartItemId, productId) => {
         e.preventDefault()
 
@@ -99,6 +97,8 @@ function Carts(){
             {!cartItemsArr?.length && (<p>Your cart is empty</p>)}
             {cartItemsArr?.map (item => (
                 <div className='cart-items-container' key={item?.id}>
+                    {!products[(item?.product_id)]?.image_url ? (<div className="loading-txt">Loading...<PiPlantDuotone className='plant-icon'/></div>) : (
+                    <>
                     <NavLink to={`/products/${item?.product_id}`} className='cart-img-nav'>
                         <img src={products[(item?.product_id)]?.image_url} className="cart-prod-img"/>
                     </NavLink>
@@ -133,6 +133,8 @@ function Carts(){
                                 <button onClick={() => deleteCartItem(item?.id)} className='cart-btns delete-cart-btn'>Delete</button>
                         </div>
                     </div>
+                    </>
+                    )}
                 </div>
             ))}
             <hr></hr>
