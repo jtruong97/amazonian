@@ -34,7 +34,7 @@ function Carts(){
         }
     },[dispatch, updateQuantity, deleteItem, quantity, activeCartObj?.length, allCarts?.length, productsArr?.length])
 
-    if(!currUser || !productsArr?.length || !productsArr[0]?.id || !allCarts?.length){
+    if(!currUser || !productsArr?.length || !productsArr[0]?.id){
         return <div className="loading-txt">Loading...<PiPlantDuotone className='plant-icon'/></div>
     }
     // find active cart
