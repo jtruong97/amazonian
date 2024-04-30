@@ -1,5 +1,4 @@
 .update-prod-page{
-    background-color: var(--lbrown);
     padding: 10px;
-    height: 100vh;
+    min-height: 80vh;
 }

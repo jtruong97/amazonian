@@ -11,10 +11,10 @@ function CreateReview(){
     const button = 'Create Review'
 
     return(
-        <>
+        <div className='create-rev-form'>
             <h1 className='rev-form-header'>Create Review</h1>
             <ReviewForm rev={rev} button={button}/>
-        </>
+        </div>
     )
 }
 
