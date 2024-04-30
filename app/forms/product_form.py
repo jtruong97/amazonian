@@ -7,9 +7,10 @@ from app.api.aws import ALLOWED_EXTENSIONS
 product_category =['Fern', 'Flower', 'Shrub', 'Succulent', 'Tree', 'Vine']
 
 def val_price(form, field):
-    dec = str(field.data).split(".")[1]
-    if dec and len(dec) > 2:
-        raise ValidationError('Price must be less than 2 decimals')
+    if '.' in str(field.data):
+        dec = str(field.data).split(".")[1]
+        if dec and len(dec) > 2:
+            raise ValidationError('Price must be less than 2 decimals')
 
 class CreateProductForm(FlaskForm):
     name = StringField('Product Name', validators=[DataRequired()])

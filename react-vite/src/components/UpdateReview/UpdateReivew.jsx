@@ -4,7 +4,7 @@ import { useParams } from "react-router-dom"
 import { useEffect } from "react"
 import { reviewsByProductThunk } from "../../redux/review"
 import { PiPlantDuotone } from "react-icons/pi";
-
+import './UpdateReview.css'
 
 function UpdateReview(){
     const dispatch = useDispatch()
