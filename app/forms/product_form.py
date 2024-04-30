@@ -1,6 +1,6 @@
 from flask_wtf import FlaskForm
 from wtforms import StringField, DecimalField, SelectField
-from wtforms.validators import DataRequired, Length, ValidationError
+from wtforms.validators import DataRequired, Length, ValidationError, NumberRange
 from flask_wtf.file import FileField, FileAllowed
 from app.api.aws import ALLOWED_EXTENSIONS
 
@@ -14,7 +14,7 @@ def val_price(form, field):
 
 class CreateProductForm(FlaskForm):
     name = StringField('Product Name', validators=[DataRequired()])
-    price = DecimalField('Price', places=2, validators=[DataRequired(), val_price])
+    price = DecimalField('Price', places=2, validators=[DataRequired(), NumberRange(min=0), val_price])
     description = StringField('Description', validators=[DataRequired(), Length(min=5)])
     category = SelectField('Category',choices=product_category, validators=[DataRequired()])
     image_url = FileField('Review Image', validators =[FileAllowed(list(ALLOWED_EXTENSIONS))])
