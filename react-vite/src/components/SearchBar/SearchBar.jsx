@@ -5,6 +5,7 @@ import { getAllProductsThunk } from "../../redux/product";
 import { useNavigate } from "react-router-dom";
 import { PiPlantDuotone } from "react-icons/pi";
 import { BiSearchAlt2 } from "react-icons/bi";
+import ProductError from "../ProductError/ProductError";
 
 function SearchBar () {
     const dispatch = useDispatch()
@@ -32,7 +33,6 @@ function SearchBar () {
                 return
             }
             else if(cat == searched.toLowerCase()){
-                console.log('here, should enter')
                 let catUrl = cat[0].toUpperCase() + cat.slice(1)
                 nav(`products/categories/${catUrl}`)
                 setSearched('')
@@ -41,13 +41,14 @@ function SearchBar () {
             else{
                 for(let p of productsArr){
                     if(p?.name?.toLowerCase()?.includes(searched?.toLowerCase())){
-                        console.log('does it enter here?')
+                        setSearched('')
                         nav(`/products/${p?.id}`)
+                        return
                     }
                 }
             }
         }
-        setSearched('')
+        nav(`/error/${searched}`)
     }
 
     function keyDown(e){
