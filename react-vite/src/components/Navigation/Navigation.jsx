@@ -9,8 +9,7 @@ import { TbTrees } from "react-icons/tb";
 import { GiVineLeaf } from "react-icons/gi";
 import { GiAgave } from "react-icons/gi";
 import { LuShrub } from "react-icons/lu";
-// import { BiSearchAlt2 } from "react-icons/bi";
-
+import SearchBar from "../SearchBar/SearchBar";
 
 function Navigation() {
   const user = useSelector(state => state.session.user)
@@ -27,6 +26,7 @@ function Navigation() {
           <input type="text" placeholder="Search.." className='search-bar' onClick={() => alert('Feature coming soon')}/>
           <button className='search-btn' onClick={() => alert('Feature coming soon')}><BiSearchAlt2 /></button>
         </div> */}
+        <SearchBar className='search-container'/>
         <div className='div-wo-search'>
           {user && (
             <div className='logged-user-nav-bar'>
