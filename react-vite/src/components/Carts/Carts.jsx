@@ -100,7 +100,7 @@ function Carts(){
                     {!products[(item?.product_id)]?.image_url ? (<div className="loading-txt">Loading...<PiPlantDuotone className='plant-icon'/></div>) : (
                     <>
                     <NavLink to={`/products/${item?.product_id}`} className='cart-img-nav'>
-                        <img src={products[(item?.product_id)]?.image_url} className="cart-prod-img"/>
+                        <img src={products[(item?.product_id)]?.image_url} alt={item?.name} className="cart-prod-img"/>
                     </NavLink>
                     <div className='cart-product-info'>
                         <NavLink className='item-name-price-container' to={`/products/${item?.product_id}`}>

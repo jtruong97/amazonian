@@ -41,7 +41,7 @@ function UserProducts(){
             <hr></hr>
             {userProducts?.map (product => (
                 <NavLink to={`/products/${product.id}`} key={product?.id} className='user-prod-container'>
-                    <img src={product?.image_url} className='user-prod-img'/>
+                    <img src={product?.image_url} alt={product?.image_url} className='user-prod-img'/>
                     <div className='user-prod-info'>
                         <div className='prod-txt user-prod-name'>{product?.name}</div>
                         <div className='prod-txt '>Listed On: {(product?.createdAt.slice(0,-13))}</div>

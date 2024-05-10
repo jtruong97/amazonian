@@ -120,7 +120,7 @@ function Categories(){
             {categoriesArr?.map (product => (
                 <div key={product?.id} className='cat-product-containers'>
                     <NavLink className='cat-nav-container' to={`/products/${product?.id}`}>
-                        <img src={product?.image_url} className='cat-product-img'/>
+                        <img src={product?.image_url} alt={product?.image_url}className='cat-product-img'/>
                         <div className='cat-product-info'>
                             <div className='cat-name-text'>{product?.name}</div>
                             <div className='cat-description-text'>{product?.description}</div>

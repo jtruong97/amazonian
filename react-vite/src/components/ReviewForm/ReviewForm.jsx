@@ -76,7 +76,7 @@ function ReviewForm({rev, button}){
     return(
         <div className='review-product-form'>
             <div className='product-rev-container'>
-                <img src={product[productId]?.image_url} className='product-rev-img'/>
+                <img src={product[productId]?.image_url} alt={product[productId]?.image_url} className='product-rev-img'/>
                 <p className='product-rev-name'>Product: {product[productId]?.name}</p>
             </div>
             <form
@@ -128,7 +128,7 @@ function ReviewForm({rev, button}){
                 </label>
                 {validation?.image_url && (<p className='validation-message'>{validation?.image_url}</p>)}
                 {image_url?.length > 0 && (
-                    <label htmlFor="post-image-input" className="file-input-labels-noname"><img src={image_url} className="thumbnails-noname"></img></label>
+                    <label htmlFor="post-image-input" className="file-input-labels-noname"><img src={image_url} alt={image_url} className="thumbnails-noname"></img></label>
                 )}
                 <hr></hr>
                 <div className='header-w-require'>

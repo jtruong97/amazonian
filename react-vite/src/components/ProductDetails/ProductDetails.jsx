@@ -134,7 +134,7 @@ function ProductDetails(){
         <div className='details-page'>
         <div className='product-details-page'>
             <div className='product-detail-container'>
-                <img src={oneProduct[productId]?.image_url} className='product-detail-img'/>
+                <img src={oneProduct[productId]?.image_url} alt={oneProduct[productId]?.name} className='product-detail-img'/>
                 <div className='product-info-container'>
                     <h1 className='prod-details-name'>{oneProduct[productId]?.name}</h1>
                     <div className='product-rating-container'>
@@ -229,7 +229,7 @@ function ProductDetails(){
                             <p className='star-rating-icons prod-det-rev-txt'>{starsIcon(review?.rating)}</p>
                             <p className='prod-det-rev-txt review-txt'>{review?.review}</p>
                         </div>
-                        <img src={review?.image_url} className='review-image'/>
+                        <img src={review?.image_url} alt={review?.image_url} className='review-image'/>
                         {review?.user_id == currUser?.id  && (
                             <div className='review-buttons'>
                                 <button className='review-btns'>

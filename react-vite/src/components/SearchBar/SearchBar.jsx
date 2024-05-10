@@ -26,24 +26,16 @@ function SearchBar () {
     function navToSearch(){
         const product = productsArr.find(p => p.name?.toLowerCase() === searched?.toLowerCase());
         if (product) {
-            nav(`/products/${product?.id}`);
+            console.log(product,'product')
+            nav(`/products/${product?.id}`)
+            return
         }
         const valCategories = ['fern', 'flower', 'shrub', 'succulent', 'tree', 'vine', 'ferns', 'flowers', 'shrubs', 'succulents', 'trees', 'vines']
         for(let cat of valCategories){
             if(cat == searched.toLocaleLowerCase() && searched.endsWith('s')){
                 let catUrl = cat[0].toUpperCase() + cat.slice(1,-1)
                 nav(`products/categories/${catUrl}`)
-                setSearched('')
                 return
-            }
-            else{
-                for(let p of productsArr){
-                    if(p?.name?.toLowerCase()?.includes(searched?.toLowerCase())){
-                        setSearched('')
-                        nav(`/products/${p?.id}`)
-                        return
-                    }
-                }
             }
         }
         nav(`/error/${searched}`)
@@ -133,7 +125,7 @@ function SearchBar () {
         },
         {
             id:20,
-            name:'Fern'
+            name:'Ferns'
         },
         {
             id:21,

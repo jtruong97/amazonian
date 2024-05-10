@@ -63,7 +63,7 @@ function UserReviews(){
                 <div key={review?.id} className='rev-containers'>
                     <NavLink to={`/products/${prod[(review?.product_id)]?.id}`} className='nav-rev-prod'>
                         <h2>Product: {prod[(review?.product_id)]?.name}</h2>
-                        <img src={prod[(review?.product_id)]?.image_url} className='rev-img'/>
+                        <img src={prod[(review?.product_id)]?.image_url} alt='review-image' className='rev-img'/>
                     </NavLink>
                     <hr></hr>
                     <div className='rev-rev-container'>
@@ -73,7 +73,7 @@ function UserReviews(){
                     <span className='star-rating-icons star-rev'>{starsIcon(review?.rating)}</span>
                     <p className='rev-text'>{review?.review}</p>
                     <div className='rev-buttons'>
-                        <img src={review?.image_url} className='rev-img'/>
+                        <img src={review?.image_url} alt='review-image' className='rev-img'/>
                         <button className='review-btns rev-page-btns'>
                             <NavLink to={`/products/${prod[(review?.product_id)]?.id}/review/${review?.id}/edit`} className='update-rev-btn'>Update Review</NavLink>
                         </button>
