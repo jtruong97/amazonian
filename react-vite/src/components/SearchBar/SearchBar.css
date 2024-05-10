@@ -10,8 +10,9 @@
     height: 30px;
     align-self: center;
     flex: 1;
-    border: 1px solid grey;
     border-radius: 5px;
+    margin-bottom: 8px;
+    z-index: 10;
 }
 
 .search-btn{
@@ -28,4 +29,8 @@
     border-radius: 0 5px 5px 0;
     padding: 5px;
     margin: 0;
+}
+
+.search-bar-test{
+    background-color: red;
 }

@@ -12,6 +12,7 @@ import UserReviews from '../components/UserReviews/UserReviews';
 import CreateProduct from '../components/CreateProduct/CreateProduct';
 import UpdateProduct from '../components/UpdateProduct/UpdateProduct';
 import UserProducts from '../components/UserProducts/UserProducts';
+import ProductError from '../components/ProductError/ProductError';
 
 export const router = createBrowserRouter([
   {
@@ -64,6 +65,10 @@ export const router = createBrowserRouter([
       {
         path: '/products/:productId/edit',
         element: <UpdateProduct />
+      },
+      {
+        path:'/error/:txt',
+        element: <ProductError />
       },
       {
         path:'*',
