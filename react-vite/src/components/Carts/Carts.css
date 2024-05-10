@@ -1,5 +1,6 @@
 .carts-page{
     overflow: scroll;
+    z-index: 2;
 }
 .carts-modal{
     display: flex;
@@ -124,4 +125,8 @@
 .no-cart-modal{
     padding: 30px 50px;
     min-height: 90vh;
+}
+
+#modal{
+    z-index: 2;
 }

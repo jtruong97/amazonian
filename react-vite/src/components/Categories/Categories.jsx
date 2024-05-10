@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { useParams } from "react-router-dom"
-import { getByCategoryThunk } from "../../redux/product"
+import { getAllProductsThunk} from "../../redux/product"
 import { NavLink } from 'react-router-dom';
 import { MdOutlineStar } from "react-icons/md";
 import { MdOutlineStarBorder } from "react-icons/md";
@@ -26,7 +26,7 @@ function Categories(){
     const [updateCart, setUpdateCart] = useState(false)
 
     useEffect(()=> {
-        dispatch(getByCategoryThunk(category))
+        dispatch(getAllProductsThunk())
         if(currUser?.user){
             dispatch(allUserCartsThunk())
         }
@@ -120,7 +120,7 @@ function Categories(){
             {categoriesArr?.map (product => (
                 <div key={product?.id} className='cat-product-containers'>
                     <NavLink className='cat-nav-container' to={`/products/${product?.id}`}>
-                        <img src={product?.image_url} className='cat-product-img'/>
+                        <img src={product?.image_url} alt={product?.image_url}className='cat-product-img'/>
                         <div className='cat-product-info'>
                             <div className='cat-name-text'>{product?.name}</div>
                             <div className='cat-description-text'>{product?.description}</div>

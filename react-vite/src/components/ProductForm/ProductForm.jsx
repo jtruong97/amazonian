@@ -175,7 +175,7 @@ function ProductForm({button, updateProduct}){
                 </label>
                 {validation?.image_url && <p className='validation-message'>{validation?.image_url}</p>}
                 {image_url?.length > 0 && (
-                    <label htmlFor="post-image-input" className="file-input-labels-noname"><img src={image_url} className="thumbnails-noname"></img></label>
+                    <label htmlFor="post-image-input" className="file-input-labels-noname"><img src={image_url} alt={image_url} className="thumbnails-noname"></img></label>
                 )}
                 <button type='submit' className='product-form-btn'>{button}</button>
                 {(imageLoading) && Object.values(validation).length < 0 && <p className='loading-txt'><PiPlantDuotone className='plant-icon'/></p>}

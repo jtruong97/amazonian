@@ -115,7 +115,7 @@ function LandingPage(){
             {productsArr?.map (product => (
                 <div className='landing-product-container' key={product?.id}>
                     <NavLink className='landing-nav-container' to={`/products/${product?.id}`}>
-                        <img src={product?.image_url} className='product-img'/>
+                        <img src={product?.image_url} alt={product?.image_url}className='product-img'/>
                         <div className='product-info'>
                             <div className='product-name-text'>{product?.name}</div>
                             <div className='product-description-text'>{formatDescription(product?.description)}</div>
@@ -153,7 +153,7 @@ function LandingPage(){
                             <button className='add-to-cart-btn' onClick={() => addToCart(product?.id)}>
                                 <OpenModalMenuItem
                                     itemText="Add to cart"
-                                    modalComponent={<Carts />}
+                                    modalComponent={<Carts/>}
                                 />
                             </button>
                         </div>
