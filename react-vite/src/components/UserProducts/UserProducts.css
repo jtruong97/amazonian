@@ -33,7 +33,7 @@
 
 .user-prod-img{
     height: 300px;
-    width: 270px;
+    min-width: 270px;
 }
 
 .user-prod-info{

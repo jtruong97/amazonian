@@ -20,13 +20,12 @@ function SearchBar () {
 
     let productsArr = Object.values(products)
     if(!productsArr?.length){
-        return <div className='loading-txt'>Loading...<PiPlantDuotone className='plant-icon'/></div>
+        return
     }
 
     function navToSearch(){
         const product = productsArr.find(p => p.name?.toLowerCase() === searched?.toLowerCase());
         if (product) {
-            console.log(product,'product')
             nav(`/products/${product?.id}`)
             return
         }
