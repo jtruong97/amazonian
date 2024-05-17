@@ -3,7 +3,7 @@ import "./SearchBar.css"
 import { useEffect, useState } from "react";
 import { getAllProductsThunk } from "../../redux/product";
 import { useNavigate } from "react-router-dom";
-import { PiPlantDuotone } from "react-icons/pi";
+// import { PiPlantDuotone } from "react-icons/pi";
 // import { BiSearchAlt2 } from "react-icons/bi";
 import { ReactSearchAutocomplete } from 'react-search-autocomplete'
 
