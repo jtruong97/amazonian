@@ -8,7 +8,7 @@
     margin: 20px 0;
     border: 1px solid lightgrey;
     background-color: var(--lllsage);
-    min-width: 450px;
+    /* min-width: 450px; */
 }
 
 .rev-img{
