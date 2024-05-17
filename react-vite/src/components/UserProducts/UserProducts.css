@@ -24,7 +24,7 @@
     background-color: var(--llbrown);
     padding: 20px;
     margin: 20px 0;
-    min-width: 550px;
+    /* min-width: 550px; */
     display: flex;
     flex-direction: row;
     text-decoration: none;
@@ -33,7 +33,7 @@
 
 .user-prod-img{
     height: 300px;
-    width: 270px;
+    min-width: 270px;
 }
 
 .user-prod-info{
