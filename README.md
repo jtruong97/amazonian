@@ -16,6 +16,10 @@ Amazonian is inspired by the popular e-commerce platform 'Amazon', that features
 ### Product
 ![product-gif](react-vite/public/Productdemo-ezgif.com-video-to-gif-converter.gif)
 
+### Search
+![search-gif](react-vite/public/search-ezgif.com-video-to-gif-converter.gif)
+
+
 ## Clone This Project
 1. Clone this repository
 2. Install your dependencies
@@ -91,10 +95,10 @@ Amazonian is inspired by the popular e-commerce platform 'Amazon', that features
     - Create a new product
     - Update user's exisiting product
     - Delete user's exisiting product
-
-## Future Features
 4. Search/Sort Filter
     - User will be able to search for product by category or name
+
+## Future Features
 5. Order History
     - Users will be able to view their order history if a cart has been checkout
 
