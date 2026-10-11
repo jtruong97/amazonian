@@ -1,9 +1,6 @@
 # amazonian
 Amazonian is inspired by the popular e-commerce platform 'Amazon', that features some of my favorite plants! This site mimics Amazon's layout, functionality, aethestics, and intuitive navigation. Amazonian features 3 full CRUD functionalities for managing products, reviews, and shopping carts. Amazonian also features OAuth which streamlines signup and login process for user convenience and security. Join Amazonian today to feature your favorite plant or to explore our products!
 
-## Live Site
-- https://amazonian-blt9.onrender.com/
-
 ### Landing Page and login
 ![landing-gif](react-vite/public/Landingdemo-ezgif.com-video-to-gif-converter.gif)
 
